@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibility Review - Adair Campos Portfolio</title>
+<style>
+:root{--ink:#102832;--muted:#566c76;--paper:#f5f9fa;--surface:#fff;--line:#cddde2;--blue:#0e5a70;--orange:#c7480e;--good:#17633b;--warn:#8b5a00}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 Arial,sans-serif}main{max-width:1120px;margin:auto;padding:64px 24px 96px}h1{font-size:clamp(42px,7vw,76px);line-height:1;letter-spacing:-.05em;margin:.2em 0}h2{font-size:30px;margin:2.2em 0 .7em}h3{font-size:20px;margin:0 0 .5em}p{max-width:78ch}.eyebrow{color:var(--orange);font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:12px}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:34px 0}.summary article,.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px}.summary strong{display:block;font-size:26px}.status{display:inline-flex;border-radius:999px;padding:7px 11px;font-weight:800;font-size:12px}.pass{background:#e2f2e8;color:var(--good)}.partial{background:#fff1d3;color:var(--warn)}table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line)}th,td{text-align:left;vertical-align:top;padding:14px;border-bottom:1px solid var(--line)}th{background:#e6f2f5}code{background:#edf6f8;padding:.12em .35em;border-radius:5px}ul{padding-left:1.2em}a{color:var(--blue);text-underline-offset:3px}.note{border-left:4px solid var(--orange);padding:12px 18px;background:#fff}@media(max-width:760px){.summary{grid-template-columns:1fr}table,thead,tbody,tr,th,td{display:block}thead{position:absolute;clip:rect(0 0 0 0)}td{border-bottom:0}tr{border-bottom:1px solid var(--line);padding:8px}td:before{content:attr(data-label);display:block;font-weight:800;margin-bottom:4px}}
+</style>
+</head>
+<body><main>
+<p class="eyebrow">Design-system accessibility review</p>
+<h1>EAA-aligned accessibility baseline</h1>
+<p>This review uses the European Accessibility Act as legal context and WCAG 2.2 AA together with EN 301 549 as the practical technical benchmark. It is an implementation review, not a legal opinion or formal certification.</p>
+<div class="summary">
+<article><span class="status pass">Implemented</span><strong>5 pages</strong><span>Homepage, three case studies and web CV reviewed.</span></article>
+<article><span class="status pass">Automated checks</span><strong>30 runs</strong><span>Light/dark modes at desktop, tablet and mobile sizes.</span></article>
+<article><span class="status partial">Manual follow-up</span><strong>Required</strong><span>Screen-reader and real-device testing remain necessary.</span></article>
+</div>
+<h2>What was reviewed and improved</h2>
+<table><thead><tr><th>Area</th><th>Status</th><th>Implementation</th></tr></thead><tbody>
+<tr><td data-label="Area">Document structure</td><td data-label="Status"><span class="status pass">Pass baseline</span></td><td data-label="Implementation">One page title and H1 per page, English language metadata, consistent header/nav/main/footer landmarks, corrected heading hierarchy.</td></tr>
+<tr><td data-label="Area">Keyboard and bypass</td><td data-label="Status"><span class="status pass">Pass baseline</span></td><td data-label="Implementation">Skip-to-content link on every page, visible focus treatment, keyboard-operable theme and accessibility controls, no empty control names.</td></tr>
+<tr><td data-label="Area">Colour and contrast</td><td data-label="Status"><span class="status pass">Automated pass</span></td><td data-label="Implementation">Dedicated text-safe orange token, stronger dark-surface accent, improved muted text, control borders and focus colour. The automated scan reported no simple-background text contrast failures in either theme.</td></tr>
+<tr><td data-label="Area">Target size</td><td data-label="Status"><span class="status pass">Automated pass</span></td><td data-label="Implementation">Primary controls are at least 44px high; other non-inline interactive targets meet the WCAG 2.2 AA 24-by-24 CSS pixel minimum.</td></tr>
+<tr><td data-label="Area">Responsive reflow</td><td data-label="Status"><span class="status pass">Automated pass</span></td><td data-label="Implementation">No horizontal page overflow at 320px, mobile, tablet or desktop test widths. A 200% text-size simulation also produced no page overflow.</td></tr>
+<tr><td data-label="Area">Text spacing</td><td data-label="Status"><span class="status pass">Automated pass</span></td><td data-label="Implementation">The readability preference applies the WCAG text-spacing test values for letter and word spacing and allows cards to expand without clipping.</td></tr>
+<tr><td data-label="Area">Motion</td><td data-label="Status"><span class="status pass">Pass baseline</span></td><td data-label="Implementation">System <code>prefers-reduced-motion</code> is respected, with an additional user-controlled reduced-motion preference.</td></tr>
+<tr><td data-label="Area">Themes and preferences</td><td data-label="Status"><span class="status pass">Pass baseline</span></td><td data-label="Implementation">Light/dark theme follows system preference initially, can be changed with an accessible button and is stored locally. Readability settings are also stored locally.</td></tr>
+<tr><td data-label="Area">Visual alternatives</td><td data-label="Status"><span class="status pass">Current implementation</span></td><td data-label="Implementation">CSS-based portfolio illustrations are exposed as labelled images where they communicate meaning; decorative progress and icon elements are hidden from assistive technology.</td></tr>
+<tr><td data-label="Area">Downloadable CV</td><td data-label="Status"><span class="status pass">Improved</span></td><td data-label="Implementation">The CV was regenerated as a tagged PDF/UA-1 document with document language, structure tree and accessible link annotation. The web CV remains the preferred flexible version.</td></tr>
+</tbody></table>
+<h2>Accessibility functionality included</h2>
+<div class="card"><ul><li>High-contrast preference</li><li>Reduced-motion preference</li><li>Readable system typeface</li><li>WCAG text-spacing preference</li><li>Underlined text links</li><li>Reset function and polite status announcements</li><li>Keyboard-accessible accessibility panel with Escape-to-close and focus management</li></ul></div>
+<h2>What still requires human testing</h2>
+<div class="card"><ul><li>VoiceOver with Safari and NVDA or JAWS with a Chromium browser.</li><li>Browser zoom up to 400%, including browser-specific rendering.</li><li>Keyboard reading order and link purpose with real users.</li><li>Contrast over gradients, screenshots and project imagery as assets are changed.</li><li>Mobile testing on iOS Safari and Android Chrome.</li><li>PDF reading order and announcements in Adobe Acrobat and at least one screen reader.</li></ul></div>
+<p class="note"><strong>Scope note:</strong> A personal portfolio is not automatically one of the consumer products or services covered by the EAA. This site is therefore designed toward the same accessibility principles without claiming that the portfolio itself has been legally certified as EAA compliant.</p>
+<h2>References</h2>
+<ul><li><a href="https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/disability/european-accessibility-act-eaa_en">European Commission - European Accessibility Act</a></li><li><a href="https://eur-lex.europa.eu/eli/dir/2019/882/oj/eng">Directive (EU) 2019/882</a></li><li><a href="https://www.w3.org/TR/WCAG22/">W3C - WCAG 2.2</a></li><li><a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf">ETSI - EN 301 549 V3.2.1</a></li></ul>
+<p>Review date: 2026-07-16</p>
+</main></body></html>

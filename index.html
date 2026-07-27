@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<script>
+(() => {
+  try {
+    const saved = localStorage.getItem('portfolio-theme');
+    const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.dataset.theme = saved || preferred;
+  } catch (error) {
+    document.documentElement.dataset.theme = 'light';
+  }
+})();
+</script>
+<meta content="Adair Campos is a Senior Product Designer who simplifies complex enterprise products through research, systems thinking and cross-functional collaboration." name="description"/>
+<title>Adair Campos — Senior Product Designer</title>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body class="home-page three-case-home airbnb-shell">
+<a class="skip-link" href="#top">Skip to main content</a>
+<div aria-hidden="true" class="progress"><span id="progressBar"></span></div>
+<header class="site-header airbnb-header">
+<a class="brand airbnb-brand" href="#top"><span aria-hidden="true" class="brand-symbol">A</span><span class="brand-name">Adair Campos</span></a>
+<nav aria-label="Primary navigation" class="airbnb-desktop-nav"><a aria-current="page" class="air-nav-tab is-active" data-nav-key="home" href="#top"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.7 12 3.5l8.5 7.2v8.1a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7v-8.1Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M9.3 20.5v-6.1h5.4v6.1" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span class="nav-label">Home</span></a><a class="air-nav-tab" data-nav-key="work" href="#work"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="4"></rect><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="4"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="14"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="14"></rect></svg><span class="nav-label">Work</span></a><a class="air-nav-tab" data-nav-key="about" href="#about"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="12" cy="8" r="3.3" stroke="currentColor" stroke-width="1.8"></circle><path d="M5.4 20c.6-4 3-6.2 6.6-6.2s6 2.2 6.6 6.2" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span class="nav-label">About</span></a><a class="air-nav-tab" data-nav-key="cv" href="cv.html"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M6 3.5h8l4 4V20.5H6z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M14 3.5v4h4M9 12h6M9 15.5h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span class="nav-label">CV</span></a></nav>
+<div class="airbnb-header-actions">
+<a aria-label="Open Adair Campos on LinkedIn" class="header-icon-link linkedin-link" href="https://www.linkedin.com/in/adair-campos-b1b5415a" rel="noreferrer" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M6.7 8.4H3.5V20h3.2V8.4ZM5.1 3A1.9 1.9 0 1 0 5 6.8 1.9 1.9 0 0 0 5.1 3ZM20.5 13.3c0-3.5-1.9-5.2-4.4-5.2-2 0-3 1.1-3.5 1.9V8.4H9.4V20h3.2v-5.8c0-1.5.3-3 2.2-3 1.8 0 1.9 1.7 1.9 3.1V20h3.2v-6.7h.6Z"></path></svg></a>
+<a class="nav-cta air-contact" href="mailto:adaircampos88@gmail.com">Contact</a>
+<button aria-label="Switch to dark mode" aria-pressed="false" class="theme-toggle" type="button"><span aria-hidden="true" class="theme-toggle-icon">☾</span><span class="theme-toggle-text">Theme</span></button>
+</div>
+</header>
+<main id="top">
+<section class="home-hero section-pad">
+<div class="home-hero-copy reveal">
+<p class="eyebrow">Senior Product Designer · Munich, Germany</p>
+<h1>Making complex products feel simple and intuitive.</h1>
+<p class="home-hero-lede">I use research, systems thinking and close collaboration to turn technical enterprise platforms into experiences people can understand and trust.</p>
+<div class="home-actions">
+<a class="primary-button" href="#work">View selected work <span>↘</span></a>
+<a class="text-button" download="" href="Adair_Campos_Senior_Product_Designer_CV.pdf">Download CV <span>↓</span></a>
+</div>
+<div class="home-proof">
+<span>Research-driven product strategy</span>
+<span>Enterprise and data-heavy UX</span>
+<span>Europe ↔ China collaboration</span>
+</div>
+</div>
+<div aria-label="Animated residential energy flow showing solar generation, home demand, battery storage and grid export" class="home-hero-art reveal">
+<div class="hero-orbit orbit-one"></div>
+<div class="hero-orbit orbit-two"></div>
+<div class="isc-energy-dashboard">
+<div class="isc-dashboard-head"><div><small>Residential plant</small><strong>Energy overview</strong></div><span class="isc-live"><i></i> Live</span></div>
+<div class="isc-tabs"><span class="active">Energy Flow</span><span>EV Charger</span><span>Dashboard</span></div>
+<div class="isc-status-row"><span class="isc-status"><i>✓</i> Normal</span><span class="isc-weather">☀ <strong>+32°</strong></span></div>
+<div class="isc-flow-canvas">
+<svg aria-hidden="true" class="isc-flow-lines" preserveaspectratio="none" viewbox="0 0 560 430">
+<defs>
+<filter height="160%" id="flowGlow" width="160%" x="-30%" y="-30%"><fegaussianblur result="blur" stddeviation="3"></fegaussianblur><femerge><femergenode in="blur"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
+</defs>
+<path class="isc-flow-path active solar-home" d="M280 105 C280 135 280 160 280 194"></path>
+<path class="isc-flow-path active solar-grid" d="M315 92 C410 112 466 190 468 310"></path>
+<path class="isc-flow-path idle battery-home" d="M112 325 C148 285 194 244 245 226"></path>
+<path class="isc-flow-path active home-grid" d="M316 232 C365 256 414 281 455 320"></path>
+</svg>
+<div class="isc-node isc-solar active-node">
+<div class="isc-icon solar-icon"><span></span></div><b>Solar</b><strong>9.05 <small>kW</small></strong><em>Generating</em>
+</div>
+<div class="isc-node isc-home active-node">
+<div class="isc-icon home-icon"><span></span></div><b>Home</b><strong>4.21 <small>kW</small></strong><em>Consuming</em>
+</div>
+<div class="isc-node isc-battery">
+<div class="isc-icon battery-icon"><span></span></div><b>Battery</b><strong>0.00 <small>kW</small></strong><em>71% charged</em>
+</div>
+<div class="isc-node isc-grid active-node">
+<div class="isc-icon grid-icon"><span></span></div><b>Grid</b><strong>4.81 <small>kW</small></strong><em>Exporting</em>
+</div>
+</div>
+<div class="isc-dashboard-bottom"><span><small>Today yield</small><b>30.4 kWh</b></span><span><small>Self-consumption</small><b>47%</b></span><span><small>Saved today</small><b>€4.20</b></span></div>
+</div>
+<div class="floating-chip chip-one"><small>Research</small><strong>Understand the real need</strong></div>
+<div class="floating-chip chip-two"><small>Systems thinking</small><strong>Make complexity manageable</strong></div>
+<div class="floating-chip chip-three"><small>Collaboration</small><strong>Align teams around users</strong></div>
+</div>
+</section>
+<section class="positioning section-pad section-dark reveal">
+<p class="eyebrow">What I bring</p>
+<div class="positioning-grid">
+<h2>Bridging users, technology and global product teams.</h2>
+<div>
+<p>I work best on products where the challenge is bigger than one screen: multiple user roles, technical constraints, complex data and teams with different perspectives.</p>
+<p>My experience in the energy industry taught me how to move between research, product strategy and hands-on design while representing European users inside a global organisation.</p>
+</div>
+</div>
+<div class="capability-row">
+<article><span>01</span><strong>Simplify complexity</strong><p>Make technical workflows understandable without removing the depth experts need.</p></article>
+<article><span>02</span><strong>Design with evidence</strong><p>Use research and validation to challenge assumptions and guide decisions.</p></article>
+<article><span>03</span><strong>Connect global teams</strong><p>Translate user needs across product, engineering and cross-cultural stakeholders.</p></article>
+</div>
+</section>
+<section class="selected-work editorial-work section-pad reveal" id="work">
+<div class="section-intro work-intro">
+<div>
+<p class="eyebrow">Selected work</p>
+<h2>Three projects. Three different product-design strengths.</h2>
+</div>
+<p>Each case study focuses on work I personally led or meaningfully contributed to. Confidential interfaces and data are recreated, simplified or anonymised.</p>
+</div><div class="airbnb-project-grid"><a aria-label="Read Designing the Future of Residential Energy Management case study" class="featured-project editorial-featured airbnb-project-card" href="case-study-energy-flow.html">
+<div class="featured-copy">
+<div class="project-kicker"><span>01</span><small>Strategy &amp; concept design</small></div>
+<h3>Future Residential Energy Management</h3>
+<p>Research, journey mapping and concept exploration shaped a clearer Energy Flow direction for European homeowners.</p>
+<div class="project-card-tabs" aria-label="Project focus areas"><span>Product strategy</span><span>Systems thinking</span><span>Concept design</span></div>
+<strong class="project-link">Read the case study <span>↗</span></strong>
+</div>
+<div class="featured-visual flagship-visual">
+<div class="source-card source-energy-card">
+<img alt="Mid-fidelity Energy Flow concept from the forward-looking design project" loading="lazy" src="assets/projects/energy/hero.webp"/>
+<div class="source-card-label"><small>Project artifact</small><strong>Developed Energy Flow direction</strong></div>
+</div></div>
+</a><a aria-label="Read Understanding Home EV Charging Behaviours case study" class="supporting-project ev-project airbnb-project-card" href="case-study-ev-research.html">
+<div class="supporting-project-visual ev-research-visual">
+<div class="card-visual-head">
+<small>Research evidence</small>
+<strong>Interviews and synthesis</strong>
+<span>6 interviews · 3 markets</span>
+</div>
+<div class="ev-visual-stage">
+<figure class="ev-stage-interviews">
+<img alt="Remote interview participants from the EV charging research" class="source-collage-main" loading="lazy" src="assets/projects/ev/interviews.webp"/>
+<figcaption>Moderated sessions with EV owners</figcaption>
+</figure>
+<figure class="ev-stage-board">
+<img alt="Coded interview insight cards from the EV charging research" class="source-collage-float" loading="lazy" src="assets/projects/ev/insight-cards.webp"/>
+<figcaption>Insight clusters and coded pain points</figcaption>
+</figure>
+</div></div>
+<div class="supporting-project-copy">
+<div class="project-kicker"><span>02</span><small>Generative UX research</small></div>
+<h3>Home EV‑Charging Behaviours</h3>
+<p>Six interviews across three European markets revealed needs around setup, smart charging, cost transparency and flexible control.</p>
+<div class="project-card-tabs" aria-label="Project focus areas"><span>User interviews</span><span>Insight synthesis</span><span>Product opportunities</span></div>
+<strong class="project-link">Read the case study <span>↗</span></strong>
+</div>
+</a><a aria-label="Read Evaluating the iSolarCloud Mobile Redesign case study" class="supporting-project evaluation-project airbnb-project-card" href="case-study-isolarcloud-evaluation.html">
+<div class="supporting-project-visual evaluation-visual">
+<div class="card-visual-head">
+<small>Product views tested</small>
+<strong>Two role perspectives</strong>
+<span>Homeowner and installer</span>
+</div>
+<div class="evaluation-source-pair">
+<figure>
+<div class="evaluation-screen-card"><img alt="End-user Energy Flow screen evaluated in the study" loading="lazy" src="assets/projects/evaluation/enduser-energy-flow.webp"/></div>
+<figcaption>Homeowner view</figcaption>
+</figure>
+<figure>
+<div class="evaluation-screen-card"><img alt="Installer Plant Overview screen evaluated in the study" loading="lazy" src="assets/projects/evaluation/installer-plant-overview.webp"/></div>
+<figcaption>Installer view</figcaption>
+</figure>
+</div></div>
+<div class="supporting-project-copy">
+<div class="project-kicker"><span>03</span><small>Evaluative research</small></div>
+<h3>iSolarCloud Mobile Redesign Evaluation</h3>
+<p>Moderated studies with installers and homeowners informed ongoing improvements to the mobile experience.</p>
+<div class="project-card-tabs" aria-label="Project focus areas"><span>Usability testing</span><span>Role-based UX</span><span>Product iteration</span></div>
+<strong class="project-link">Read the case study <span>↗</span></strong>
+</div>
+</a></div>
+</section>
+<section class="home-approach section-pad section-soft reveal" id="approach">
+<div class="section-intro">
+<p class="eyebrow">How I work</p>
+<h2>Understand before designing. Make decisions visible.</h2>
+<p>I adapt the process to the problem, but the goal stays consistent: connect evidence to decisions and decisions to outcomes.</p>
+</div>
+<div class="approach-track">
+<article><span>Discover</span><h3>Understand the context</h3><p>Users, business goals, market direction and technical realities.</p></article>
+<article><span>Define</span><h3>Focus the opportunity</h3><p>Turn scattered information into clear problems and priorities.</p></article>
+<article><span>Design</span><h3>Explore and communicate</h3><p>Use flows, concepts and prototypes to make decisions tangible.</p></article>
+<article><span>Validate</span><h3>Learn and improve</h3><p>Test assumptions, communicate evidence and iterate with the team.</p></article>
+</div>
+</section>
+<section class="home-about section-pad reveal" id="about">
+<div class="about-layout">
+<div class="about-statement">
+<p class="eyebrow">About me</p>
+<h2>A designer shaped by different cultures, users and ways of working.</h2>
+<figure class="about-portrait-card">
+<img alt="Portrait of Adair Campos smiling, wearing glasses and a light shirt." class="about-portrait" src="assets/profile/adair-campos-portrait.jpg"/>
+<figcaption>
+<strong>Adair Campos</strong>
+<span>Senior Product Designer based in Munich, focused on complex enterprise and energy experiences.</span>
+</figcaption>
+</figure>
+</div>
+<div class="about-copy">
+<p>I’m an American Product Designer based in Germany, with experience designing complex software for the European energy market and collaborating closely with teams in China.</p>
+<p>My strongest work happens when I can combine research, product thinking and interaction design—especially when a product needs to serve people with very different levels of knowledge.</p>
+<p>I care about clear communication, honest collaboration and asking the questions that help teams look beyond the immediate feature request.</p>
+<div class="about-facts">
+<span><small>Based in</small><strong>Munich, Germany</strong></span>
+<span><small>Focus</small><strong>Senior Product Design</strong></span>
+<span><small>Experience</small><strong>Enterprise · Energy · SaaS</strong></span>
+</div>
+</div>
+</div>
+</section>
+<section class="home-contact section-pad section-dark reveal" id="contact">
+<p class="eyebrow">Let’s connect</p>
+<h2>Have a complex product challenge that needs a clearer path forward?</h2>
+<p>Explore my experience, download my CV or reach me directly.</p>
+<div class="contact-actions">
+<a class="primary-button light-button" href="mailto:adaircampos88@gmail.com">Email me <span>→</span></a>
+<a class="contact-link" download="" href="Adair_Campos_Senior_Product_Designer_CV.pdf">Download CV</a>
+<a class="contact-link" href="https://www.linkedin.com/in/adair-campos-b1b5415a" rel="noreferrer" target="_blank">LinkedIn ↗</a>
+</div>
+</section>
+</main>
+<footer>
+<strong>Adair Campos</strong>
+<span>Senior Product Designer · Munich, Germany</span>
+<div class="footer-links"><a href="cv.html">CV</a><a href="mailto:adaircampos88@gmail.com">Email</a><a href="#top">Back to top ↑</a><a aria-label="Open Adair Campos on LinkedIn" href="https://www.linkedin.com/in/adair-campos-b1b5415a" rel="noreferrer" target="_blank">LinkedIn ↗</a></div>
+</footer>
+<nav aria-label="Mobile primary navigation" class="mobile-bottom-nav"><a aria-current="page" class="mobile-nav-item is-active" data-mobile-nav="home" href="#top"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.7 12 3.5l8.5 7.2v8.1a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7v-8.1Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M9.3 20.5v-6.1h5.4v6.1" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span>Home</span></a><a class="mobile-nav-item" data-mobile-nav="work" href="#work"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="4"></rect><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="4"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="14"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="14"></rect></svg><span>Work</span></a><a class="mobile-nav-item" data-mobile-nav="about" href="#about"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="12" cy="8" r="3.3" stroke="currentColor" stroke-width="1.8"></circle><path d="M5.4 20c.6-4 3-6.2 6.6-6.2s6 2.2 6.6 6.2" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span>About</span></a><a class="mobile-nav-item" data-mobile-nav="cv" href="cv.html"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M6 3.5h8l4 4V20.5H6z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M14 3.5v4h4M9 12h6M9 15.5h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span>CV</span></a><a class="mobile-nav-item" data-mobile-nav="contact" href="mailto:adaircampos88@gmail.com"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><rect height="13" rx="3" stroke="currentColor" stroke-width="1.8" width="17" x="3.5" y="5.5"></rect><path d="m5 7 7 5.3L19 7" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span>Contact</span></a></nav><script defer="" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<script>
+(() => {
+  try {
+    const saved = localStorage.getItem('portfolio-theme');
+    const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.dataset.theme = saved || preferred;
+  } catch (error) {
+    document.documentElement.dataset.theme = 'light';
+  }
+})();
+</script>
+<meta content="A UX research case study by Adair Campos evaluating the iSolarCloud mobile redesign with European installers and homeowners." name="description"/>
+<title>iSolarCloud Mobile Evaluation — Adair Campos</title>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body class="evaluation-case-page airbnb-shell">
+<a class="skip-link" href="#top">Skip to main content</a>
+<div aria-hidden="true" class="progress"><span id="progressBar"></span></div>
+<header class="site-header airbnb-header">
+<a class="brand airbnb-brand" href="index.html#top"><span aria-hidden="true" class="brand-symbol">A</span><span class="brand-name">Adair Campos</span></a>
+<nav aria-label="Primary navigation" class="airbnb-desktop-nav"><a class="air-nav-tab" data-nav-key="home" href="index.html#top"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.7 12 3.5l8.5 7.2v8.1a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7v-8.1Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M9.3 20.5v-6.1h5.4v6.1" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span class="nav-label">Home</span></a><a aria-current="page" class="air-nav-tab is-active" data-nav-key="work" href="index.html#work"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="4"></rect><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="4"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="14"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="14"></rect></svg><span class="nav-label">Work</span></a><a class="air-nav-tab" data-nav-key="about" href="index.html#about"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="12" cy="8" r="3.3" stroke="currentColor" stroke-width="1.8"></circle><path d="M5.4 20c.6-4 3-6.2 6.6-6.2s6 2.2 6.6 6.2" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span class="nav-label">About</span></a><a class="air-nav-tab" data-nav-key="cv" href="cv.html"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M6 3.5h8l4 4V20.5H6z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M14 3.5v4h4M9 12h6M9 15.5h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span class="nav-label">CV</span></a></nav>
+<div class="airbnb-header-actions">
+<a aria-label="Open Adair Campos on LinkedIn" class="header-icon-link linkedin-link" href="https://www.linkedin.com/in/adair-campos-b1b5415a" rel="noreferrer" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M6.7 8.4H3.5V20h3.2V8.4ZM5.1 3A1.9 1.9 0 1 0 5 6.8 1.9 1.9 0 0 0 5.1 3ZM20.5 13.3c0-3.5-1.9-5.2-4.4-5.2-2 0-3 1.1-3.5 1.9V8.4H9.4V20h3.2v-5.8c0-1.5.3-3 2.2-3 1.8 0 1.9 1.7 1.9 3.1V20h3.2v-6.7h.6Z"></path></svg></a>
+<a class="nav-cta air-contact" href="mailto:adaircampos88@gmail.com">Contact</a>
+<button aria-label="Switch to dark mode" aria-pressed="false" class="theme-toggle" type="button"><span aria-hidden="true" class="theme-toggle-icon">☾</span><span class="theme-toggle-text">Theme</span></button>
+</div>
+</header><nav aria-label="Case study sections" class="case-context-nav"><a class="back-to-work" href="index.html#work">← All work</a><div><a href="#top">Overview</a><a href="#research">Research</a><a href="#findings">Findings</a></div></nav>
+<main id="top">
+<section class="evaluation-hero section-pad">
+<div class="evaluation-hero-copy reveal">
+<p class="eyebrow">Evaluative UX research · Product iteration · Collaboration</p>
+<h1>Evaluating the iSolarCloud mobile redesign</h1>
+<p class="hero-lede">How Maria Ciccarelli and I tested a live redesign with European installers and homeowners, identified what was working and translated the findings into priorities for ongoing product updates.</p>
+<div class="hero-meta">
+<span>8 participants</span>
+<span>Germany · Belgium · Italy</span>
+<span>Moderated interviews</span>
+</div>
+</div>
+<div aria-label="Conceptual mobile redesign evaluation dashboard" class="evaluation-hero-visual reveal">
+<div class="source-hero-stage evaluation-source-hero">
+<div class="evaluation-source-pair hero-pair">
+<figure><img alt="End-user Energy Flow interface evaluated in the study" loading="eager" src="assets/projects/evaluation/enduser-energy-flow.webp"/><figcaption>Homeowner</figcaption></figure>
+<figure><img alt="Installer Plant Overview interface evaluated in the study" loading="eager" src="assets/projects/evaluation/installer-plant-overview.webp"/><figcaption>Installer</figcaption></figure>
+</div>
+<div class="floating-note evaluation-note-one"><small>Moderated evaluation</small><strong>8 participants · 3 markets</strong></div>
+<div class="floating-note evaluation-note-two"><small>Research outcome</small><strong>Evidence for ongoing iteration</strong></div>
+</div></div>
+</section>
+<section class="snapshot section-pad reveal">
+<div class="section-intro">
+<p class="eyebrow">Project snapshot</p>
+<h2>Testing a live product, not validating a visual preference</h2>
+</div>
+<div class="snapshot-grid evaluation-snapshot">
+<article><small>Role</small><strong>Co-lead researcher</strong><p>Primary moderator during participant sessions</p></article>
+<article><small>Team</small><strong>Two UX/UI Designers</strong><p>Shared planning, analysis, prioritisation and reporting</p></article>
+<article><small>Research</small><strong>8 moderated interviews</strong><p>Installers and homeowners across three European markets</p></article>
+<article><small>Outcome</small><strong>Iteration priorities</strong><p>Findings informed improvements across subsequent mobile updates</p></article>
+</div>
+<aside class="truth-note">
+<strong>Shared ownership</strong>
+<p>I conducted the interviews while Maria observed, captured notes and ensured important details were not missed. We then analysed the sessions and constructed the findings and recommendations together.</p>
+</aside>
+</section>
+<section class="evaluation-context section-pad section-dark reveal">
+<div class="section-intro light">
+<p class="eyebrow">Why we ran the study</p>
+<h2>The redesign looked different. We needed to know whether it worked better.</h2>
+<p>The mobile redesign had introduced a new visual language and reorganised important monitoring and commissioning features. Our task was to evaluate satisfaction, uncover usability issues and understand which features different users actually relied on.</p>
+</div>
+<div class="evaluation-questions">
+<article><span>01</span><strong>What was used most?</strong><p>Identify the features that mattered in real homeowner and installer workflows.</p></article>
+<article><span>02</span><strong>What created friction?</strong><p>Find issues with data, discoverability, terminology and task completion.</p></article>
+<article><span>03</span><strong>What should remain?</strong><p>Separate successful redesign decisions from areas needing further iteration.</p></article>
+</div>
+<blockquote>A redesign succeeds when users can trust the information and complete the task—not only when the interface looks cleaner.</blockquote>
+</section>
+<section class="evaluation-collaboration section-pad reveal">
+<div class="section-intro">
+<p class="eyebrow">How we worked together</p>
+<h2>Two research roles, one shared analysis</h2>
+</div>
+<div class="collaboration-pair">
+<article class="moderator-card"><small>Adair · Moderator</small><h3>Stay present with the participant</h3><p>I led the conversation, asked open-ended and follow-up questions, explored contradictions and kept the session aligned with the research goals.</p></article>
+<div class="collaboration-plus">+</div>
+<article class="observer-card"><small>Maria · Observer</small><h3>Protect the detail</h3><p>Maria documented responses, tracked topics that needed clarification and made sure valuable evidence was captured while I focused on the participant.</p></article>
+</div>
+<div class="shared-analysis"><small>Shared responsibility</small><strong>Research setup → synthesis → feature prioritisation → final report</strong></div>
+</section>
+<section class="evaluation-method section-pad section-soft reveal" id="research">
+<div class="section-intro split-intro">
+<div><p class="eyebrow">Research setup</p><h2>Comparing two user roles across three European markets</h2></div>
+<p>We used moderated, open-ended interviews to understand behaviour, satisfaction and product expectations—not only to collect reactions to individual screens.</p>
+</div>
+<div class="stat-grid">
+<article><strong>8</strong><span>participants</span></article>
+<article><strong>3</strong><span>countries</span></article>
+<article><strong>2</strong><span>user roles</span></article>
+<article><strong>60–90</strong><span>minutes each</span></article>
+</div>
+<div class="participant-role-grid">
+<article><span>3 homeowners</span><p>Two participants in Germany and one in Italy, focused on monitoring, energy understanding and everyday value.</p></article>
+<article><span>5 installers</span><p>Two participants in Germany and three in Belgium, focused on commissioning, diagnostics and customer support.</p></article>
+</div>
+<div class="analysis-flow"><div>Moderated sessions</div><span>→</span><div>Observation notes</div><span>→</span><div>Joint synthesis</div><span>→</span><div>Iteration priorities</div></div>
+<div class="evaluation-evidence-showcase">
+<div class="evaluation-evidence-intro"><div><small>Original report artefacts</small><h3>The study setup and participant coverage</h3></div><p>These two artefacts show how the study was structured and how the participant sample was distributed across the three European markets.</p></div>
+<div class="evaluation-evidence-grid">
+<figure class="evaluation-evidence-card"><div class="evaluation-artifact-frame"><img alt="Research setup slide showing participants, countries and moderated session format" loading="lazy" src="assets/projects/evaluation/research-setup.webp"/></div><figcaption><div><small>Study design</small><strong>Research setup</strong></div><p>Eight participants joined moderated sessions lasting 60–90 minutes, conducted remotely and in person.</p><div class="evaluation-evidence-tags"><span>8 participants</span><span>60–90 min</span><span>Moderated</span></div></figcaption></figure>
+<figure class="evaluation-evidence-card"><div class="evaluation-artifact-frame"><img alt="Map of evaluation participants across Germany, Belgium and Italy" loading="lazy" src="assets/projects/evaluation/participant-map.webp"/></div><figcaption><div><small>Sample distribution</small><strong>European coverage</strong></div><p>The study included homeowners and installers located in Germany, Belgium and Italy.</p><div class="evaluation-evidence-tags"><span>Germany</span><span>Belgium</span><span>Italy</span></div></figcaption></figure>
+</div>
+</div>
+</section>
+<section class="role-priorities section-pad reveal">
+<div class="section-intro"><p class="eyebrow">Different definitions of value</p><h2>Homeowners monitored confidence. Installers managed work.</h2></div>
+<div class="role-priority-grid">
+<article class="homeowner-role">
+<small>Homeowners</small>
+<h3>“Is my system working, and what value am I getting?”</h3>
+<div class="role-chip-row"><span>Energy Flow</span><span>Dashboard</span><span>Energy analysis</span><span>CO₂ reduction</span><span>EV charging</span></div>
+</article>
+<article class="installer-role">
+<small>Installers</small>
+<h3>“Can I commission, diagnose and support the customer efficiently?”</h3>
+<div class="role-chip-row"><span>Plant Overview</span><span>Create Plant</span><span>Faults</span><span>Tariff setup</span><span>Technical access</span></div>
+</article>
+</div>
+</section>
+<section class="evaluation-findings section-pad section-dark reveal" id="findings">
+<div class="section-intro light"><p class="eyebrow">What the redesign improved</p><h2>Users recognised meaningful progress</h2><p>A balanced evaluation needed to protect the design decisions that were already working—not only produce a list of problems.</p></div>
+<div class="worked-grid">
+<article><span>01</span><h3>Energy Flow felt clearer</h3><p>Some homeowners felt the redesigned visualisation gave them a better first impression of system activity than the previous version.</p></article>
+<article><span>02</span><h3>Plant Overview was easier to navigate</h3><p>Installers responded positively to the new structure and the way production data was represented.</p></article>
+<article><span>03</span><h3>Create Plant supported on-site work</h3><p>The mobile flow aligned with commissioning behaviour and was described as straightforward and understandable.</p></article>
+<article><span>04</span><h3>Eco charging matched a real goal</h3><p>Solar-first EV charging supported users who were flexible and primarily motivated by cost savings.</p></article>
+</div>
+<div class="evaluation-findings-showcase">
+<figure class="evaluation-findings-card">
+<div class="evaluation-findings-frame"><img alt="End-user Energy Flow findings from the evaluation report" loading="lazy" src="assets/projects/evaluation/enduser-findings.webp"/></div>
+<figcaption>
+<div><small>Homeowner findings</small><strong>Energy Flow feedback</strong></div>
+<p>The report captured both positive reactions to the clearer visualisation and concerns about weather accuracy, misleading values and readability.</p>
+<div class="evaluation-evidence-tags"><span>Clarity</span><span>Data trust</span><span>Readability</span></div>
+</figcaption>
+</figure>
+<figure class="evaluation-findings-card">
+<div class="evaluation-findings-frame"><img alt="Installer Plant Overview findings from the evaluation report" loading="lazy" src="assets/projects/evaluation/installer-findings.webp"/></div>
+<figcaption>
+<div><small>Installer findings</small><strong>Plant Overview feedback</strong></div>
+<p>Installers responded positively to the improved structure and data visualisation, especially when checking plant status during support and commissioning work.</p>
+<div class="evaluation-evidence-tags"><span>Navigation</span><span>Data visualisation</span><span>Monitoring</span></div>
+</figcaption>
+</figure>
+</div>
+</section>
+<section class="iteration-needs section-pad reveal">
+<div class="section-intro"><p class="eyebrow">Where trust still broke down</p><h2>Visual improvement could not compensate for unclear or unreliable information</h2></div>
+<div class="need-grid evaluation-need-grid">
+<article><span>01</span><i>≠</i><h3>Data trust</h3><p>Incorrect weather values and energy-flow data made users question whether the system reflected reality.</p><ul><li>Location mismatch</li><li>Unexpected negative values</li><li>Small battery information</li></ul></article>
+<article><span>02</span><i>◎</i><h3>Information relevance</h3><p>Some dashboard content did not match what users wanted to monitor or required extra effort to find.</p><ul><li>Low-value widgets</li><li>Technical users bypassing the dashboard</li><li>Need for personalisation</li></ul></article>
+<article><span>03</span><i>?</i><h3>Feature meaning</h3><p>CO₂ goals, percentages and calculation methods were difficult to understand despite user interest in the topic.</p><ul><li>Ambiguous setup</li><li>Unclear graph</li><li>Missing calculation logic</li></ul></article>
+<article><span>04</span><i>€</i><h3>European localisation</h3><p>A single tariff input could not support different countries, providers and dynamic pricing models.</p><ul><li>Placeholder values</li><li>Misleading earnings</li><li>Country-specific requirements</li></ul></article>
+</div>
+</section>
+<section class="workflow-observation section-pad section-soft reveal">
+<div class="section-intro split-intro"><div><p class="eyebrow">A role-specific insight</p><h2>Mobile and web served different moments in the installer workflow</h2></div><p>Installers did not need every professional task to move into the mobile product. The research clarified where each platform was most useful.</p></div>
+<div class="platform-split">
+<article><small>Mobile · On site</small><strong>Create Plant and quick checks</strong><p>Fast access during commissioning, customer visits and remote status checks.</p></article>
+<div class="platform-divider">↔</div>
+<article><small>Web · Deep work</small><strong>Fault investigation and resolution</strong><p>More space, functionality and technical context when diagnosing complex issues.</p></article>
+</div><figure class="source-figure source-figure-wide"><img alt="Create Plant findings from the mobile evaluation" loading="lazy" src="assets/projects/evaluation/create-plant.webp"/><figcaption>The Create Plant flow was a clear example of mobile supporting on-site installer work.</figcaption></figure>
+<blockquote>Good omnichannel design does not force feature parity. It supports the right task in the right context.</blockquote>
+</section>
+<section class="evaluation-priority section-pad reveal">
+<div class="section-intro"><p class="eyebrow">From evidence to iteration</p><h2>Preserve the progress. Fix the trust gaps.</h2></div>
+<div class="evaluation-priority-grid">
+<article class="fix-now"><small>Fix first</small><strong>Data accuracy and terminology</strong><span>Tariff logic</span><span>CO₂ clarity</span><span>Translations</span></article>
+<article class="improve-next"><small>Improve next</small><strong>Dashboard relevance</strong><span>Remote fault workflow</span><span>Installer–homeowner communication</span></article>
+<article class="preserve"><small>Preserve</small><strong>Clearer visual language</strong><span>Create Plant usability</span><span>Plant Overview structure</span></article>
+</div>
+</section>
+<section class="outcome section-pad section-dark reveal">
+<div class="outcome-layout">
+<div><p class="eyebrow">Outcome</p><h2>Research that continued to inform the product</h2><p>The study became an input for ongoing iteration of the iSolarCloud mobile redesign. Findings around data accuracy, dashboard relevance, CO₂ clarity, tariff configuration, installer workflows and discoverability were carried into later design discussions and product updates.</p><p>Rather than acting as a one-time validation exercise, the research created an evidence base for deciding what should be preserved and what needed further refinement.</p></div>
+<div class="outcome-list"><span><b>01</b>Role-specific feature priorities</span><span><b>02</b>Positive patterns worth preserving</span><span><b>03</b>Trust and localisation gaps</span><span><b>04</b>Priorities for future iterations</span><span><b>05</b>Evidence for mobile product updates</span></div>
+</div><figure class="source-figure source-figure-dark"><img alt="End-user summary from the iSolarCloud mobile evaluation report" loading="lazy" src="assets/projects/evaluation/enduser-summary.webp"/><figcaption>Summary from the original evaluation report, used as an input for later product iterations.</figcaption></figure>
+</section>
+<section class="reflection section-pad reveal">
+<div class="reflection-grid">
+<div><p class="eyebrow">Reflection</p><h2>A cleaner interface is only the beginning</h2></div>
+<div><p>This project reinforced that visual quality and usability are related, but they are not the same. Users can appreciate a more modern interface while still losing trust when data is wrong, terms are unclear or the information does not fit their goal.</p><p>It also showed the value of a strong research partnership. Moderating allowed me to stay fully engaged with each participant, while Maria’s observation protected the details. Joint synthesis gave the findings more depth than either of us working alone.</p><blockquote>Evaluate the experience users actually have—not the design the team intended to create.</blockquote></div>
+</div>
+</section>
+<section class="next-case section-pad section-soft reveal">
+<p class="eyebrow">Continue exploring</p>
+<h2>Understanding home EV-charging behaviours</h2>
+<p>See how direct interviews uncovered opportunities around automation, cost transparency and control.</p>
+<a class="primary-button" href="case-study-ev-research.html">Read the EV research case study <span>→</span></a>
+</section>
+</main>
+<footer><strong>Adair Campos</strong><span>Senior Product Designer · Munich, Germany</span><div class="footer-links"><a href="cv.html">CV</a><a href="mailto:adaircampos88@gmail.com">Email</a><a href="#top">Back to top ↑</a><a aria-label="Open Adair Campos on LinkedIn" href="https://www.linkedin.com/in/adair-campos-b1b5415a" rel="noreferrer" target="_blank">LinkedIn ↗</a></div></footer>
+<nav aria-label="Mobile primary navigation" class="mobile-bottom-nav"><a class="mobile-nav-item" data-mobile-nav="home" href="index.html#top"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.7 12 3.5l8.5 7.2v8.1a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7v-8.1Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M9.3 20.5v-6.1h5.4v6.1" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span>Home</span></a><a aria-current="page" class="mobile-nav-item is-active" data-mobile-nav="work" href="index.html#work"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="4"></rect><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="4"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="14"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="14"></rect></svg><span>Work</span></a><a class="mobile-nav-item" data-mobile-nav="about" href="index.html#about"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="12" cy="8" r="3.3" stroke="currentColor" stroke-width="1.8"></circle><path d="M5.4 20c.6-4 3-6.2 6.6-6.2s6 2.2 6.6 6.2" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span>About</span></a><a class="mobile-nav-item" data-mobile-nav="cv" href="cv.html"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M6 3.5h8l4 4V20.5H6z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M14 3.5v4h4M9 12h6M9 15.5h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span>CV</span></a><a class="mobile-nav-item" data-mobile-nav="contact" href="mailto:adaircampos88@gmail.com"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><rect height="13" rx="3" stroke="currentColor" stroke-width="1.8" width="17" x="3.5" y="5.5"></rect><path d="m5 7 7 5.3L19 7" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span>Contact</span></a></nav><script defer="" src="script.js"></script>
+</body>
+</html>

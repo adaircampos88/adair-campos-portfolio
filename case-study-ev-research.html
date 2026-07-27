@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<script>
+(() => {
+  try {
+    const saved = localStorage.getItem('portfolio-theme');
+    const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.dataset.theme = saved || preferred;
+  } catch (error) {
+    document.documentElement.dataset.theme = 'light';
+  }
+})();
+</script>
+<meta content="A UX research case study by Adair Campos exploring home EV charging behaviours across Europe." name="description"/>
+<title>Home EV Charging Research — Adair Campos</title>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body class="ev-case-page airbnb-shell">
+<a class="skip-link" href="#top">Skip to main content</a>
+<div aria-hidden="true" class="progress"><span id="progressBar"></span></div>
+<header class="site-header airbnb-header">
+<a class="brand airbnb-brand" href="index.html#top"><span aria-hidden="true" class="brand-symbol">A</span><span class="brand-name">Adair Campos</span></a>
+<nav aria-label="Primary navigation" class="airbnb-desktop-nav"><a class="air-nav-tab" data-nav-key="home" href="index.html#top"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.7 12 3.5l8.5 7.2v8.1a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7v-8.1Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M9.3 20.5v-6.1h5.4v6.1" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span class="nav-label">Home</span></a><a aria-current="page" class="air-nav-tab is-active" data-nav-key="work" href="index.html#work"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="4"></rect><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="4"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="14"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="14"></rect></svg><span class="nav-label">Work</span></a><a class="air-nav-tab" data-nav-key="about" href="index.html#about"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="12" cy="8" r="3.3" stroke="currentColor" stroke-width="1.8"></circle><path d="M5.4 20c.6-4 3-6.2 6.6-6.2s6 2.2 6.6 6.2" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span class="nav-label">About</span></a><a class="air-nav-tab" data-nav-key="cv" href="cv.html"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M6 3.5h8l4 4V20.5H6z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M14 3.5v4h4M9 12h6M9 15.5h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span class="nav-label">CV</span></a></nav>
+<div class="airbnb-header-actions">
+<a aria-label="Open Adair Campos on LinkedIn" class="header-icon-link linkedin-link" href="https://www.linkedin.com/in/adair-campos-b1b5415a" rel="noreferrer" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M6.7 8.4H3.5V20h3.2V8.4ZM5.1 3A1.9 1.9 0 1 0 5 6.8 1.9 1.9 0 0 0 5.1 3ZM20.5 13.3c0-3.5-1.9-5.2-4.4-5.2-2 0-3 1.1-3.5 1.9V8.4H9.4V20h3.2v-5.8c0-1.5.3-3 2.2-3 1.8 0 1.9 1.7 1.9 3.1V20h3.2v-6.7h.6Z"></path></svg></a>
+<a class="nav-cta air-contact" href="mailto:adaircampos88@gmail.com">Contact</a>
+<button aria-label="Switch to dark mode" aria-pressed="false" class="theme-toggle" type="button"><span aria-hidden="true" class="theme-toggle-icon">☾</span><span class="theme-toggle-text">Theme</span></button>
+</div>
+</header><nav aria-label="Case study sections" class="case-context-nav"><a class="back-to-work" href="index.html#work">← All work</a><div><a href="#top">Overview</a><a href="#research">Research</a><a href="#findings">Findings</a></div></nav>
+<main id="top">
+<section class="ev-hero section-pad">
+<div class="ev-hero-copy reveal">
+<p class="eyebrow">UX research · EV charging · European users</p>
+<h1>Understanding home EV charging behaviours</h1>
+<p class="hero-lede">How six interviews with European EV owners uncovered opportunities to simplify setup, automate routine decisions and make charging costs easier to understand.</p>
+<div class="hero-meta">
+<span>Germany · Netherlands · UK</span>
+<span>Six qualitative interviews</span>
+<span>Research and recommendations</span>
+</div>
+</div>
+<div aria-label="Conceptual research synthesis visual" class="ev-hero-visual reveal">
+<div class="source-hero-stage ev-source-hero">
+<img alt="Remote interview participants from the EV charging research" class="ev-hero-interviews" loading="eager" src="assets/projects/ev/interviews.webp"/>
+<img alt="Coded interview insight cards" class="ev-hero-cards" loading="eager" src="assets/projects/ev/insight-cards.webp"/>
+<div class="floating-note ev-note-one"><small>Direct research</small><strong>Six EV owners across Europe</strong></div>
+<div class="floating-note ev-note-two"><small>Synthesis</small><strong>Patterns translated into product opportunities</strong></div>
+</div></div>
+</section>
+<section class="snapshot section-pad reveal">
+<div class="section-intro"><p class="eyebrow">Project snapshot</p><h2>The deliverable was knowledge—not a launched interface</h2></div>
+<div class="snapshot-grid">
+<article><small>Role</small><strong>UX/UI Designer &amp; Researcher</strong><p>Owned the full research process</p></article>
+<article><small>Participants</small><strong>6 EV owners</strong><p>Different levels of technical experience</p></article>
+<article><small>Methods</small><strong>Interviews &amp; thematic analysis</strong><p>40–60 minutes per session</p></article>
+<article><small>Outcome</small><strong>Prioritised recommendations</strong><p>Shared for future product decisions</p></article>
+</div>
+<aside class="truth-note"><strong>Portfolio transparency</strong><p>This was a standalone research project. I delivered the study, analysis, personas, recommendations and prioritisation. I was not involved in later implementation and do not know which findings were ultimately adopted.</p></aside>
+</section>
+<section class="ev-context section-pad section-dark reveal">
+<div class="section-intro light"><p class="eyebrow">Why the study existed</p><h2>Before redesigning the app, we needed to understand the charging experience around it</h2><p>The product connected EV owners with a residential wallbox, but the experience extended beyond the screen: installer handover, Wi-Fi connection, charging routines, tariffs, solar production and household energy all shaped whether the service felt useful.</p></div>
+<div class="ev-ecosystem">
+<article><i>⚡</i><strong>Wallbox</strong><small>Hardware and connectivity</small></article><span>→</span>
+<article><i>▣</i><strong>Mobile app</strong><small>Control and feedback</small></article><span>→</span>
+<article><i>⌂</i><strong>Home energy</strong><small>Solar, grid and cost</small></article><span>→</span>
+<article><i>◇</i><strong>Daily life</strong><small>Departure time and urgency</small></article>
+</div>
+<div class="ev-context-focus">
+<div class="ev-context-question">
+<p class="eyebrow">Existing product context</p>
+<h3>The app was only one part of the charging experience.</h3>
+<p>Users also depended on a successful wallbox installation, stable connectivity, understandable charging states and confidence that the car would be ready when needed.</p>
+<blockquote>What do EV owners need from a charging app when the best experience may be not having to open it at all?</blockquote>
+</div>
+<figure class="source-context-phone">
+<div class="source-context-device"><img alt="Existing iEnergyCharge mobile interface used as product context" loading="lazy" src="assets/projects/ev/app-screen.webp"/></div>
+<figcaption>Existing iEnergyCharge interface used as product context during the study.</figcaption>
+</figure>
+</div>
+</section>
+<section class="role section-pad reveal">
+<div class="section-intro"><p class="eyebrow">My ownership</p><h2>Leading the study from questions to recommendations</h2></div>
+<div class="role-track ev-role-track">
+<article><span>01</span><strong>Plan</strong><p>Defined objectives, research questions and interview guide.</p></article>
+<article><span>02</span><strong>Interview</strong><p>Recruited and spoke with six European EV owners.</p></article>
+<article><span>03</span><strong>Synthesise</strong><p>Coded transcripts and identified recurring behaviours.</p></article>
+<article><span>04</span><strong>Recommend</strong><p>Created profiles, priorities and actionable product opportunities.</p></article>
+</div>
+</section>
+<section class="ev-method section-pad section-soft reveal" id="research">
+<div class="section-intro split-intro"><div><p class="eyebrow">Research approach</p><h2>Small sample, deep conversations</h2></div><p>The study was qualitative and directional. Its purpose was to uncover recurring problems and develop hypotheses for future product work—not to claim statistical representation.</p></div>
+<div class="stat-grid">
+<article><strong>6</strong><span>EV owners</span></article><article><strong>3</strong><span>European markets</span></article><article><strong>40–60</strong><span>minutes each</span></article><article><strong>2</strong><span>analysis methods</span></article>
+</div>
+<div class="participant-grid">
+<article><span>Home wallboxes</span><p>People charging primarily at home.</p></article>
+<article><span>Mixed expertise</span><p>From practical users to technically confident owners.</p></article>
+<article><span>Solar and non-solar</span><p>Different household energy contexts.</p></article>
+<article><span>Personal and business use</span><p>Different reporting and cost needs.</p></article>
+</div>
+<div class="analysis-flow"><div>Interview transcripts</div><span>→</span><div>Coding</div><span>→</span><div>Themes</div><span>→</span><div>Needs &amp; priorities</div></div>
+<div class="evidence-showcase">
+<div class="evidence-intro"><small>Research materials</small><h3>How the study was planned and conducted</h3><p>These artefacts show the study moving from preparation into moderated conversations with EV owners across Europe.</p></div>
+<div class="source-gallery source-gallery-two ev-evidence-gallery"><figure class="evidence-card"><img alt="EV charging research plan" loading="lazy" src="assets/projects/ev/research-plan.webp"/><figcaption><strong>Research plan and interview guide</strong><span>Used to define the research scope, structure the sessions and keep the study focused.</span></figcaption></figure><figure class="evidence-card"><img alt="Remote interview sessions" loading="lazy" src="assets/projects/ev/interviews.webp"/><figcaption><strong>Moderated interviews</strong><span>Remote sessions with EV owners across Germany, the Netherlands and the UK.</span></figcaption></figure></div>
+</div>
+</section>
+<section class="ev-findings section-pad reveal" id="findings">
+<div class="section-intro"><p class="eyebrow">Four core needs</p><h2>Users were asking for less effort—not simply more features</h2></div>
+<div class="need-grid">
+<article><span>01</span><i>↔</i><h3>Simplification</h3><p>An easier and more reliable relationship between installer, homeowner, wallbox and app.</p><ul><li>Guided setup</li><li>Clear connection feedback</li><li>Better ownership handover</li></ul></article>
+<article><span>02</span><i>✦</i><h3>Automation</h3><p>Charging decisions that adapt to tariffs, solar availability and when the vehicle is needed.</p><ul><li>Smart scheduling</li><li>Solar-first charging</li><li>Departure-time goals</li></ul></article>
+<article><span>03</span><i>€</i><h3>Transparency</h3><p>A clear understanding of energy use, costs and the value of different charging choices.</p><ul><li>Session cost</li><li>Historical trends</li><li>Exportable reports</li></ul></article>
+<article><span>04</span><i>⚙</i><h3>Flexibility</h3><p>Automation for the routine with fast, understandable overrides when plans change.</p><ul><li>Smart mode</li><li>Eco mode</li><li>Boost mode</li></ul></article>
+</div>
+<div class="synthesis-showcase"><div class="synthesis-copy"><small>Original synthesis</small><h3>Turning interview data into product themes</h3><p>After coding the interviews, I grouped recurring observations into four pain-point clusters. This helped move from individual quotes to clearer product priorities.</p><ul><li>App-hardware integration and setup issues</li><li>Limited functionality without smart integration</li><li>Lack of cost transparency and energy tracking</li><li>Public charging friction and inconsistency</li></ul></div><figure class="source-figure source-figure-dark synthesis-figure"><img alt="Affinity board grouping EV charging pain points and observations" loading="lazy" src="assets/projects/ev/affinity-board.webp"/><figcaption>Original synthesis board grouping setup, smart-charging, cost and control pain points.</figcaption></figure></div>
+</section>
+<section class="tension section-pad section-dark reveal">
+<div class="tension-copy"><p class="eyebrow">The central tension</p><h2>Automation and control were not opposites</h2><p>Users did not want to manage every charging session manually. They wanted the system to make sensible routine decisions, while keeping urgent choices visible when circumstances changed.</p></div>
+<div class="tension-visual">
+<div><small>Routine</small><strong>Let the product optimise</strong><span>Tariff · Solar · Departure time</span></div>
+<b>+</b>
+<div><small>Exception</small><strong>Let the user override</strong><span>Boost · Pause · Change target</span></div>
+</div>
+<blockquote>Automate the routine, but keep urgent choices visible and accessible.</blockquote>
+</section>
+<section class="profiles section-pad reveal">
+<div class="section-intro"><p class="eyebrow">Behavioural profiles</p><h2>Three clearer ways to think about charging needs</h2><p>The original research included five end-user personas. For this portfolio, I consolidated them into three behavioural profiles to avoid false precision from a six-person study.</p></div>
+<div class="ev-profile-grid">
+<article><span>01</span><h3>The Effortless Charger</h3><p>Wants setup and daily charging to work reliably without constant attention.</p><small>Reliability · Simplicity · Status</small></article>
+<article><span>02</span><h3>The Cost-Conscious Planner</h3><p>Wants to schedule around tariffs and understand exactly where money is being spent.</p><small>Costs · Scheduling · Reports</small></article>
+<article><span>03</span><h3>The Active Optimiser</h3><p>Wants deeper control over solar integration, modes and charging behaviour.</p><small>Control · Solar · Advanced settings</small></article>
+</div><figure class="source-figure source-figure-wide"><img alt="Original persona overview from the EV charging research" loading="lazy" src="assets/projects/ev/personas-overview.webp"/><figcaption>The original research produced five end-user personas and one installer profile; the portfolio narrative consolidates these into three behavioural profiles for clarity.</figcaption></figure>
+</section>
+<section class="priority section-pad section-soft reveal">
+<div class="section-intro split-intro"><div><p class="eyebrow">Prioritisation</p><h2>Trust and user value before aesthetic change</h2></div><p>The recommendations deliberately prioritised functional confidence over making the application look more modern.</p></div>
+<div class="priority-stack">
+<article class="priority-high"><small>High priority</small><strong>Setup and handover</strong><span>Smart charging</span><span>Cost transparency</span></article>
+<article class="priority-medium"><small>Medium priority</small><strong>Information architecture</strong><span>Flexible charging modes</span></article>
+<article class="priority-low"><small>Lower priority</small><strong>Visual customisation</strong><span>Brand-focused aesthetic enhancements</span></article>
+</div>
+</section>
+<section class="recommendations section-pad reveal">
+<div class="section-intro"><p class="eyebrow">Product opportunities</p><h2>Turning research into directions a team could act on</h2></div>
+<div class="recommendation-grid">
+<article><span>01</span><h3>Make ownership transfer explicit</h3><p>Use invitation links or QR codes so installers can commission hardware without leaving the homeowner locked out.</p></article>
+<article><span>02</span><h3>Design around user outcomes</h3><p>Ask when the car is needed and what the user values, then build the charging plan automatically.</p></article>
+<article><span>03</span><h3>Explain the financial value</h3><p>Connect each session to energy consumed, estimated cost and savings from tariffs or solar.</p></article>
+<article><span>04</span><h3>Keep overrides obvious</h3><p>Make immediate charging available without forcing users through advanced settings.</p></article>
+</div>
+</section>
+<section class="outcome section-pad section-dark reveal">
+<div class="outcome-layout">
+<div><p class="eyebrow">Outcome</p><h2>A research foundation for future decisions</h2><p>I delivered the research plan, interviews, coded analysis, themes, personas, prioritisation and recommendations to stakeholders.</p><p>I was not involved after delivery and cannot claim that the findings shaped implementation. The honest outcome was a structured, evidence-based view of the problems and opportunities available to the product team.</p></div>
+<div class="outcome-list"><span><b>01</b>Four recurring user needs</span><span><b>02</b>Behavioural charging profiles</span><span><b>03</b>Prioritised opportunity areas</span><span><b>04</b>Actionable recommendations</span><span><b>05</b>Questions for future validation</span></div>
+</div>
+</section>
+<section class="reflection section-pad reveal">
+<div class="reflection-grid"><div><p class="eyebrow">Reflection</p><h2>The best charging experience may be one users rarely need to open</h2></div><div><p>This project reminded me that engagement is not always the right success measure. For a routine home-energy task, value can come from reliability, automation and timely information rather than frequent interaction.</p><p>It also reinforced the importance of being precise about research limitations. Six interviews can expose meaningful patterns and guide exploration, but they should create hypotheses for further validation—not certainty.</p><blockquote>Success is not more time in the app. It is a charged vehicle, a clear cost and less mental effort.</blockquote></div></div>
+</section>
+<section class="next-case section-pad section-soft reveal">
+<p class="eyebrow">Next case study</p><h2>Evaluating the iSolarCloud mobile redesign</h2><p>See how moderated research with installers and homeowners informed ongoing product iterations.</p><a class="primary-button" href="case-study-isolarcloud-evaluation.html">Read the evaluation case study <span>→</span></a>
+</section>
+</main>
+<footer><strong>Adair Campos</strong><span>Senior Product Designer · Munich, Germany</span><div class="footer-links"><a href="cv.html">CV</a><a href="mailto:adaircampos88@gmail.com">Email</a><a href="#top">Back to top ↑</a><a aria-label="Open Adair Campos on LinkedIn" href="https://www.linkedin.com/in/adair-campos-b1b5415a" rel="noreferrer" target="_blank">LinkedIn ↗</a></div></footer>
+<nav aria-label="Mobile primary navigation" class="mobile-bottom-nav"><a class="mobile-nav-item" data-mobile-nav="home" href="index.html#top"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.7 12 3.5l8.5 7.2v8.1a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7v-8.1Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M9.3 20.5v-6.1h5.4v6.1" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span>Home</span></a><a aria-current="page" class="mobile-nav-item is-active" data-mobile-nav="work" href="index.html#work"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="4"></rect><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="4"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="14"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="14"></rect></svg><span>Work</span></a><a class="mobile-nav-item" data-mobile-nav="about" href="index.html#about"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="12" cy="8" r="3.3" stroke="currentColor" stroke-width="1.8"></circle><path d="M5.4 20c.6-4 3-6.2 6.6-6.2s6 2.2 6.6 6.2" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span>About</span></a><a class="mobile-nav-item" data-mobile-nav="cv" href="cv.html"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M6 3.5h8l4 4V20.5H6z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M14 3.5v4h4M9 12h6M9 15.5h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span>CV</span></a><a class="mobile-nav-item" data-mobile-nav="contact" href="mailto:adaircampos88@gmail.com"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><rect height="13" rx="3" stroke="currentColor" stroke-width="1.8" width="17" x="3.5" y="5.5"></rect><path d="m5 7 7 5.3L19 7" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span>Contact</span></a></nav><script defer="" src="script.js"></script>
+</body>
+</html>
