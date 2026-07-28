@@ -200,6 +200,7 @@
   if (config.analyticsEnabled === false) return;
 
   const consentKey = 'portfolioAnalyticsConsent:v1';
+  const isLegalPage = document.body.classList.contains('legal-page');
   const measurementId = String(config.analyticsMeasurementId || '').trim();
   const hasValidMeasurementId = /^G-[A-Z0-9]+$/i.test(measurementId) && !measurementId.includes('TODO');
   const readConsent = () => {
@@ -214,11 +215,17 @@
 
   let analyticsLoaded = false;
   const loadAnalytics = () => {
-    if (analyticsLoaded || !hasValidMeasurementId || readConsent() !== 'accepted') return;
+    if (isLegalPage || analyticsLoaded || !hasValidMeasurementId || readConsent() !== 'accepted') return;
     analyticsLoaded = true;
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
     window.gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+    window.gtag('consent', 'update', {
       analytics_storage: 'granted',
       ad_storage: 'denied',
       ad_user_data: 'denied',
@@ -285,6 +292,15 @@
     acceptButton.focus();
   };
   const closePreferences = () => { banner.hidden = true; };
+  const clearAnalyticsCookies = () => {
+    const hostname = window.location.hostname;
+    document.cookie.split(';').forEach((entry) => {
+      const name = entry.split('=')[0].trim();
+      if (!name.startsWith('_ga')) return;
+      document.cookie = `${name}=; Max-Age=0; path=/; SameSite=Lax`;
+      if (hostname) document.cookie = `${name}=; Max-Age=0; path=/; domain=${hostname}; SameSite=Lax`;
+    });
+  };
 
   acceptButton.addEventListener('click', () => {
     saveConsent('accepted');
@@ -295,6 +311,7 @@
   declineButton.addEventListener('click', () => {
     const wasLoaded = analyticsLoaded;
     saveConsent('rejected');
+    clearAnalyticsCookies();
     closePreferences();
     if (wasLoaded) window.location.reload();
   });
@@ -304,7 +321,7 @@
   });
 
   document.addEventListener('click', (event) => {
-    if (readConsent() !== 'accepted' || typeof window.gtag !== 'function') return;
+    if (isLegalPage || readConsent() !== 'accepted' || typeof window.gtag !== 'function') return;
     const link = event.target.closest('a[href]');
     if (!link) return;
     const href = link.getAttribute('href') || '';
@@ -319,7 +336,7 @@
 
   const choice = readConsent();
   if (choice === 'accepted') loadAnalytics();
-  else if (choice === 'unknown') openPreferences();
+  else if (choice === 'unknown' && !isLegalPage) openPreferences();
 })();
 
 (() => {

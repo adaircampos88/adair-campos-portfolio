@@ -98,6 +98,7 @@ if len(list((ROOT / "assets" / "projects").rglob("*.webp"))) < 20:
 for required_file in (
     "CNAME", "robots.txt", "sitemap.xml", "site-config.js", "Adair_Campos_Senior_Product_Designer_CV.pdf",
     "assets/meta/favicon.svg", "assets/meta/apple-touch-icon.png", "assets/meta/og-portfolio.png",
+    "tools/build_site.py", ".github/workflows/deploy-pages.yml",
 ):
     if not (ROOT / required_file).exists():
         errors.append(f"Missing launch file: {required_file}")
@@ -118,6 +119,16 @@ for todo, allowed_files in expected_todos.items():
 
 if re.search(r'<script[^>]+src=["\']https://(?:www\.)?google', index, flags=re.I):
     errors.append("Homepage contains a statically loaded Google script")
+
+for legal_page in ("privacy.html", "impressum.html"):
+    legal_content = (ROOT / legal_page).read_text(encoding="utf-8")
+    if 'name="robots"' not in legal_content or "noindex" not in legal_content:
+        errors.append(f"{legal_page}: missing noindex directive")
+
+sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+for legal_page in ("privacy.html", "impressum.html"):
+    if legal_page in sitemap:
+        errors.append(f"sitemap.xml should not list privacy-sensitive page {legal_page}")
 
 if errors:
     print("Site validation failed:")

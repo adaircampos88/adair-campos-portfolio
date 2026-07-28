@@ -67,7 +67,7 @@ draw.text((94, 215), "ADAIR CAMPOS", fill="#ff6238", font=font(22, True), spacin
 draw.text((94, 258), "Senior Product\nDesigner", fill="#0e3744", font=font(62, True), spacing=-4)
 draw.text((96, 410), "Making complex products feel\nsimple and intuitive.", fill="#456671", font=font(31), spacing=8)
 draw.rounded_rectangle((94, 508, 392, 552), radius=22, fill="#0e3744")
-draw.text((243, 530), "adaircampos.design", anchor="mm", fill="white", font=font(19, True))
+draw.text((243, 530), "adaircampos.com", anchor="mm", fill="white", font=font(19, True))
 
 canvas.convert("RGB").save(META / "og-portfolio.png", optimize=True)
 

@@ -1,13 +1,14 @@
-# adaircampos.design launch checklist
+# adaircampos.com launch checklist
 
-The site is deliberately **not ready to publish** until the two `TODO_` values are replaced and the legal text is approved.
+The site is deliberately **not ready to publish** until the encrypted `LEGAL_ADDRESS` repository secret is present and the legal text is approved. The tracked HTML intentionally retains `TODO_LEGAL_ADDRESS`; GitHub Actions replaces it only inside the deployment artifact.
 
 ## 1. Complete the required private details
 
-- Replace every `TODO_LEGAL_ADDRESS` in `impressum.html` and `privacy.html` with a complete serviceable address.
+- Add a repository Actions secret named `LEGAL_ADDRESS` containing the complete serviceable address. Use two lines: street and house number, then postcode and city.
+- Do not replace `TODO_LEGAL_ADDRESS` in the tracked source files; this prevents the address from entering the public Git history.
 - Have the bilingual legal text reviewed for the actual setup.
-- Create the Google Analytics property described below and replace `TODO_GA_MEASUREMENT_ID` in `site-config.js` with the `G-...` web-stream ID.
-- In GA4 Admin, set event-data retention to **2 months**, leave Google Signals disabled, and do not enable advertising personalisation.
+- Completed: Google Analytics property, web stream and measurement ID (`G-FKVRQR01B0`).
+- Completed: event and user-data retention set to **2 months**, Google Signals disabled, advertising personalisation disabled and enhanced measurement disabled.
 
 ## 2. Google Analytics 4
 
@@ -16,7 +17,7 @@ Create:
 - Property: `Adair Campos Portfolio`
 - Time zone: `Europe/Berlin`
 - Currency: `EUR`
-- Web stream: `https://adaircampos.design`
+- Web stream: `https://adaircampos.com`
 
 The implementation uses basic Consent Mode. Google Analytics is not requested until a visitor explicitly accepts. Only these events are implemented:
 
@@ -26,22 +27,21 @@ The implementation uses basic Consent Mode. Google Analytics is not requested un
 - `contact_click`
 - `linkedin_click`
 
-## 3. Create and push the public GitHub repository
+## 3. Push the public GitHub repository
 
-Create `adaircampos88/adair-campos-portfolio` as a public, empty repository. Do not add a generated README or `.gitignore`, because the local repository already contains its history.
+Repository: `adaircampos88/adair-campos-portfolio`.
 
-Then run from this folder:
+Push from this folder:
 
 ```bash
-git remote add origin https://github.com/adaircampos88/adair-campos-portfolio.git
 git push -u origin main
 ```
 
-In GitHub: **Settings → Pages → Build and deployment → Deploy from a branch → main → /(root)**.
+In GitHub: **Settings → Pages → Build and deployment → Source → GitHub Actions**. The workflow validates the source, inserts `LEGAL_ADDRESS` without printing it, uploads the generated `_site` artifact and deploys it.
 
 ## 4. Purchase and connect the domain
 
-Purchase `adaircampos.design` through Cloudflare Registrar after reconfirming availability at checkout. In the GitHub Pages settings, set the custom domain to `adaircampos.design` before changing DNS.
+`adaircampos.com` has been purchased through Cloudflare Registrar. In the GitHub Pages settings, confirm the custom domain is `adaircampos.com`.
 
 At Cloudflare DNS, use DNS-only records during verification:
 
@@ -61,14 +61,15 @@ Remove conflicting apex or `www` records. After GitHub verifies the domain, enab
 
 ## 5. Final release verification
 
-- Confirm `rg -n "TODO_" privacy.html impressum.html site-config.js` returns no results.
+- Confirm the source still contains `TODO_LEGAL_ADDRESS` and the generated `_site/privacy.html` and `_site/impressum.html` do not.
+- Confirm the workflow fails safely when `LEGAL_ADDRESS` is absent.
 - Test the site at 320, 390, 768, 1024 and 1440 px in light and dark modes.
 - Verify keyboard navigation, focus, reduced motion, 200% zoom, increased text spacing and contrast.
 - Confirm no request to `googletagmanager.com` or `google-analytics.com` occurs before consent or after rejection.
 - Confirm the five approved GA events after acceptance and again after consent withdrawal.
 - Verify all three case studies, images, PDF download, email, LinkedIn, legal pages and mobile navigation.
-- Verify canonical tags, `robots.txt`, `sitemap.xml`, structured data, social preview and `404.html`.
-- Check `https://adaircampos.design` and the `www` redirect over HTTPS with no mixed content.
+- Verify canonical tags, `robots.txt`, `sitemap.xml`, structured data, social preview and `404.html`. Confirm the legal pages are not in the sitemap and include `noindex`.
+- Check `https://adaircampos.com` and the `www` redirect over HTTPS with no mixed content.
 - Run mobile and desktop Lighthouse reports targeting 90+ for Performance, Accessibility, Best Practices and SEO.
 - Require a clean Git tree, create a launch commit and tag it only after every blocker is cleared.
 
@@ -76,7 +77,7 @@ Remove conflicting apex or `www` records. After GitHub verifies the domain, enab
 
 Do not add the live URL to LinkedIn until:
 
-1. the legal address is present;
+1. the legal address is present in the deployed legal pages but absent from tracked source history;
 2. the legal text is approved;
 3. the GA measurement ID and retention settings are complete;
 4. HTTPS and redirects work;
