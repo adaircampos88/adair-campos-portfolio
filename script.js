@@ -249,16 +249,17 @@
   banner.hidden = true;
   banner.setAttribute('role', 'region');
   banner.setAttribute('aria-labelledby', 'consentTitle');
+  banner.setAttribute('aria-describedby', 'consentDescription');
   banner.innerHTML = `
     <div class="consent-copy">
-      <p class="consent-kicker">Privacy choice</p>
-      <h2 id="consentTitle">Help improve this portfolio?</h2>
-      <p>I use optional, privacy-conscious analytics to understand visits and recruiter actions. Nothing is sent to Google unless you accept. <a href="privacy.html">Privacy details</a></p>
+      <p class="consent-kicker">Your privacy</p>
+      <h2 id="consentTitle">Can I learn what’s useful?</h2>
+      <p id="consentDescription">I’d like to use optional Google Analytics to see which projects receive the most attention and improve the experience. It stays off unless you allow it, and you can change your choice anytime. <a href="privacy.html">How it works</a></p>
       <p class="consent-status" aria-live="polite"></p>
     </div>
     <div class="consent-actions">
-      <button class="consent-action consent-accept" type="button">Accept analytics</button>
-      <button class="consent-action consent-decline" type="button">Continue without analytics</button>
+      <button class="consent-action consent-accept" type="button">Allow analytics</button>
+      <button class="consent-action consent-decline" type="button">No, thanks</button>
     </div>`;
   document.body.append(banner);
 
@@ -281,17 +282,21 @@
   const updateStatus = () => {
     const choice = readConsent();
     status.textContent = choice === 'accepted'
-      ? 'Analytics are currently accepted. Choose “Continue without analytics” to withdraw consent.'
+      ? 'Analytics are on. Choose “No, thanks” to turn them off.'
       : choice === 'rejected'
-        ? 'Analytics are currently disabled. You can accept them at any time.'
-        : 'No analytics choice has been saved yet.';
+        ? 'Analytics are off. You can change this anytime.'
+        : 'Optional · No choice saved yet.';
   };
   const openPreferences = () => {
     updateStatus();
     banner.hidden = false;
+    document.body.classList.add('consent-visible');
     acceptButton.focus();
   };
-  const closePreferences = () => { banner.hidden = true; };
+  const closePreferences = () => {
+    banner.hidden = true;
+    document.body.classList.remove('consent-visible');
+  };
   const clearAnalyticsCookies = () => {
     const hostname = window.location.hostname;
     document.cookie.split(';').forEach((entry) => {
