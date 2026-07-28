@@ -14,8 +14,8 @@
 <h1>EAA-aligned accessibility baseline</h1>
 <p>This review uses the European Accessibility Act as legal context and WCAG 2.2 AA together with EN 301 549 as the practical technical benchmark. It is an implementation review, not a legal opinion or formal certification.</p>
 <div class="summary">
-<article><span class="status pass">Implemented</span><strong>5 pages</strong><span>Homepage, three case studies and web CV reviewed.</span></article>
-<article><span class="status pass">Automated checks</span><strong>30 runs</strong><span>Light/dark modes at desktop, tablet and mobile sizes.</span></article>
+<article><span class="status pass">Implemented</span><strong>8 pages</strong><span>Homepage, three case studies, web CV, legal pages and 404 reviewed.</span></article>
+<article><span class="status pass">Responsive checks</span><strong>40 runs</strong><span>Five widths across eight public pages, with light and dark theme checks.</span></article>
 <article><span class="status partial">Manual follow-up</span><strong>Required</strong><span>Screen-reader and real-device testing remain necessary.</span></article>
 </div>
 <h2>What was reviewed and improved</h2>
@@ -29,7 +29,7 @@
 <tr><td data-label="Area">Motion</td><td data-label="Status"><span class="status pass">Pass baseline</span></td><td data-label="Implementation">System <code>prefers-reduced-motion</code> is respected, with an additional user-controlled reduced-motion preference.</td></tr>
 <tr><td data-label="Area">Themes and preferences</td><td data-label="Status"><span class="status pass">Pass baseline</span></td><td data-label="Implementation">Light/dark theme follows system preference initially, can be changed with an accessible button and is stored locally. Readability settings are also stored locally.</td></tr>
 <tr><td data-label="Area">Visual alternatives</td><td data-label="Status"><span class="status pass">Current implementation</span></td><td data-label="Implementation">CSS-based portfolio illustrations are exposed as labelled images where they communicate meaning; decorative progress and icon elements are hidden from assistive technology.</td></tr>
-<tr><td data-label="Area">Downloadable CV</td><td data-label="Status"><span class="status pass">Improved</span></td><td data-label="Implementation">The CV was regenerated as a tagged PDF/UA-1 document with document language, structure tree and accessible link annotation. The web CV remains the preferred flexible version.</td></tr>
+<tr><td data-label="Area">Downloadable CV</td><td data-label="Status"><span class="status partial">Manual follow-up</span></td><td data-label="Implementation">The two-page CV contains searchable text and working email, portfolio and LinkedIn links. The web CV remains the preferred flexible version; tagged-PDF reading order requires separate assistive-technology testing.</td></tr>
 </tbody></table>
 <h2>Accessibility functionality included</h2>
 <div class="card"><ul><li>High-contrast preference</li><li>Reduced-motion preference</li><li>Readable system typeface</li><li>WCAG text-spacing preference</li><li>Underlined text links</li><li>Reset function and polite status announcements</li><li>Keyboard-accessible accessibility panel with Escape-to-close and focus management</li></ul></div>
@@ -38,5 +38,5 @@
 <p class="note"><strong>Scope note:</strong> A personal portfolio is not automatically one of the consumer products or services covered by the EAA. This site is therefore designed toward the same accessibility principles without claiming that the portfolio itself has been legally certified as EAA compliant.</p>
 <h2>References</h2>
 <ul><li><a href="https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/disability/european-accessibility-act-eaa_en">European Commission - European Accessibility Act</a></li><li><a href="https://eur-lex.europa.eu/eli/dir/2019/882/oj/eng">Directive (EU) 2019/882</a></li><li><a href="https://www.w3.org/TR/WCAG22/">W3C - WCAG 2.2</a></li><li><a href="https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf">ETSI - EN 301 549 V3.2.1</a></li></ul>
-<p>Review date: 2026-07-16</p>
+<p>Review date: 2026-07-28</p>
 </main></body></html>

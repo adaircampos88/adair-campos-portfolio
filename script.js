@@ -30,6 +30,8 @@
       root.dataset.theme = next;
       try { localStorage.setItem('portfolio-theme', next); } catch (error) {}
       updateToggles();
+    });
+  });
   const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
   systemTheme.addEventListener?.('change', (event) => {
     try {
@@ -38,8 +40,6 @@
         updateToggles();
       }
     } catch (error) {}
-  });
-    });
   });
   updateToggles();
 
@@ -193,6 +193,133 @@
   });
   applyA11ySettings();
 
+})();
+
+(() => {
+  const config = window.PORTFOLIO_CONFIG || {};
+  if (config.analyticsEnabled === false) return;
+
+  const consentKey = 'portfolioAnalyticsConsent:v1';
+  const measurementId = String(config.analyticsMeasurementId || '').trim();
+  const hasValidMeasurementId = /^G-[A-Z0-9]+$/i.test(measurementId) && !measurementId.includes('TODO');
+  const readConsent = () => {
+    try {
+      const value = localStorage.getItem(consentKey);
+      return value === 'accepted' || value === 'rejected' ? value : 'unknown';
+    } catch (error) { return 'unknown'; }
+  };
+  const saveConsent = (value) => {
+    try { localStorage.setItem(consentKey, value); } catch (error) {}
+  };
+
+  let analyticsLoaded = false;
+  const loadAnalytics = () => {
+    if (analyticsLoaded || !hasValidMeasurementId || readConsent() !== 'accepted') return;
+    analyticsLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+    window.gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+    window.gtag('js', new Date());
+    window.gtag('config', measurementId, {
+      send_page_view: true,
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    });
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+    script.dataset.portfolioAnalytics = 'true';
+    document.head.append(script);
+  };
+
+  const banner = document.createElement('section');
+  banner.className = 'consent-banner';
+  banner.hidden = true;
+  banner.setAttribute('role', 'region');
+  banner.setAttribute('aria-labelledby', 'consentTitle');
+  banner.innerHTML = `
+    <div class="consent-copy">
+      <p class="consent-kicker">Privacy choice</p>
+      <h2 id="consentTitle">Help improve this portfolio?</h2>
+      <p>I use optional, privacy-conscious analytics to understand visits and recruiter actions. Nothing is sent to Google unless you accept. <a href="privacy.html">Privacy details</a></p>
+      <p class="consent-status" aria-live="polite"></p>
+    </div>
+    <div class="consent-actions">
+      <button class="consent-action consent-accept" type="button">Accept analytics</button>
+      <button class="consent-action consent-decline" type="button">Continue without analytics</button>
+    </div>`;
+  document.body.append(banner);
+
+  const status = banner.querySelector('.consent-status');
+  const acceptButton = banner.querySelector('.consent-accept');
+  const declineButton = banner.querySelector('.consent-decline');
+  const settingsButtons = [...document.querySelectorAll('.cookie-settings-button')];
+  if (!settingsButtons.length) {
+    const footerLinks = document.querySelector('footer .footer-links');
+    if (footerLinks) {
+      const button = document.createElement('button');
+      button.className = 'cookie-settings-button';
+      button.type = 'button';
+      button.textContent = 'Cookie settings';
+      footerLinks.append(button);
+      settingsButtons.push(button);
+    }
+  }
+
+  const updateStatus = () => {
+    const choice = readConsent();
+    status.textContent = choice === 'accepted'
+      ? 'Analytics are currently accepted. Choose “Continue without analytics” to withdraw consent.'
+      : choice === 'rejected'
+        ? 'Analytics are currently disabled. You can accept them at any time.'
+        : 'No analytics choice has been saved yet.';
+  };
+  const openPreferences = () => {
+    updateStatus();
+    banner.hidden = false;
+    acceptButton.focus();
+  };
+  const closePreferences = () => { banner.hidden = true; };
+
+  acceptButton.addEventListener('click', () => {
+    saveConsent('accepted');
+    updateStatus();
+    loadAnalytics();
+    closePreferences();
+  });
+  declineButton.addEventListener('click', () => {
+    const wasLoaded = analyticsLoaded;
+    saveConsent('rejected');
+    closePreferences();
+    if (wasLoaded) window.location.reload();
+  });
+  settingsButtons.forEach((button) => button.addEventListener('click', openPreferences));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !banner.hidden && readConsent() !== 'unknown') closePreferences();
+  });
+
+  document.addEventListener('click', (event) => {
+    if (readConsent() !== 'accepted' || typeof window.gtag !== 'function') return;
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    let eventName = '';
+    let eventLabel = href;
+    if (/case-study-[^#?]+\.html/i.test(href)) eventName = 'case_study_open';
+    else if (/\.pdf(?:$|[?#])/i.test(href) || link.hasAttribute('download')) eventName = 'cv_download';
+    else if (href.startsWith('mailto:')) eventName = 'contact_click';
+    else if (/linkedin\.com/i.test(href)) eventName = 'linkedin_click';
+    if (eventName) window.gtag('event', eventName, { link_url: eventLabel });
+  });
+
+  const choice = readConsent();
+  if (choice === 'accepted') loadAnalytics();
+  else if (choice === 'unknown') openPreferences();
 })();
 
 (() => {

@@ -1,6 +1,10 @@
 ADAIR CAMPOS — THREE-CASE PORTFOLIO BUILD
 
-Open index.html in a modern browser.
+Preview through a local HTTP server instead of opening the files directly:
+
+    python3 -m http.server 8000
+
+Then open http://localhost:8000/.
 
 Pages:
 - index.html — portfolio homepage with three selected projects
@@ -11,6 +15,9 @@ Pages:
 - Adair_Campos_Senior_Product_Designer_CV.pdf — downloadable CV
 - styles.css — responsive visual design
 - script.js — scroll reveal and progress indicator
+- site-config.js — canonical site and consent-controlled GA configuration
+- privacy.html / impressum.html — bilingual legal drafts
+- LAUNCH-CHECKLIST.md — required launch handoffs and acceptance checks
 
 Publishing notes:
 - Confidential interfaces and values are recreated, simplified or anonymised.
@@ -18,3 +25,5 @@ Publishing notes:
 - The iSolarCloud evaluation is presented as a shared project with Maria Ciccarelli; Adair was the primary interviewer and both designers shared planning, synthesis, prioritisation and reporting.
 - The evaluation findings informed ongoing product iterations.
 - Contact, LinkedIn and CV links are active.
+- The canonical production URL is https://adaircampos.design.
+- Publication is blocked until TODO_LEGAL_ADDRESS and TODO_GA_MEASUREMENT_ID are replaced and reviewed.
