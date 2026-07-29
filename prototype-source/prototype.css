@@ -40,6 +40,7 @@ input {
 
 button {
   color: inherit;
+  touch-action: manipulation;
 }
 
 .sr-only {
@@ -642,6 +643,7 @@ button {
   border-radius: 999px;
   background: linear-gradient(90deg, #7654df 0%, #ff8200 38%, #ffae39 56%, #10c8e8 100%);
   cursor: ew-resize;
+  touch-action: none;
 }
 
 .stage-scrubber input::-webkit-slider-thumb {
@@ -1346,6 +1348,11 @@ button {
   height: 4px;
   accent-color: var(--orange);
   cursor: ew-resize;
+  touch-action: none;
+}
+
+.prototype-shell.is-playing .stage-timeline-heading > button {
+  animation: playbackPulse 1.8s ease-in-out infinite;
 }
 
 .day-time-labels {
@@ -1591,6 +1598,11 @@ input:focus-visible {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
+@keyframes playbackPulse {
+  0%, 100% { box-shadow: 0 1.5cqw 3.8cqw rgba(255,129,0,0.3), 0 0 0 0 rgba(255,129,0,0.22); }
+  50% { box-shadow: 0 1.5cqw 3.8cqw rgba(255,129,0,0.3), 0 0 0 2.2cqw rgba(255,129,0,0); }
+}
+
 @media (min-width: 620px) {
   .site-canvas {
     align-items: center;
@@ -1610,5 +1622,11 @@ input:focus-visible {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+  }
+
+  .prototype-shell.motion-enabled .node-aura,
+  .prototype-shell.motion-enabled .stage-timeline-heading > button {
+    animation-duration: 1.8s !important;
+    animation-iteration-count: infinite !important;
   }
 }

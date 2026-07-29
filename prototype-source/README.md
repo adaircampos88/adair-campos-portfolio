@@ -15,4 +15,4 @@ After building, run the portfolio checks from the repository root:
 python3 tools/validate_site.py
 ```
 
-The experience starts from the current time in Munich, loads current Munich weather from Open-Meteo, and falls back to local values if the request is unavailable. The timeline, play control, scenario controls, energy ribbons, weather panel and reduced-motion behavior are implemented in `page.tsx`.
+The experience starts from the current time in Munich, plays the day simulation automatically when reduced motion is not requested, loads current Munich weather from Open-Meteo, and falls back to local values if the request is unavailable. The timeline, play control, scenario controls, energy ribbons, weather panel and reduced-motion behavior are implemented in `page.tsx`. Visitors who prefer reduced motion can still start the animation explicitly with the Play control.

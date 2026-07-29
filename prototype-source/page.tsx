@@ -209,7 +209,7 @@ function createRibbonShape(item: ArtworkRibbon, width: number) {
   return { shape, edgePathA, edgePathB };
 }
 
-function EnergyArtwork({ flows, layout }: { flows: EnergyFlows; layout: FlowLayout }) {
+function EnergyArtwork({ flows, layout, motionOverride }: { flows: EnergyFlows; layout: FlowLayout; motionOverride: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const currentWidths = useRef<Record<string, number>>({});
 
@@ -218,7 +218,7 @@ function EnergyArtwork({ flows, layout }: { flows: EnergyFlows; layout: FlowLayo
     const context = canvas?.getContext("2d");
     if (!canvas || !context) return;
 
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches && !motionOverride;
     let animationFrame = 0;
 
     function drawRibbon(item: ArtworkRibbon, width: number, time: number) {
@@ -353,7 +353,7 @@ function EnergyArtwork({ flows, layout }: { flows: EnergyFlows; layout: FlowLayo
 
     frame(0);
     return () => window.cancelAnimationFrame(animationFrame);
-  }, [flows, layout]);
+  }, [flows, layout, motionOverride]);
 
   return <canvas ref={canvasRef} className="energy-art" aria-hidden="true" />;
 }
@@ -470,7 +470,8 @@ export default function Home() {
   const [values, setValues] = useState<FlowState>(scenarios.morning);
   const [scenario, setScenario] = useState<ScenarioKey>("morning");
   const [dayMode, setDayMode] = useState(true);
-  const [dayPlaying, setDayPlaying] = useState(false);
+  const [dayPlaying, setDayPlaying] = useState(() => !window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const [motionOverride, setMotionOverride] = useState(false);
   const [dayMinutes, setDayMinutes] = useState(currentMunichMinutes);
   const [controlsOpen, setControlsOpen] = useState(false);
   const [weatherOpen, setWeatherOpen] = useState(false);
@@ -489,10 +490,10 @@ export default function Home() {
     : { solarY: 0.15, homeY: 0.46, lowerY: 0.72 }, [smartDevicesEnabled]);
 
   useEffect(() => {
-    if (!dayMode || !dayPlaying || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!dayMode || !dayPlaying || (window.matchMedia("(prefers-reduced-motion: reduce)").matches && !motionOverride)) return;
     const timer = window.setInterval(() => setDayMinutes((current) => (current + 4) % 1440), 120);
     return () => window.clearInterval(timer);
-  }, [dayMode, dayPlaying]);
+  }, [dayMode, dayPlaying, motionOverride]);
 
   useEffect(() => {
     if (!weatherOpen) return;
@@ -590,6 +591,7 @@ export default function Home() {
   function selectScenario(key: Exclude<ScenarioKey, "custom">) {
     setDayMode(false);
     setDayPlaying(false);
+    setMotionOverride(false);
     setScenario(key);
     setValues(scenarios[key]);
   }
@@ -597,6 +599,7 @@ export default function Home() {
   function updateValue(key: keyof FlowState, value: number) {
     setDayMode(false);
     setDayPlaying(false);
+    setMotionOverride(false);
     setScenario("custom");
     setValues({ ...activeValues, [key]: value });
   }
@@ -605,9 +608,14 @@ export default function Home() {
     if (!dayMode) {
       setDayMode(true);
       setDayPlaying(true);
+      setMotionOverride(true);
       return;
     }
-    setDayPlaying((current) => !current);
+    setDayPlaying((current) => {
+      const next = !current;
+      setMotionOverride(next);
+      return next;
+    });
   }
 
   function closeWeather() {
@@ -626,7 +634,7 @@ export default function Home() {
 
   return (
     <div className="site-canvas">
-      <div className={`prototype-shell ${smartDevicesEnabled ? "has-smart-devices" : "no-smart-devices"}`}>
+      <div className={`prototype-shell ${smartDevicesEnabled ? "has-smart-devices" : "no-smart-devices"}${dayPlaying ? " is-playing" : ""}${motionOverride ? " motion-enabled" : ""}`}>
         <div className="status-bar" aria-hidden="true">
           <strong>9:41</strong>
           <span className="status-icons">
@@ -667,7 +675,7 @@ export default function Home() {
         </section>
 
         <main className="flow-stage" aria-label="Live energy flow diagram">
-          <EnergyArtwork flows={flows} layout={flowLayout} />
+          <EnergyArtwork flows={flows} layout={flowLayout} motionOverride={motionOverride} />
           <p className="sr-only" aria-live="polite">
             At {formatClock(dayMinutes)}, {formatPower(flows.solarToHome)} kilowatts flow from solar to home, {formatPower(flows.gridToHome)} from grid to home, and {batteryFault ? "the battery is unavailable" : `${formatPower(Math.abs(effectiveValues.battery))} kilowatts ${batteryLabel.toLowerCase()}`}.
           </p>
@@ -685,7 +693,7 @@ export default function Home() {
             </div>
             <label className="stage-scrubber">
               <span className="sr-only">Change time of day</span>
-              <input type="range" min="0" max="1439" step="5" value={dayMinutes} onChange={(event) => { setDayMode(true); setDayPlaying(false); setDayMinutes(Number(event.target.value)); }} />
+              <input type="range" min="0" max="1439" step="5" value={dayMinutes} onChange={(event) => { setDayMode(true); setDayPlaying(false); setMotionOverride(false); setDayMinutes(Number(event.target.value)); }} />
               <span className="stage-time-labels" aria-hidden="true"><span>00</span><span>Morning</span><span>Noon</span><span>Evening</span><span>24</span></span>
             </label>
           </section>
@@ -724,7 +732,7 @@ export default function Home() {
           </div>
           <label className="day-scrubber">
             <span className="sr-only">Time of day</span>
-            <input type="range" min="0" max="1439" step="5" value={dayMinutes} onChange={(event) => { setDayMode(true); setDayPlaying(false); setDayMinutes(Number(event.target.value)); }} />
+            <input type="range" min="0" max="1439" step="5" value={dayMinutes} onChange={(event) => { setDayMode(true); setDayPlaying(false); setMotionOverride(false); setDayMinutes(Number(event.target.value)); }} />
             <span className="day-time-labels" aria-hidden="true"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></span>
           </label>
         </section>
