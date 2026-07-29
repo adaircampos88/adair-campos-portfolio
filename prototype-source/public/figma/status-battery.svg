@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="48.6561" height="22.6667" viewBox="0 0 48.6561 22.6667" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Battery">
+<rect id="Border" opacity="0.35" x="1" y="1" width="42" height="20.6667" rx="4.33333" stroke="black" stroke-width="2"/>
+<path id="Cap" opacity="0.4" d="M46 7.33333V15.3333C47.6095 14.6558 48.6561 13.0796 48.6561 11.3333C48.6561 9.58707 47.6095 8.01089 46 7.33333" fill="black"/>
+<rect id="Capacity" x="4" y="4" width="36" height="14.6667" rx="2.66667" fill="black"/>
+</g>
+</svg>

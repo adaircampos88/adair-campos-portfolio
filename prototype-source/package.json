@@ -1,0 +1,20 @@
+{
+  "name": "adair-energy-flow-prototype",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "lucide-react": "^1.25.0",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "typescript": "5.9.3",
+    "vite": "8.0.13"
+  }
+}
