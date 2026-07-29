@@ -385,3 +385,205 @@
     }
   }
 })();
+
+(() => {
+  const prototype = document.querySelector('[data-energy-prototype]');
+  if (!prototype) return;
+
+  const dashboard = prototype.querySelector('[data-energy-dashboard]');
+  const tabs = [...prototype.querySelectorAll('[data-energy-view]')];
+  const nodes = [...prototype.querySelectorAll('[data-energy-node]')];
+  const paths = new Map([...prototype.querySelectorAll('[data-flow-path]')].map((path) => [path.dataset.flowPath, path]));
+  const valueElements = new Map([...prototype.querySelectorAll('[data-energy-value]')].map((element) => [element.dataset.energyValue, element]));
+  const stateElements = new Map([...prototype.querySelectorAll('[data-energy-state]')].map((element) => [element.dataset.energyState, element]));
+  const statElements = new Map([...prototype.querySelectorAll('[data-energy-stat]')].map((element) => [element.dataset.energyStat, element]));
+  const insightLabel = prototype.querySelector('[data-energy-insight-label]');
+  const insight = prototype.querySelector('[data-energy-insight]');
+  const weatherIcon = prototype.querySelector('[data-weather-icon]');
+  const weatherTemp = prototype.querySelector('[data-weather-temp]');
+  const weatherLabel = prototype.querySelector('[data-weather-label]');
+  const chips = [...prototype.querySelectorAll('.floating-chip')];
+  const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.a11yMotion === 'reduced';
+
+  let mode = 'flow';
+  let selectedNode = null;
+  let weather = { temperature: null, weatherCode: 1, cloudCover: 28, source: 'simulation' };
+  let model = null;
+
+  const number = (value) => Math.max(0, Number(value) || 0);
+  const kw = (value) => number(value).toFixed(2);
+  const munichHour = () => Number(new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Berlin', hour: '2-digit', hourCycle: 'h23'
+  }).format(new Date()));
+
+  const describeWeather = (code) => {
+    if (code === 0) return ['☀', 'Clear'];
+    if ([1, 2].includes(code)) return ['🌤', 'Partly cloudy'];
+    if (code === 3) return ['☁', 'Cloudy'];
+    if ([45, 48].includes(code)) return ['≋', 'Foggy'];
+    if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return ['☂', 'Rain'];
+    if ([71, 73, 75, 77, 85, 86].includes(code)) return ['❄', 'Snow'];
+    if ([95, 96, 99].includes(code)) return ['ϟ', 'Storm'];
+    return ['◌', 'Current'];
+  };
+
+  const calculateModel = () => {
+    const hour = munichHour();
+    const daylight = hour >= 6 && hour <= 20 ? Math.sin(((hour - 6) / 14) * Math.PI) : 0;
+    const cloudFactor = Math.max(.16, 1 - (number(weather.cloudCover) / 100) * .72);
+    const solar = Math.max(0, 9.4 * daylight * cloudFactor);
+    const morningPeak = hour >= 6 && hour < 9 ? 1.05 : 0;
+    const eveningPeak = hour >= 17 && hour < 23 ? 1.65 : 0;
+    const overnight = hour < 6 || hour >= 23 ? .42 : 0;
+    const homeBase = 1.18 + morningPeak + eveningPeak + overnight;
+    const evLoad = mode === 'ev' ? 2.35 : 0;
+    const home = homeBase + evLoad;
+    const surplus = solar - home;
+    const battery = surplus > .2 ? Math.min(2.1, surplus * .58) : -Math.min(1.65, Math.abs(surplus) * .62);
+    const grid = solar - home - Math.max(0, battery) + Math.max(0, -battery);
+    const daylightHours = Math.max(0, Math.min(14, hour - 6));
+    const dailyYield = solar === 0 ? Math.max(0, daylightHours * 2.6 * cloudFactor) : daylightHours * (solar * .44 + 1.1);
+    const selfConsumption = solar > .01 ? Math.min(100, ((Math.min(solar, home) + Math.max(0, battery)) / solar) * 100) : 100;
+    return { hour, solar, home, battery, grid, dailyYield, selfConsumption, saved: dailyYield * .19 };
+  };
+
+  const setPath = (key, active, reverse = false) => {
+    const path = paths.get(key);
+    if (!path) return;
+    path.classList.toggle('active', active);
+    path.classList.toggle('idle', !active);
+    path.classList.toggle('energy-reverse', reverse);
+    path.classList.toggle('is-muted', mode === 'dashboard');
+  };
+
+  const setInsight = (label, message) => {
+    if (insightLabel) insightLabel.textContent = label;
+    if (insight) insight.textContent = message;
+  };
+
+  const nodeInsight = (key) => {
+    if (!model) return;
+    const messages = {
+      solar: ['Solar generation', model.solar > .05 ? `${kw(model.solar)} kW is being produced using Munich’s current daylight and cloud cover.` : 'Solar production is resting outside daylight hours.'],
+      home: ['Home demand', `${kw(model.home)} kW is powering the household${mode === 'ev' ? ', including the active EV charging session' : ''}.`],
+      battery: ['Battery intelligence', model.battery >= 0 ? `${kw(model.battery)} kW of available surplus is charging the battery.` : `${kw(Math.abs(model.battery))} kW is being released to reduce grid demand.`],
+      grid: ['Grid exchange', model.grid >= 0 ? `${kw(model.grid)} kW of surplus energy is being exported to the grid.` : `${kw(Math.abs(model.grid))} kW is being imported to balance demand.`]
+    };
+    setInsight(...messages[key]);
+  };
+
+  const render = () => {
+    model = calculateModel();
+    dashboard.dataset.energyMode = mode;
+
+    valueElements.get('solar').textContent = kw(model.solar);
+    valueElements.get('home').textContent = kw(model.home);
+    valueElements.get('battery').textContent = kw(Math.abs(model.battery));
+    valueElements.get('grid').textContent = kw(Math.abs(model.grid));
+    stateElements.get('solar').textContent = model.solar > .05 ? 'Generating' : 'Standby';
+    stateElements.get('home').textContent = mode === 'ev' ? 'Home + EV demand' : 'Consuming';
+    stateElements.get('battery').textContent = model.battery >= 0 ? 'Charging · 71%' : 'Supporting · 71%';
+    stateElements.get('grid').textContent = model.grid >= 0 ? 'Exporting' : 'Importing';
+    statElements.get('yield').textContent = `${model.dailyYield.toFixed(1)} kWh`;
+    statElements.get('self').textContent = `${Math.round(model.selfConsumption)}%`;
+    statElements.get('saved').textContent = `€${model.saved.toFixed(2)}`;
+
+    setPath('solar-home', model.solar > .05);
+    setPath('solar-grid', model.grid > .08 && model.solar > .05);
+    setPath('battery-home', model.battery < -.05);
+    setPath('home-grid', Math.abs(model.grid) > .08, model.grid < 0);
+
+    nodes.forEach((node) => {
+      const key = node.dataset.energyNode;
+      const active = key === 'home' || (key === 'solar' && model.solar > .05) || (key === 'battery' && Math.abs(model.battery) > .05) || (key === 'grid' && Math.abs(model.grid) > .05);
+      node.classList.toggle('active-node', active);
+      node.classList.toggle('is-selected', selectedNode === key);
+      node.setAttribute('aria-pressed', String(selectedNode === key));
+    });
+
+    if (selectedNode) nodeInsight(selectedNode);
+    else if (mode === 'ev') setInsight('Smart charging', 'The EV session adds 2.35 kW of demand while the system automatically balances solar, battery and grid energy.');
+    else if (mode === 'dashboard') setInsight('Today at a glance', `${model.dailyYield.toFixed(1)} kWh generated with ${Math.round(model.selfConsumption)}% used or stored locally.`);
+    else if (model.grid >= 0) setInsight('Live balance', 'Solar is meeting current home demand and the remaining energy is being stored or exported.');
+    else setInsight('Live balance', 'The battery and grid are supporting the home while solar production is below current demand.');
+  };
+
+  tabs.forEach((tab) => tab.addEventListener('click', () => {
+    mode = tab.dataset.energyView;
+    selectedNode = null;
+    tabs.forEach((item) => {
+      const selected = item === tab;
+      item.classList.toggle('active', selected);
+      item.setAttribute('aria-pressed', String(selected));
+    });
+    render();
+  }));
+
+  nodes.forEach((node) => node.addEventListener('click', () => {
+    const key = node.dataset.energyNode;
+    selectedNode = selectedNode === key ? null : key;
+    render();
+  }));
+
+  const loadMunichWeather = async () => {
+    try {
+      const endpoint = 'https://api.open-meteo.com/v1/forecast?latitude=48.1374&longitude=11.5755&current=temperature_2m,weather_code,cloud_cover&timezone=Europe%2FBerlin';
+      const response = await fetch(endpoint, { mode: 'cors', credentials: 'omit', referrerPolicy: 'no-referrer' });
+      if (!response.ok) throw new Error(`Weather request failed: ${response.status}`);
+      const data = await response.json();
+      weather = {
+        temperature: Number(data.current?.temperature_2m),
+        weatherCode: Number(data.current?.weather_code ?? 1),
+        cloudCover: Number(data.current?.cloud_cover ?? 28),
+        source: 'Open-Meteo'
+      };
+      const [icon, label] = describeWeather(weather.weatherCode);
+      weatherIcon.textContent = icon;
+      weatherTemp.textContent = `${Math.round(weather.temperature)}°`;
+      weatherLabel.textContent = `${label} · Munich`;
+      render();
+    } catch (error) {
+      const [icon] = describeWeather(weather.weatherCode);
+      weatherIcon.textContent = icon;
+      weatherTemp.textContent = `${munichHour()}:00`;
+      weatherLabel.textContent = 'Munich time';
+      render();
+    }
+  };
+
+  let pointerFrame = 0;
+  const resetChips = () => chips.forEach((chip) => {
+    chip.style.setProperty('--chip-x', '0px');
+    chip.style.setProperty('--chip-y', '0px');
+    chip.style.setProperty('--chip-opacity', '1');
+    chip.style.setProperty('--chip-scale', '1');
+    chip.classList.remove('is-dispersing');
+  });
+  const moveChips = (clientX, clientY) => {
+    if (reducedMotion() || !window.matchMedia('(pointer:fine)').matches) return resetChips();
+    chips.forEach((chip) => {
+      const rect = chip.getBoundingClientRect();
+      const dx = rect.left + rect.width / 2 - clientX;
+      const dy = rect.top + rect.height / 2 - clientY;
+      const distance = Math.hypot(dx, dy);
+      const radius = 165;
+      const strength = Math.max(0, 1 - distance / radius);
+      const directionX = distance ? dx / distance : 1;
+      const directionY = distance ? dy / distance : 0;
+      chip.style.setProperty('--chip-x', `${(directionX * strength * 42).toFixed(1)}px`);
+      chip.style.setProperty('--chip-y', `${(directionY * strength * 42).toFixed(1)}px`);
+      chip.style.setProperty('--chip-opacity', String(Math.max(.04, 1 - strength * 1.35)));
+      chip.style.setProperty('--chip-scale', String(1 - strength * .08));
+      chip.classList.toggle('is-dispersing', strength > .18);
+    });
+  };
+  prototype.addEventListener('pointermove', (event) => {
+    if (pointerFrame) cancelAnimationFrame(pointerFrame);
+    pointerFrame = requestAnimationFrame(() => moveChips(event.clientX, event.clientY));
+  });
+  prototype.addEventListener('pointerleave', resetChips);
+
+  render();
+  loadMunichWeather();
+  window.setInterval(() => { render(); loadMunichWeather(); }, 15 * 60 * 1000);
+})();

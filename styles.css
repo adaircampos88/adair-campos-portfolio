@@ -1200,6 +1200,186 @@ html[data-theme="dark"] .project-card-tabs span:first-child{
   }
 }
 
+/* Interactive energy prototype, ambient project-art direction and brand contrast */
+:root{
+  --brand-mark-bg:#0b6177;
+  --brand-mark-fg:#ffffff;
+  --brand-mark-border:rgba(255,255,255,.34);
+  --energy-blue:#5b78ff;
+  --energy-cyan:#42b9d4;
+  --energy-sun:#ffb43c;
+}
+html[data-theme="dark"]{
+  --brand-mark-bg:#bcecf5;
+  --brand-mark-fg:#06242d;
+  --brand-mark-border:#eefcff;
+  --energy-blue:#91a4ff;
+  --energy-cyan:#77d8e9;
+}
+.brand-symbol{
+  background:var(--brand-mark-bg);
+  color:var(--brand-mark-fg);
+  border:1px solid var(--brand-mark-border);
+  box-shadow:0 8px 22px color-mix(in srgb,var(--brand-mark-bg) 28%,transparent);
+  text-shadow:none;
+}
+.brand:focus-visible .brand-symbol{outline:3px solid var(--accent);outline-offset:3px}
+
+.isc-energy-dashboard{
+  width:min(590px,91vw);
+  padding:22px;
+  background:
+    radial-gradient(circle at 85% 10%,rgba(255,180,60,.12),transparent 28%),
+    linear-gradient(155deg,#effafd 0%,#e5f4f7 100%);
+  box-shadow:0 48px 110px rgba(18,63,76,.2),inset 0 1px rgba(255,255,255,.85);
+}
+.isc-tabs button{
+  appearance:none;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:#647981;
+  cursor:pointer;
+  font:inherit;
+  font-size:11px;
+  min-height:44px;
+  padding:12px 8px;
+  position:relative;
+  text-align:center;
+}
+.isc-tabs button:hover{background:rgba(255,255,255,.5);color:#17333d}
+.isc-tabs button:focus-visible{outline:3px solid #0e6f87;outline-offset:-4px}
+.isc-tabs button.active{color:var(--accent);font-weight:850}
+.isc-tabs button.active:after{content:"";position:absolute;left:24%;right:24%;bottom:-1px;height:3px;border-radius:999px;background:var(--accent)}
+.isc-weather{min-width:128px;justify-content:flex-end}
+.isc-weather small{font-size:9px;line-height:1.15;color:#667b83;max-width:58px}
+.isc-weather>[data-weather-icon]{filter:drop-shadow(0 5px 9px rgba(255,171,38,.2))}
+.isc-node{
+  appearance:none;
+  color:#18323b;
+  cursor:pointer;
+  font:inherit;
+}
+.isc-node:focus-visible{outline:3px solid #0e6f87;outline-offset:3px}
+.isc-node.is-selected{border-color:var(--accent);box-shadow:0 15px 38px rgba(243,111,53,.19)}
+.isc-node .isc-icon{color:#263d46}
+.isc-node .isc-icon svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.isc-solar .isc-icon{color:#a96a00}.isc-battery .isc-icon{color:#087fa2}.isc-grid .isc-icon{color:#385789}.isc-home .isc-icon{color:#c64d1c}
+.isc-flow-path{transition:opacity .35s ease,stroke .35s ease,filter .35s ease}
+.isc-flow-path.active{stroke:var(--energy-blue)}
+.isc-flow-path.energy-reverse{animation-direction:reverse}
+.isc-flow-path.is-muted{opacity:.12;filter:none}
+.isc-prototype-insight{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+  min-height:44px;
+  padding:10px 13px;
+  border:1px solid rgba(22,72,85,.1);
+  border-radius:15px;
+  background:rgba(255,255,255,.76);
+  color:#18323b;
+}
+.isc-prototype-insight small{text-transform:uppercase;letter-spacing:.1em;font-size:8px;font-weight:850;color:#c55325;white-space:nowrap}
+.isc-prototype-insight strong{font-size:11px;line-height:1.35}
+.isc-prototype-hint{display:flex;align-items:center;gap:7px;margin:10px 2px 0;color:#60757d;font-size:9px}
+.isc-prototype-hint span{display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#d7edf3;color:#0e6f87;font-weight:900}
+.isc-energy-dashboard[data-energy-mode="ev"] .isc-home{border-color:#5b78ff;box-shadow:0 14px 32px rgba(91,120,255,.15)}
+.isc-energy-dashboard[data-energy-mode="dashboard"] .isc-flow-canvas:before{background:radial-gradient(circle at 50% 46%,rgba(66,185,212,.16),transparent 47%)}
+
+.floating-chip{
+  --chip-x:0px;
+  --chip-y:0px;
+  --chip-opacity:1;
+  --chip-scale:1;
+  transform:translate3d(var(--chip-x),var(--chip-y),0) scale(var(--chip-scale));
+  opacity:var(--chip-opacity);
+  transition:transform .38s cubic-bezier(.2,.8,.2,1),opacity .28s ease,filter .28s ease;
+  will-change:transform,opacity;
+}
+.floating-chip:before{
+  content:"";
+  position:absolute;
+  inset:-10px;
+  z-index:-1;
+  border-radius:24px;
+  background:radial-gradient(circle at 50% 50%,rgba(66,185,212,.28),transparent 66%);
+  opacity:0;
+  transform:scale(.72);
+  transition:opacity .2s ease,transform .34s ease;
+}
+.floating-chip.is-dispersing{filter:blur(1.4px) saturate(1.2)}
+.floating-chip.is-dispersing:before{opacity:1;transform:scale(1.28)}
+
+.energy-art-visual{
+  overflow:visible;
+  isolation:isolate;
+  border-radius:46px;
+  background:
+    radial-gradient(ellipse at 65% 34%,rgba(119,196,224,.28),transparent 42%),
+    radial-gradient(ellipse at 27% 74%,rgba(255,145,96,.15),transparent 38%);
+}
+.energy-art-visual:before{
+  content:"";
+  position:absolute;
+  inset:8% 2%;
+  z-index:-1;
+  border-radius:50%;
+  background:linear-gradient(120deg,rgba(255,255,255,.34),rgba(255,255,255,0));
+  filter:blur(28px);
+}
+.energy-source-hero{overflow:visible}
+.energy-source-hero:before,.energy-source-hero:after{filter:blur(26px);opacity:.8}
+.energy-source-hero .source-phone-frame{
+  background:linear-gradient(160deg,#132832,#07151b);
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:0 54px 120px rgba(22,67,82,.22),0 0 0 12px rgba(111,196,220,.07);
+}
+.energy-source-hero .floating-note{
+  border:1px solid color-mix(in srgb,var(--line) 70%,transparent);
+  background:color-mix(in srgb,var(--surface) 86%,transparent);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+html[data-theme="dark"] .energy-art-visual{
+  background:
+    radial-gradient(ellipse at 65% 34%,rgba(71,151,181,.24),transparent 42%),
+    radial-gradient(ellipse at 27% 74%,rgba(255,126,77,.12),transparent 38%);
+}
+html[data-theme="dark"] .energy-art-visual:before{background:linear-gradient(120deg,rgba(90,179,207,.08),rgba(4,20,27,0))}
+html[data-theme="dark"] .energy-source-hero .floating-note{background:rgba(12,39,49,.82);border-color:rgba(176,225,236,.2)}
+html[data-theme="dark"] .isc-energy-dashboard{background:linear-gradient(155deg,#dff3f7,#cfe9ef);border-color:rgba(188,236,245,.45)}
+
+html[data-a11y-contrast="high"] .brand-symbol{background:#000;color:#fff;border-color:#fff;box-shadow:none}
+html[data-theme="dark"][data-a11y-contrast="high"] .brand-symbol{background:#fff;color:#000;border-color:#fff}
+html[data-a11y-motion="reduced"] .floating-chip{transform:none!important;opacity:1!important;filter:none!important;transition:none!important}
+
+@media(max-width:980px){
+  .energy-art-visual{overflow:hidden}
+}
+@media(max-width:720px){
+  .isc-energy-dashboard{padding:15px}
+  .isc-tabs{margin-inline:-15px}
+  .isc-prototype-insight{grid-template-columns:1fr;gap:2px;padding:9px 11px}
+  .isc-prototype-insight small{white-space:normal}
+  .isc-prototype-hint{display:none}
+}
+@media(max-width:430px){
+  .isc-energy-dashboard{padding:11px}
+  .isc-tabs{margin-inline:-11px}
+  .isc-tabs button{font-size:10px;padding-inline:3px}
+  .isc-weather{min-width:0}
+  .isc-weather small{display:none}
+  .isc-prototype-insight{min-height:40px;margin-top:7px}
+  .isc-prototype-insight strong{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .floating-chip{transform:none!important;opacity:1!important;filter:none!important;transition:none!important}
+  .isc-flow-path{transition:none}
+}
+
 /* Launch, legal and consent surfaces */
 .footer-links .cookie-settings-button{
   appearance:none;

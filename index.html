@@ -64,37 +64,43 @@
 <span>Europe ↔ China collaboration</span>
 </div>
 </div>
-<div aria-label="Animated residential energy flow showing solar generation, home demand, battery storage and grid export" class="home-hero-art reveal">
+<div aria-label="Interactive residential energy prototype using current Munich weather to simulate solar generation, home demand, battery storage and grid exchange" class="home-hero-art reveal" data-energy-prototype>
 <div class="hero-orbit orbit-one"></div>
 <div class="hero-orbit orbit-two"></div>
-<div class="isc-energy-dashboard">
-<div class="isc-dashboard-head"><div><small>Residential plant</small><strong>Energy overview</strong></div><span class="isc-live"><i></i> Live</span></div>
-<div class="isc-tabs"><span class="active">Energy Flow</span><span>EV Charger</span><span>Dashboard</span></div>
-<div class="isc-status-row"><span class="isc-status"><i>✓</i> Normal</span><span class="isc-weather">☀ <strong>+32°</strong></span></div>
+<div class="isc-energy-dashboard" data-energy-dashboard>
+<div class="isc-dashboard-head"><div><small>Residential plant · Munich</small><strong>Energy overview</strong></div><span class="isc-live"><i></i> Live prototype</span></div>
+<div aria-label="Energy prototype views" class="isc-tabs" role="group">
+<button aria-pressed="true" class="active" data-energy-view="flow" type="button">Energy Flow</button>
+<button aria-pressed="false" data-energy-view="ev" type="button">EV Charger</button>
+<button aria-pressed="false" data-energy-view="dashboard" type="button">Dashboard</button>
+</div>
+<div class="isc-status-row"><span class="isc-status"><i>✓</i> Normal</span><span aria-live="polite" class="isc-weather"><span aria-hidden="true" data-weather-icon>☀</span><strong data-weather-temp>--°</strong><small data-weather-label>Munich</small></span></div>
 <div class="isc-flow-canvas">
 <svg aria-hidden="true" class="isc-flow-lines" preserveaspectratio="none" viewbox="0 0 560 430">
 <defs>
 <filter height="160%" id="flowGlow" width="160%" x="-30%" y="-30%"><fegaussianblur result="blur" stddeviation="3"></fegaussianblur><femerge><femergenode in="blur"></femergenode><femergenode in="SourceGraphic"></femergenode></femerge></filter>
 </defs>
-<path class="isc-flow-path active solar-home" d="M280 105 C280 135 280 160 280 194"></path>
-<path class="isc-flow-path active solar-grid" d="M315 92 C410 112 466 190 468 310"></path>
-<path class="isc-flow-path idle battery-home" d="M112 325 C148 285 194 244 245 226"></path>
-<path class="isc-flow-path active home-grid" d="M316 232 C365 256 414 281 455 320"></path>
+<path class="isc-flow-path active solar-home" d="M280 105 C280 135 280 160 280 194" data-flow-path="solar-home"></path>
+<path class="isc-flow-path active solar-grid" d="M315 92 C410 112 466 190 468 310" data-flow-path="solar-grid"></path>
+<path class="isc-flow-path idle battery-home" d="M112 325 C148 285 194 244 245 226" data-flow-path="battery-home"></path>
+<path class="isc-flow-path active home-grid" d="M316 232 C365 256 414 281 455 320" data-flow-path="home-grid"></path>
 </svg>
-<div class="isc-node isc-solar active-node">
-<div class="isc-icon solar-icon"><span></span></div><b>Solar</b><strong>9.05 <small>kW</small></strong><em>Generating</em>
+<button aria-label="Explore solar generation" class="isc-node isc-solar active-node" data-energy-node="solar" type="button">
+<span class="isc-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 7.5h22l-2.8 13H7.8L5 7.5Z"/><path d="M10.5 7.5 9 20.5m7-13v13m5.5-13 1.5 13M5.9 13.8h19.2M16 20.5V27m-5 0h10"/></svg></span><b>Solar</b><strong><span data-energy-value="solar">--</span> <small>kW</small></strong><em data-energy-state="solar">Calculating</em>
+</button>
+<button aria-label="Explore home consumption" class="isc-node isc-home active-node" data-energy-node="home" type="button">
+<span class="isc-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="m4.5 14.5 11.5-10 11.5 10"/><path d="M7.5 13v14h17V13M13 27v-8h6v8"/></svg></span><b>Home</b><strong><span data-energy-value="home">--</span> <small>kW</small></strong><em data-energy-state="home">Live demand</em>
+</button>
+<button aria-label="Explore battery status" class="isc-node isc-battery" data-energy-node="battery" type="button">
+<span class="isc-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="4" y="8" width="23" height="16" rx="4"/><path d="M27 13h2.5v6H27M8 12h10v8H8"/></svg></span><b>Battery</b><strong><span data-energy-value="battery">--</span> <small>kW</small></strong><em data-energy-state="battery">71% charged</em>
+</button>
+<button aria-label="Explore grid exchange" class="isc-node isc-grid active-node" data-energy-node="grid" type="button">
+<span class="isc-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4 7 28m9-24 9 24M10 12h12M8 19h16M5 28h22"/></svg></span><b>Grid</b><strong><span data-energy-value="grid">--</span> <small>kW</small></strong><em data-energy-state="grid">Balancing</em>
+</button>
 </div>
-<div class="isc-node isc-home active-node">
-<div class="isc-icon home-icon"><span></span></div><b>Home</b><strong>4.21 <small>kW</small></strong><em>Consuming</em>
-</div>
-<div class="isc-node isc-battery">
-<div class="isc-icon battery-icon"><span></span></div><b>Battery</b><strong>0.00 <small>kW</small></strong><em>71% charged</em>
-</div>
-<div class="isc-node isc-grid active-node">
-<div class="isc-icon grid-icon"><span></span></div><b>Grid</b><strong>4.81 <small>kW</small></strong><em>Exporting</em>
-</div>
-</div>
-<div class="isc-dashboard-bottom"><span><small>Today yield</small><b>30.4 kWh</b></span><span><small>Self-consumption</small><b>47%</b></span><span><small>Saved today</small><b>€4.20</b></span></div>
+<div aria-live="polite" class="isc-prototype-insight"><small data-energy-insight-label>Live balance</small><strong data-energy-insight>Calculating today’s energy flow…</strong></div>
+<div class="isc-dashboard-bottom"><span><small>Today yield</small><b data-energy-stat="yield">-- kWh</b></span><span><small>Self-consumption</small><b data-energy-stat="self">--%</b></span><span><small>Saved today</small><b data-energy-stat="saved">€--</b></span></div>
+<p class="isc-prototype-hint"><span aria-hidden="true">↗</span> Choose a view or energy source · Munich weather by <a href="https://open-meteo.com/" rel="noreferrer" target="_blank">Open-Meteo</a></p>
 </div>
 <div class="floating-chip chip-one"><small>Research</small><strong>Understand the real need</strong></div>
 <div class="floating-chip chip-two"><small>Systems thinking</small><strong>Make complexity manageable</strong></div>
