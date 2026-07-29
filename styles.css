@@ -1352,6 +1352,49 @@ html[data-theme="dark"] .energy-art-visual:before{background:linear-gradient(120
 html[data-theme="dark"] .energy-source-hero .floating-note{background:rgba(12,39,49,.82);border-color:rgba(176,225,236,.2)}
 html[data-theme="dark"] .isc-energy-dashboard{background:linear-gradient(155deg,#dff3f7,#cfe9ef);border-color:rgba(188,236,245,.45)}
 
+.energy-prototype-embed{
+  position:relative;
+  z-index:2;
+  width:min(460px,90vw);
+  display:grid;
+  justify-items:center;
+  gap:13px;
+}
+.energy-prototype-frame{
+  width:100%;
+  aspect-ratio:750 / 1726;
+  display:block;
+  border:1px solid rgba(17,45,54,.1);
+  border-radius:clamp(24px,3vw,38px);
+  background:#f2f1ed;
+  box-shadow:0 48px 110px rgba(18,63,76,.2),0 0 0 10px rgba(255,255,255,.42);
+  overflow:hidden;
+}
+.energy-prototype-caption{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin:0;
+  color:var(--muted);
+  font-size:11px;
+  text-align:center;
+}
+.energy-prototype-caption span{
+  width:22px;
+  height:22px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:color-mix(in srgb,var(--brand-soft) 75%,var(--surface));
+  color:var(--brand);
+  font-weight:900;
+}
+html[data-theme="dark"] .energy-prototype-frame{
+  border-color:rgba(188,236,245,.24);
+  box-shadow:0 48px 110px rgba(0,0,0,.42),0 0 0 10px rgba(112,199,221,.07);
+}
+
 html[data-a11y-contrast="high"] .brand-symbol{background:#000;color:#fff;border-color:#fff;box-shadow:none}
 html[data-theme="dark"][data-a11y-contrast="high"] .brand-symbol{background:#fff;color:#000;border-color:#fff}
 html[data-a11y-motion="reduced"] .floating-chip{transform:none!important;opacity:1!important;filter:none!important;transition:none!important}
@@ -1360,6 +1403,8 @@ html[data-a11y-motion="reduced"] .floating-chip{transform:none!important;opacity
   .energy-art-visual{overflow:hidden}
 }
 @media(max-width:720px){
+  .energy-prototype-embed{width:min(430px,94vw)}
+  .energy-prototype-frame{border-radius:26px;box-shadow:0 32px 70px rgba(18,63,76,.19),0 0 0 6px rgba(255,255,255,.38)}
   .isc-energy-dashboard{padding:15px}
   .isc-tabs{margin-inline:-15px}
   .isc-prototype-insight{grid-template-columns:1fr;gap:2px;padding:9px 11px}
@@ -1367,6 +1412,9 @@ html[data-a11y-motion="reduced"] .floating-chip{transform:none!important;opacity
   .isc-prototype-hint{display:none}
 }
 @media(max-width:430px){
+  .energy-prototype-embed{width:100%}
+  .energy-prototype-frame{border-radius:22px}
+  .energy-prototype-caption{font-size:10px;padding-inline:12px}
   .isc-energy-dashboard{padding:11px}
   .isc-tabs{margin-inline:-11px}
   .isc-tabs button{font-size:10px;padding-inline:3px}

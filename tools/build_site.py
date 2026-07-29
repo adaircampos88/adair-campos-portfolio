@@ -72,6 +72,7 @@ def copy_public_site(address_markup: str) -> None:
             shutil.copy2(source, destination)
 
     shutil.copytree(ROOT / "assets", OUTPUT / "assets")
+    shutil.copytree(ROOT / "energy-prototype", OUTPUT / "energy-prototype")
     (OUTPUT / ".nojekyll").write_text("", encoding="utf-8")
 
     remaining = [

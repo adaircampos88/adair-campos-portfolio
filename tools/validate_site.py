@@ -34,7 +34,7 @@ class PageParser(HTMLParser):
         values = {key: value or "" for key, value in attrs}
         if tag in {"a", "link"} and values.get("href"):
             self.links.append((tag, values["href"]))
-        if tag in {"img", "script"} and values.get("src"):
+        if tag in {"img", "script", "iframe"} and values.get("src"):
             self.links.append((tag, values["src"]))
         if tag == "script" and values.get("src"):
             self.scripts.append(values["src"])
@@ -99,6 +99,7 @@ for required_file in (
     "CNAME", "robots.txt", "sitemap.xml", "site-config.js", "Adair_Campos_Senior_Product_Designer_CV.pdf",
     "assets/meta/favicon.svg", "assets/meta/apple-touch-icon.png", "assets/meta/og-portfolio.png",
     "tools/build_site.py", ".github/workflows/deploy-pages.yml",
+    "energy-prototype/index.html",
 ):
     if not (ROOT / required_file).exists():
         errors.append(f"Missing launch file: {required_file}")

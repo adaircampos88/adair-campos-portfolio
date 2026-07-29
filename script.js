@@ -391,6 +391,41 @@
   if (!prototype) return;
 
   const dashboard = prototype.querySelector('[data-energy-dashboard]');
+  if (!dashboard) {
+    const heroChips = [...prototype.querySelectorAll('.floating-chip')];
+    const motionIsReduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.dataset.a11yMotion === 'reduced';
+    let chipFrame = 0;
+    const resetHeroChips = () => heroChips.forEach((chip) => {
+      chip.style.setProperty('--chip-x', '0px');
+      chip.style.setProperty('--chip-y', '0px');
+      chip.style.setProperty('--chip-opacity', '1');
+      chip.style.setProperty('--chip-scale', '1');
+      chip.classList.remove('is-dispersing');
+    });
+    const disperseHeroChips = (clientX, clientY) => {
+      if (motionIsReduced() || !window.matchMedia('(pointer:fine)').matches) return resetHeroChips();
+      heroChips.forEach((chip) => {
+        const rect = chip.getBoundingClientRect();
+        const dx = rect.left + rect.width / 2 - clientX;
+        const dy = rect.top + rect.height / 2 - clientY;
+        const distance = Math.hypot(dx, dy);
+        const strength = Math.max(0, 1 - distance / 165);
+        const directionX = distance ? dx / distance : 1;
+        const directionY = distance ? dy / distance : 0;
+        chip.style.setProperty('--chip-x', `${(directionX * strength * 42).toFixed(1)}px`);
+        chip.style.setProperty('--chip-y', `${(directionY * strength * 42).toFixed(1)}px`);
+        chip.style.setProperty('--chip-opacity', String(Math.max(.04, 1 - strength * 1.35)));
+        chip.style.setProperty('--chip-scale', String(1 - strength * .08));
+        chip.classList.toggle('is-dispersing', strength > .18);
+      });
+    };
+    prototype.addEventListener('pointermove', (event) => {
+      if (chipFrame) cancelAnimationFrame(chipFrame);
+      chipFrame = requestAnimationFrame(() => disperseHeroChips(event.clientX, event.clientY));
+    });
+    prototype.addEventListener('pointerleave', resetHeroChips);
+    return;
+  }
   const tabs = [...prototype.querySelectorAll('[data-energy-view]')];
   const nodes = [...prototype.querySelectorAll('[data-energy-node]')];
   const paths = new Map([...prototype.querySelectorAll('[data-flow-path]')].map((path) => [path.dataset.flowPath, path]));
