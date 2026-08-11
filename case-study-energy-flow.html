@@ -60,7 +60,7 @@
   </header>
   <nav aria-label="Case study sections" class="case-context-nav">
     <a class="back-to-work" href="index.html#work">← All work</a>
-    <div><a href="#top">Overview</a><a href="#research-chapter">Research</a><a href="#design-chapter">Design evolution</a><a href="#reflection">Reflection</a></div>
+    <div><a aria-current="location" class="is-active" data-case-section-link="top" href="#top">Overview</a><a data-case-section-link="research-chapter" href="#research-chapter">Research</a><a data-case-section-link="design-chapter" href="#design-chapter">Design evolution</a><a data-case-section-link="reflection" href="#reflection">Reflection</a></div>
   </nav>
 
   <main id="top">
@@ -121,24 +121,11 @@
       </div>
     </section>
 
-    <nav class="lab-chapter-nav" aria-label="Case study chapters">
-      <div class="lab-chapter-tabs">
-        <a aria-controls="research-chapter" aria-current="location" class="lab-chapter-tab is-active" data-chapter-tab="research" href="#research-chapter" id="researchTab">
-          <span>01</span>
-          <span><small>Research &amp; direction</small><strong data-mobile-label="Discover">Discover the opportunity</strong></span>
-        </a>
-        <a aria-controls="design-chapter" class="lab-chapter-tab" data-chapter-tab="design" href="#design-chapter" id="designTab">
-          <span>02</span>
-          <span><small>Design evolution</small><strong data-mobile-label="Design">Shape the experience</strong></span>
-        </a>
-      </div>
-    </nav>
-
-    <section aria-labelledby="researchTab" class="lab-research-chapter lab-chapter-panel section-pad section-soft" data-chapter-panel="research" id="research-chapter" role="region">
+    <section aria-labelledby="research-chapter-title" class="lab-research-chapter lab-chapter-panel section-pad section-soft" data-chapter-panel="research" id="research-chapter" role="region">
       <header class="lab-chapter-heading">
         <div>
           <p class="eyebrow">Chapter 01 · Research &amp; product direction</p>
-          <h2>Discover the right opportunity before designing the interface</h2>
+          <h2 id="research-chapter-title">Discover the right opportunity before designing the interface</h2>
         </div>
         <p>We moved from competitor patterns to energy-expert interviews, user roles, motivational positioning and the post-installation journey—building a clear reason to focus on Energy Flow before exploring the interface.</p>
       </header>
@@ -280,10 +267,10 @@
       </div>
     </section>
 
-    <div aria-labelledby="designTab" class="lab-chapter-panel" data-chapter-panel="design" id="design-chapter" role="region">
+    <div aria-labelledby="design-chapter-title" class="lab-chapter-panel" data-chapter-panel="design" id="design-chapter" role="region">
     <section class="lab-handoff section-pad section-dark">
       <p class="eyebrow">The handoff from research to design</p>
-      <h2>Research established the criteria. Design explored how those criteria could live together.</h2>
+      <h2 id="design-chapter-title">Research established the criteria. Design explored how those criteria could live together.</h2>
       <p class="lab-handoff-lede">Chapter 2 begins with the same four requirements in mind, then follows the work through system modelling, structural exploration, concept divergence and a developed direction.</p>
       <div class="lab-handoff-flow" aria-label="Research to design transition">
         <span>Evidence</span><b aria-hidden="true">→</b><span>Design requirements</span><b aria-hidden="true">→</b><span>System model</span><b aria-hidden="true">→</b><span>Experience concepts</span>
@@ -428,10 +415,10 @@
       </article>
     </section>
 
-    <section class="lab-transition section-pad section-dark" id="reflection">
+    <section aria-labelledby="reflection-title" class="lab-transition section-pad section-dark" id="reflection">
       <div>
         <p class="eyebrow">Outcome &amp; reflection</p>
-        <h2>The interface became clearer because the system model became clearer first.</h2>
+        <h2 id="reflection-title">The interface became clearer because the system model became clearer first.</h2>
       </div>
       <p>The three-month initiative gave the European design team a research-informed direction and helped shape later Energy Flow improvements. It did not establish that this exact concept shipped, and no measured customer outcomes are attributed to the work.</p>
       <div class="lab-chapter-next is-back">

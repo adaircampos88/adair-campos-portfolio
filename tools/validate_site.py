@@ -143,8 +143,9 @@ for required_shell_marker in (
     'href="mailto:adaircampos88@gmail.com"',
     'src="script.js"',
     'src="case-study-energy-flow.js"',
-    'data-chapter-tab="research"',
-    'data-chapter-tab="design"',
+    'data-case-section-link="research-chapter"',
+    'data-case-section-link="design-chapter"',
+    'data-case-section-link="reflection"',
 ):
     if required_shell_marker not in energy_page:
         errors.append(f"case-study-energy-flow.html: missing production shell marker {required_shell_marker}")

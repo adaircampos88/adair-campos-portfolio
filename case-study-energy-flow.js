@@ -1,75 +1,69 @@
 (() => {
   const root = document.documentElement;
-  const body = document.body;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const motionIsReduced = () => reduceMotion.matches || root.dataset.a11yMotion === 'reduced';
 
-  const chapterTabs = [...document.querySelectorAll('[data-chapter-tab]')];
   const chapterPanels = [...document.querySelectorAll('[data-chapter-panel]')];
   const chapterOpeners = [...document.querySelectorAll('[data-chapter-open]')];
-  const chapterNav = document.querySelector('.lab-chapter-nav');
-  let chapterNavIdleTimer;
+  const sectionNav = document.querySelector('.case-context-nav');
+  const sectionLinks = [...document.querySelectorAll('[data-case-section-link]')];
+  const readingSections = sectionLinks
+    .map((link) => [link.dataset.caseSectionLink, document.getElementById(link.dataset.caseSectionLink)])
+    .filter(([, section]) => section);
 
-  const wakeChapterNav = () => {
-    if (!chapterNav) return;
-    chapterNav.classList.remove('is-idle');
-    window.clearTimeout(chapterNavIdleTimer);
-    chapterNavIdleTimer = window.setTimeout(() => chapterNav.classList.add('is-idle'), 1700);
+  let activeSectionId = '';
+  const setActiveSection = (sectionId) => {
+    if (sectionId === activeSectionId) return;
+    activeSectionId = sectionId;
+    let activeLink;
+    sectionLinks.forEach((link) => {
+      const active = link.dataset.caseSectionLink === sectionId;
+      link.classList.toggle('is-active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+      if (active) activeLink = link;
+    });
+    activeLink?.scrollIntoView({
+      behavior: motionIsReduced() ? 'auto' : 'smooth',
+      block: 'nearest',
+      inline: 'nearest'
+    });
   };
 
-  const setActiveChapter = (chapter, options = {}) => {
-    const { updateHash = false } = options;
-    const selectedTab = chapterTabs.find((tab) => tab.dataset.chapterTab === chapter);
-    const selectedPanel = chapterPanels.find((panel) => panel.dataset.chapterPanel === chapter);
-    if (!selectedTab || !selectedPanel) return;
-
-    chapterTabs.forEach((tab) => {
-      const active = tab === selectedTab;
-      tab.classList.toggle('is-active', active);
-      if (active) tab.setAttribute('aria-current', 'location');
-      else tab.removeAttribute('aria-current');
+  let sectionUpdateFrame = 0;
+  const updateActiveSection = () => {
+    sectionUpdateFrame = 0;
+    if (!readingSections.length) return;
+    const navBottom = sectionNav?.getBoundingClientRect().bottom || 0;
+    const activationLine = Math.max(navBottom + 18, window.innerHeight * .18);
+    let activeId = readingSections[0][0];
+    readingSections.forEach(([sectionId, section]) => {
+      if (section.getBoundingClientRect().top <= activationLine) activeId = sectionId;
     });
-    body.dataset.energyChapter = chapter;
+    setActiveSection(activeId);
+  };
 
-    if (updateHash) history.replaceState(null, '', `#${selectedPanel.id}`);
+  const requestSectionUpdate = () => {
+    if (sectionUpdateFrame) return;
+    sectionUpdateFrame = window.requestAnimationFrame(updateActiveSection);
   };
 
   const scrollToChapter = (chapter) => {
     const selectedPanel = chapterPanels.find((panel) => panel.dataset.chapterPanel === chapter);
     if (!selectedPanel) return;
-    setActiveChapter(chapter, { updateHash: true });
-    wakeChapterNav();
+    history.replaceState(null, '', `#${selectedPanel.id}`);
     selectedPanel.scrollIntoView({
       behavior: motionIsReduced() ? 'auto' : 'smooth',
       block: 'start'
     });
   };
 
-  chapterTabs.forEach((tab, index) => {
-    tab.addEventListener('click', (event) => {
-      event.preventDefault();
-      scrollToChapter(tab.dataset.chapterTab);
-    });
-    tab.addEventListener('keydown', (event) => {
-      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-      event.preventDefault();
-      let nextIndex = index;
-      if (event.key === 'ArrowRight') nextIndex = (index + 1) % chapterTabs.length;
-      if (event.key === 'ArrowLeft') nextIndex = (index - 1 + chapterTabs.length) % chapterTabs.length;
-      if (event.key === 'Home') nextIndex = 0;
-      if (event.key === 'End') nextIndex = chapterTabs.length - 1;
-      chapterTabs[nextIndex].focus();
-      scrollToChapter(chapterTabs[nextIndex].dataset.chapterTab);
-    });
-  });
   chapterOpeners.forEach((button) => button.addEventListener('click', () => scrollToChapter(button.dataset.chapterOpen)));
-
-  const initialChapter = /design|model-system|low-fidelity|diverge|develop/.test(window.location.hash) ? 'design' : 'research';
-  setActiveChapter(initialChapter);
-  ['pointermove', 'touchstart', 'keydown'].forEach((eventName) => document.addEventListener(eventName, wakeChapterNav, { passive: true }));
-  chapterNav?.addEventListener('focusin', wakeChapterNav);
-  chapterNav?.addEventListener('pointerenter', wakeChapterNav);
-  wakeChapterNav();
+  sectionLinks.forEach((link) => link.addEventListener('click', () => setActiveSection(link.dataset.caseSectionLink)));
+  window.addEventListener('scroll', requestSectionUpdate, { passive: true });
+  window.addEventListener('resize', requestSectionUpdate);
+  window.addEventListener('hashchange', requestSectionUpdate);
+  requestSectionUpdate();
 
   const requirementCopy = {
     clarity: {
@@ -191,22 +185,4 @@
   };
   developedButtons.forEach((button) => button.addEventListener('click', () => selectDevelopedDecision(button.dataset.developedDecision)));
 
-  const updateActiveChapterFromScroll = () => {
-    const designPanel = chapterPanels.find((panel) => panel.dataset.chapterPanel === 'design');
-    if (!designPanel) return;
-    const chapterNavBottom = chapterNav?.getBoundingClientRect().bottom || 0;
-    const activationLine = Math.max(Math.min(window.innerHeight * .34, 340), chapterNavBottom + 10);
-    setActiveChapter(designPanel.getBoundingClientRect().top <= activationLine ? 'design' : 'research');
-  };
-  const updateReadingState = () => {
-    updateActiveChapterFromScroll();
-    wakeChapterNav();
-  };
-  window.addEventListener('scroll', updateReadingState, { passive: true });
-  window.addEventListener('resize', updateActiveChapterFromScroll);
-  window.addEventListener('hashchange', () => {
-    setActiveChapter(/design|model-system|low-fidelity|diverge|develop/.test(window.location.hash) ? 'design' : 'research');
-    wakeChapterNav();
-  });
-  requestAnimationFrame(updateActiveChapterFromScroll);
 })();

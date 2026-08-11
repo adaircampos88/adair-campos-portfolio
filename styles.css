@@ -945,6 +945,7 @@ html[data-theme="dark"] .cv-hero-photo,html[data-theme="dark"] .cv-contact-photo
 .case-context-nav>div::-webkit-scrollbar{display:none}
 .case-context-nav a{display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border:1px solid var(--air-border);border-radius:999px;background:var(--surface);color:var(--muted);font-size:12px;font-weight:750;white-space:nowrap}
 .case-context-nav a:hover{color:var(--ink);border-color:var(--brand)}
+.case-context-nav a[data-case-section-link].is-active{border-color:var(--ink);background:var(--ink);color:var(--paper);box-shadow:0 7px 18px rgba(14,55,68,.16)}
 .case-context-nav .back-to-work{background:transparent;border-color:transparent;color:var(--ink);padding-left:0}
 
 /* Airbnb-like content canvas */
@@ -1003,6 +1004,7 @@ html[data-theme="dark"] .airbnb-desktop-nav,html[data-theme="dark"] .header-icon
 html[data-theme="dark"] .air-nav-tab.is-active{background:#173943}
 html[data-theme="dark"] .air-contact{background:#edf7f9;border-color:#edf7f9;color:#102832!important}
 html[data-theme="dark"] .case-context-nav{background:rgba(9,27,34,.92)}
+html[data-theme="dark"] .case-context-nav a[data-case-section-link].is-active{border-color:#edf7f9;background:#edf7f9;color:#102832}
 html[data-theme="dark"] .airbnb-shell .home-hero{background:linear-gradient(145deg,#102a34,#0e2530)}
 html[data-theme="dark"] .airbnb-project-card{background:#102a34!important}
 html[data-theme="dark"] .airbnb-project-card .featured-copy,html[data-theme="dark"] .airbnb-project-card .supporting-project-copy{background:#102a34!important}
