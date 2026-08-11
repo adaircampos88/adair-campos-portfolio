@@ -100,6 +100,7 @@ for required_file in (
     "assets/meta/favicon.svg", "assets/meta/apple-touch-icon.png", "assets/meta/og-portfolio.png",
     "tools/build_site.py", ".github/workflows/deploy-pages.yml",
     "energy-prototype/index.html",
+    "case-study-energy-flow.css", "case-study-energy-flow.js",
 ):
     if not (ROOT / required_file).exists():
         errors.append(f"Missing launch file: {required_file}")
@@ -130,6 +131,35 @@ sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
 for legal_page in ("privacy.html", "impressum.html"):
     if legal_page in sitemap:
         errors.append(f"sitemap.xml should not list privacy-sensitive page {legal_page}")
+
+energy_page = (ROOT / "case-study-energy-flow.html").read_text(encoding="utf-8")
+for required_shell_marker in (
+    'class="site-header airbnb-header"',
+    'class="airbnb-desktop-nav"',
+    'class="mobile-bottom-nav"',
+    'class="theme-toggle"',
+    'class="cookie-settings-button"',
+    'href="https://www.linkedin.com/in/adair-campos-b1b5415a"',
+    'href="mailto:adaircampos88@gmail.com"',
+    'src="script.js"',
+    'src="case-study-energy-flow.js"',
+    'data-chapter-tab="research"',
+    'data-chapter-tab="design"',
+):
+    if required_shell_marker not in energy_page:
+        errors.append(f"case-study-energy-flow.html: missing production shell marker {required_shell_marker}")
+
+for forbidden_copy in (
+    "noindex",
+    "Not published",
+    "Preview controls",
+    "Local process lab",
+    "Review before integration",
+    "Potential story transition",
+    "case-study-energy-flow-lab",
+):
+    if forbidden_copy in energy_page:
+        errors.append(f"case-study-energy-flow.html: contains private/lab marker {forbidden_copy}")
 
 if errors:
     print("Site validation failed:")

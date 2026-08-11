@@ -255,7 +255,7 @@ function EnergyArtwork({ flows, layout, motionOverride }: { flows: EnergyFlows; 
       if (!reducedMotion && item.power > 0.04) {
         const count = item.profile === "direct" ? 2 : 1;
         for (let particle = 0; particle < count; particle += 1) {
-          const duration = 3200 - Math.min(1650, item.power * 105);
+          const duration = 5000 - Math.min(2100, item.power * 115);
           const progress = ((time / duration) + particle / count) % 1;
           const point = pointOnCurve(item.start, item.controlA, item.controlB, item.end, progress);
           const tangent = tangentOnCurve(item.start, item.controlA, item.controlB, item.end, progress);
@@ -343,7 +343,7 @@ function EnergyArtwork({ flows, layout, motionOverride }: { flows: EnergyFlows; 
         const scale = w / 375;
         const target = item.power < 0.04 ? 0 : Math.min(100, 22 + 20 * Math.sqrt(item.power)) * scale;
         const existing = currentWidths.current[item.id] ?? target;
-        const next = existing + (target - existing) * 0.09;
+        const next = existing + (target - existing) * 0.04;
         currentWidths.current[item.id] = Math.abs(next - target) < 0.05 ? target : next;
         drawRibbon(item, next, time);
       }
@@ -491,7 +491,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!dayMode || !dayPlaying || (window.matchMedia("(prefers-reduced-motion: reduce)").matches && !motionOverride)) return;
-    const timer = window.setInterval(() => setDayMinutes((current) => (current + 4) % 1440), 120);
+    const timer = window.setInterval(() => setDayMinutes((current) => (current + 1) % 1440), 240);
     return () => window.clearInterval(timer);
   }, [dayMode, dayPlaying, motionOverride]);
 

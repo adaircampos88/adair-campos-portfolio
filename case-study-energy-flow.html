@@ -1,283 +1,466 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="light dark" name="color-scheme"/>
-<script>
-(() => {
-  try {
-    const saved = localStorage.getItem('portfolio-theme');
-    const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    document.documentElement.dataset.theme = saved || preferred;
-  } catch (error) {
-    document.documentElement.dataset.theme = 'light';
-  }
-})();
-</script>
-<meta content="A product design case study by Adair Campos exploring the future of residential energy management." name="description"/>
-<link href="https://adaircampos.com/case-study-energy-flow.html" rel="canonical"/>
-<meta content="Residential Energy Management — Adair Campos" property="og:title"/><meta content="A product strategy and concept-design case study exploring clearer residential energy management." property="og:description"/><meta content="article" property="og:type"/><meta content="https://adaircampos.com/case-study-energy-flow.html" property="og:url"/><meta content="https://adaircampos.com/assets/meta/og-portfolio.png" property="og:image"/><meta content="Adair Campos product design portfolio" property="og:image:alt"/>
-<meta content="summary_large_image" name="twitter:card"/><meta content="Residential Energy Management — Adair Campos" name="twitter:title"/><meta content="Product strategy, systems thinking and concept design for residential energy management." name="twitter:description"/><meta content="https://adaircampos.com/assets/meta/og-portfolio.png" name="twitter:image"/>
-<title>Residential Energy Management — Adair Campos</title>
-<link href="assets/meta/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="assets/meta/apple-touch-icon.png" rel="apple-touch-icon"/>
-<link href="styles.css" rel="stylesheet"/>
-<script defer="" src="site-config.js"></script>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="light dark" name="color-scheme"/>
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('portfolio-theme');
+        const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = saved || preferred;
+      } catch (error) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
+  <meta content="A product design case study by Adair Campos showing how European market research, expert interviews and systems thinking shaped a future direction for residential Energy Flow." name="description"/>
+  <link href="https://adaircampos.com/case-study-energy-flow.html" rel="canonical"/>
+  <meta content="Forward-Looking Design: Residential Energy Flow — Adair Campos" property="og:title"/>
+  <meta content="How European research and systems thinking shaped a clearer future direction for residential energy management." property="og:description"/>
+  <meta content="article" property="og:type"/>
+  <meta content="https://adaircampos.com/case-study-energy-flow.html" property="og:url"/>
+  <meta content="https://adaircampos.com/assets/meta/og-portfolio.png" property="og:image"/>
+  <meta content="Adair Campos product design portfolio" property="og:image:alt"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="Forward-Looking Design: Residential Energy Flow — Adair Campos" name="twitter:title"/>
+  <meta content="Research, product direction and design evolution for a clearer residential Energy Flow experience." name="twitter:description"/>
+  <meta content="https://adaircampos.com/assets/meta/og-portfolio.png" name="twitter:image"/>
+  <title>Forward-Looking Design: Residential Energy Flow — Adair Campos</title>
+  <link href="assets/meta/favicon.svg" rel="icon" type="image/svg+xml"/>
+  <link href="assets/meta/apple-touch-icon.png" rel="apple-touch-icon"/>
+  <link href="styles.css" rel="stylesheet"/>
+  <link href="case-study-energy-flow.css" rel="stylesheet"/>
+  <script defer src="site-config.js"></script>
 </head>
-<body class="airbnb-shell">
-<a class="skip-link" href="#top">Skip to main content</a>
-<div aria-hidden="true" class="progress"><span id="progressBar"></span></div>
-<header class="site-header airbnb-header">
-<a class="brand airbnb-brand" href="index.html#top"><span aria-hidden="true" class="brand-symbol">A</span><span class="brand-name">Adair Campos</span></a>
-<nav aria-label="Primary navigation" class="airbnb-desktop-nav"><a class="air-nav-tab" data-nav-key="home" href="index.html#top"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.7 12 3.5l8.5 7.2v8.1a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7v-8.1Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M9.3 20.5v-6.1h5.4v6.1" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span class="nav-label">Home</span></a><a aria-current="page" class="air-nav-tab is-active" data-nav-key="work" href="index.html#work"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="4"></rect><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="4"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="14"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="14"></rect></svg><span class="nav-label">Work</span></a><a class="air-nav-tab" data-nav-key="about" href="index.html#about"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="12" cy="8" r="3.3" stroke="currentColor" stroke-width="1.8"></circle><path d="M5.4 20c.6-4 3-6.2 6.6-6.2s6 2.2 6.6 6.2" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span class="nav-label">About</span></a><a class="air-nav-tab" data-nav-key="cv" href="cv.html"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M6 3.5h8l4 4V20.5H6z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M14 3.5v4h4M9 12h6M9 15.5h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span class="nav-label">CV</span></a></nav>
-<div class="airbnb-header-actions">
-<a aria-label="Open Adair Campos on LinkedIn" class="header-icon-link linkedin-link" href="https://www.linkedin.com/in/adair-campos-b1b5415a" rel="noreferrer" target="_blank"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M6.7 8.4H3.5V20h3.2V8.4ZM5.1 3A1.9 1.9 0 1 0 5 6.8 1.9 1.9 0 0 0 5.1 3ZM20.5 13.3c0-3.5-1.9-5.2-4.4-5.2-2 0-3 1.1-3.5 1.9V8.4H9.4V20h3.2v-5.8c0-1.5.3-3 2.2-3 1.8 0 1.9 1.7 1.9 3.1V20h3.2v-6.7h.6Z"></path></svg></a>
-<a class="nav-cta air-contact" href="mailto:adaircampos88@gmail.com">Contact</a>
-<button aria-label="Switch to dark mode" aria-pressed="false" class="theme-toggle" type="button"><span aria-hidden="true" class="theme-toggle-icon">☾</span><span class="theme-toggle-text">Theme</span></button>
-</div>
-</header><nav aria-label="Case study sections" class="case-context-nav"><a class="back-to-work" href="index.html#work">← All work</a><div><a href="#overview">Overview</a><a href="#process">Process</a><a href="#solution">Solution</a><a href="#reflection">Reflection</a></div></nav>
-<main id="top">
-<section class="hero section-pad">
-<div class="hero-copy reveal">
-<p class="eyebrow">Product strategy · Research · Concept design</p>
-<h1>Designing the future of residential energy management</h1>
-<p class="hero-lede">How I used market research, user insights, journey mapping and concept exploration to make a complex Energy Flow experience easier to understand for European homeowners.</p>
-<div class="hero-meta">
-<span>European residential market</span>
-<span>Strategic concept project</span>
-<span>Research to mid-fidelity</span>
-</div>
-</div>
-<div aria-label="Conceptual residential energy dashboard" class="hero-visual energy-art-visual reveal">
-<div class="source-hero-stage energy-source-hero">
-<div class="source-phone-frame"><img alt="Developed mid-fidelity Energy Flow concept" loading="eager" src="assets/projects/energy/hero.webp"/></div>
-<div class="floating-note note-one"><small>Real project artifact</small><strong>Concept B · developed direction</strong></div>
-<div class="floating-note note-two"><small>Design focus</small><strong>Hierarchy, status and progressive detail</strong></div>
-</div></div>
-</section>
-<section class="snapshot section-pad reveal" id="overview">
-<div class="section-intro">
-<p class="eyebrow">Project snapshot</p>
-<h2>A strategic direction, not a cosmetic redesign</h2>
-</div>
-<div class="snapshot-grid">
-<article><small>Role</small><strong>Product Designer</strong><p>European Design Team</p></article>
-<article><small>Scope</small><strong>Research → strategy → concepts</strong><p>Competitive analysis, interviews, journeys and mid-fidelity design</p></article>
-<article><small>Focus</small><strong>Residential Energy Flow</strong><p>Clarity, adaptability and trust</p></article>
-<article><small>Outcome</small><strong>Future product direction</strong><p>A foundation for validation and implementation</p></article>
-</div>
-<aside class="truth-note">
-<strong>Portfolio transparency</strong>
-<p>This was a collaborative strategic concept project. I show only the research, frameworks and design work I personally created or meaningfully contributed to. The concept was not yet a launched feature with measured customer outcomes.</p>
-</aside>
-</section>
-<section class="context section-pad section-dark reveal">
-<div class="section-intro light">
-<p class="eyebrow">Why the project existed</p>
-<h2>Residential energy was becoming a connected ecosystem</h2>
-<p>Homeowners were no longer monitoring only solar production. Batteries, EV charging, dynamic tariffs, smart appliances and grid interaction were creating a richer—and harder to understand—experience.</p>
-</div>
-<div aria-label="Residential energy ecosystem" class="ecosystem" role="img">
-<div class="eco-item"><span>01</span><div aria-hidden="true" class="eco-icon eco-solar"><svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" fill="currentColor" opacity=".95" r="5"></circle><path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M19.1 4.9l-2.8 2.8M7.7 16.3l-2.8 2.8" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path><path d="M21 18h14l3 12H24z" fill="currentColor" opacity=".16"></path><path d="M21 18h14l3 12H24z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path><path d="M26 20v10M31 20v10M36 20v10M23.5 24h15.2M22.5 28h15.8" opacity=".8" stroke="currentColor" stroke-width="1.6"></path><path d="M28 30l-4 6M35 30l4 6" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg></div><b>Solar</b></div><em>→</em>
-<div class="eco-item"><span>02</span><div aria-hidden="true" class="eco-icon eco-battery"><svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect height="24" rx="5" stroke="currentColor" stroke-width="2.4" width="24" x="10" y="12"></rect><rect fill="currentColor" height="8" rx="1.5" width="4" x="34" y="20"></rect><rect fill="currentColor" height="17" opacity=".2" rx="2" width="8" x="13.5" y="15.5"></rect><rect fill="currentColor" height="17" opacity=".45" rx="2" width="8" x="22.5" y="15.5"></rect><path d="M25 16l-5 8h4l-2 8 7-10h-4l2-6z" fill="currentColor"></path></svg></div><b>Battery</b></div><em>→</em>
-<div class="eco-item"><span>03</span><div aria-hidden="true" class="eco-icon eco-home"><svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M10 22.5L24 11l14 11.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path><path d="M14 21v16h20V21" stroke="currentColor" stroke-linejoin="round" stroke-width="2.5"></path><rect fill="currentColor" height="10" opacity=".2" rx="1.4" width="7" x="20.5" y="27"></rect><path d="M31 16v-4h3v6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><circle cx="24" cy="29" fill="currentColor" r="1.2"></circle></svg></div><b>Home</b></div><em>→</em>
-<div class="eco-item"><span>04</span><div aria-hidden="true" class="eco-icon eco-ev"><svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M14 30l2.8-7.2A3 3 0 0 1 19.6 21h8.8a3 3 0 0 1 2.8 1.8L34 30" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3"></path><path d="M12 30h24v5a3 3 0 0 1-3 3H15a3 3 0 0 1-3-3v-5z" fill="currentColor" opacity=".14"></path><path d="M12 30h24v5a3 3 0 0 1-3 3H15a3 3 0 0 1-3-3v-5z" stroke="currentColor" stroke-linejoin="round" stroke-width="2.3"></path><circle cx="18" cy="36" fill="currentColor" r="2.4"></circle><circle cx="30" cy="36" fill="currentColor" r="2.4"></circle><path d="M38 16v9" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"></path><path d="M35.5 18.5V16M40.5 18.5V16" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"></path><path d="M29 16h5.5c1.9 0 3.5 1.6 3.5 3.5V22" stroke="currentColor" stroke-linecap="round" stroke-width="2.2"></path><path d="M22.5 24l-2.3 3.8h2.5l-1.2 3.4 4.1-5.4h-2.7l1.2-2.8z" fill="currentColor"></path></svg></div><b>EV</b></div><em>→</em>
-<div class="eco-item"><span>05</span><div aria-hidden="true" class="eco-icon eco-grid"><svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 9L14 18h5l-3 20h16l-3-20h5L24 9z" fill="currentColor" opacity=".1"></path><path d="M24 9L14 18h5l-3 20h16l-3-20h5L24 9z" stroke="currentColor" stroke-linejoin="round" stroke-width="2.2"></path><path d="M19 18h10M17 24h14M16 30h16M21 18l-2 20M27 18l2 20" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path><path d="M24 9v29" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg></div><b>Grid</b></div>
-</div>
-<blockquote>How might a digital product explain this complexity without making the user feel like an energy engineer?</blockquote>
-</section>
-<section class="role section-pad reveal">
-<div class="section-intro">
-<p class="eyebrow">My role</p>
-<h2>Working across research, strategy and concept design</h2>
-</div>
-<div aria-label="Areas of ownership" class="role-track">
-<article><span>01</span><strong>Research</strong><p>Competitive framework and internal expert interviews</p></article>
-<article><span>02</span><strong>Analysis</strong><p>Thematic synthesis, user profiles and motivation mapping</p></article>
-<article><span>03</span><strong>Strategy</strong><p>Journey prioritisation, problem definition and principles</p></article>
-<article><span>04</span><strong>Design</strong><p>Concept directions, scenarios and mid-fidelity outcomes</p></article>
-</div>
-</section>
-<section class="process section-pad reveal" id="process">
-<div class="section-intro">
-<p class="eyebrow">Applied process</p>
-<h2>Finding the right problem before designing the solution</h2>
-</div>
-<div class="process-grid">
-<article><span>Discover</span><h3>Understand the landscape</h3><p>Market trends, competitor research and expert interviews.</p></article>
-<article><span>Define</span><h3>Focus the opportunity</h3><p>Behavioural profiles, motivation mapping, journeys and prioritisation.</p></article>
-<article><span>Develop</span><h3>Explore possibilities</h3><p>Technical modelling, information hierarchy and two concept directions.</p></article>
-<article><span>Deliver</span><h3>Create a direction</h3><p>Mid-fidelity scenarios, recommendations and next steps for validation.</p></article>
-</div>
-</section>
-<section class="market section-pad section-soft reveal">
-<div class="section-intro split-intro">
-<div>
-<p class="eyebrow">Learning from the market</p>
-<h2>Looking beyond interfaces to understand where the industry was heading</h2>
-</div>
-<p>I analysed direct energy competitors, adjacent products and digital experiences outside the industry through four strategic lenses.</p>
-</div>
-<div class="lens-grid">
-<article><i>◎</i><strong>Personalisation</strong><p>How products adapt to roles, goals and levels of expertise.</p></article>
-<article><i>▦</i><strong>Omnichannel</strong><p>How experiences scale across mobile, tablet and desktop.</p></article>
-<article><i>✦</i><strong>AI assistance</strong><p>How forecasting and automation reduce manual energy management.</p></article>
-<article><i>↝</i><strong>Energy Flow</strong><p>How products turn technical movement into an understandable story.</p></article>
-</div>
-<div class="finding-strip">
-<p><strong>Key finding:</strong> the strongest homeowner products showed essential information first and treated technical depth as progressive—not compulsory.</p>
-</div>
-</section>
-<section class="research section-pad reveal">
-<div class="section-intro">
-<p class="eyebrow">Understanding the users</p>
-<h2>Combining internal expertise with previous European research</h2>
-<p>These were internal expert interviews rather than direct customer interviews. I combined them with previous European studies and available research from HQ.</p>
-</div>
-<div class="stat-grid">
-<article><strong>5</strong><span>expert interviews</span></article>
-<article><strong>3</strong><span>European markets</span></article>
-<article><strong>3</strong><span>business functions</span></article>
-<article><strong>40–60</strong><span>minutes each</span></article>
-</div>
-<div class="analysis-flow">
-<div>Interview notes</div><span>→</span><div>Insight cards</div><span>→</span><div>Clusters</div><span>→</span><div>Profiles &amp; journeys</div>
-</div>
-</section>
-<section class="profiles section-pad section-dark reveal">
-<div class="section-intro light">
-<p class="eyebrow">Working behavioural profiles</p>
-<h2>A single “residential user” did not exist</h2>
-</div>
-<div class="profile-grid">
-<article><span>01</span><h3>Practical Energy Player</h3><p>Savings, simplicity and reassurance. Wants reliable information without becoming an energy expert.</p><small>Needs: value, clarity, confidence</small></article>
-<article><span>02</span><h3>Independent Homeowner</h3><p>Energy independence, long-term reliability and automated support.</p><small>Needs: autonomy, predictability, guidance</small></article>
-<article><span>03</span><h3>Technical Energy Player</h3><p>Control, optimisation and detailed system information.</p><small>Needs: depth, precision, advanced controls</small></article>
-</div>
-</section>
-<section class="opportunity section-pad reveal">
-<div class="section-intro split-intro">
-<div>
-<p class="eyebrow">Mapping the opportunity</p>
-<h2>Finding the users the market was serving—and those it was overlooking</h2>
-</div>
-<p>Competitors clustered around installers and technically engaged users. The opportunity was to better support homeowners motivated by savings, simplicity and independence.</p>
-</div>
-<figure class="source-figure source-figure-dark"><img alt="Motivation matrix mapping user types by innovation, efficiency, environmental and economic priorities" loading="lazy" src="assets/projects/energy/motivation-matrix.webp"/><figcaption>Original motivation matrix used to compare user motivations and identify underserved needs.</figcaption></figure>
-</section>
-<section class="journey section-pad section-soft reveal">
-<div class="section-intro">
-<p class="eyebrow">From journey to focus</p>
-<h2>Energy Flow became the moment that shaped everyday trust</h2>
-</div>
-<div class="journey-track">
-<article><span>01</span><strong>Pre-installation</strong></article>
-<article><span>02</span><strong>Installation</strong></article>
-<article><span>03</span><strong>Onboarding</strong></article>
-<article class="active"><span>04</span><strong>Monitoring</strong><small>Moment of truth</small></article>
-<article><span>05</span><strong>Maintenance</strong></article>
-</div>
-<div class="zoom-card"><span>Monitoring</span><b>→</b><strong>Energy Flow</strong><p>The place where users repeatedly judge system health, performance and value.</p></div><figure class="source-figure source-figure-wide"><img alt="Detailed residential installation and monitoring journey map" loading="lazy" src="assets/projects/energy/journey-map.webp"/><figcaption>Detailed working journey map showing the handoff between installer and homeowner across pre-installation, installation and post-installation.</figcaption></figure>
-</section>
-<section class="problems section-pad reveal">
-<div class="section-intro">
-<p class="eyebrow">The current experience</p>
-<h2>The interface displayed the system—but still asked casual users to interpret too much technical logic</h2>
-</div>
-<div class="problem-layout">
-<div aria-label="Annotated conceptual current-state interface" class="problem-ui">
-<div class="source-problem-frame"><img alt="Existing Energy Flow interface analysed during the project" loading="lazy" src="assets/projects/energy/current-energy-flow.webp"/></div>
-<span class="pin p1">1</span><span class="pin p2">2</span><span class="pin p3">3</span><span class="pin p4">4</span></div>
-<div class="problem-list">
-<article><span>1</span><div><strong>No immediate status</strong><p>Users could not quickly tell whether the system was normal, offline or in a fault state.</p></div></article>
-<article><span>2</span><div><strong>Data overload</strong><p>Technical values competed for attention without a clear order of importance.</p></div></article>
-<article><span>3</span><div><strong>Misleading connections</strong><p>Visual relationships did not always make actual energy movement easy to trust.</p></div></article>
-<article><span>4</span><div><strong>Unclear load hierarchy</strong><p>Home, battery, EV and connected-device demand were difficult to distinguish.</p></div></article>
-</div>
-</div>
-</section>
-<section class="principles section-pad section-dark reveal" id="solution">
-<div class="section-intro light">
-<p class="eyebrow">Design direction</p>
-<h2>From technology-first to user-first</h2>
-</div>
-<div class="principle-grid">
-<article><span>01</span><h3>Clarity</h3><p>Give users an understandable system status at a glance.</p></article>
-<article><span>02</span><h3>Adaptability</h3><p>Offer a simple default view with deeper technical information when needed.</p></article>
-<article><span>03</span><h3>Trustworthiness</h3><p>Represent energy movement, device connections and system states accurately.</p></article>
-</div>
-<div class="hierarchy">
-<div><small>Essential</small><strong>Solar · Home · Grid · Status</strong></div>
-<span>→</span>
-<div><small>Secondary</small><strong>Battery · EV charging</strong></div>
-<span>→</span>
-<div><small>Progressive detail</small><strong>Smart devices · Technical infrastructure</strong></div>
-</div>
-</section>
-<section class="concepts section-pad reveal">
-<div class="section-intro">
-<p class="eyebrow">Concept exploration</p>
-<h2>Two directions for making complexity easier to understand</h2>
-</div>
-<div class="concept-grid">
-<article class="concept-card">
-<div class="source-concept-frame"><img alt="Concept A visual Energy Flow exploration" loading="lazy" src="assets/projects/energy/concept-a.webp"/></div>
-<div class="concept-copy"><small>Concept A</small><h3>Visual energy storytelling</h3><p>Stronger colour, movement and hierarchy to make activity immediately visible.</p><dl><dt>Strength</dt><dd>Expressive and easy to scan.</dd><dt>Trade-off</dt><dd>Colour and motion may increase cognitive or accessibility concerns.</dd></dl></div>
-</article>
-<article class="concept-card selected">
-<div class="source-concept-frame"><img alt="Concept B structured Energy Flow exploration" loading="lazy" src="assets/projects/energy/concept-b.webp"/></div>
-<div class="concept-copy"><small>Concept B · Developed direction</small><h3>Structured progressive disclosure</h3><p>A clearer hierarchy, descriptive status language and additional detail through interaction.</p><dl><dt>Strength</dt><dd>More adaptable across different user expertise.</dd><dt>Trade-off</dt><dd>Less immediate visual storytelling and potentially more interaction.</dd></dl></div>
-</article>
-</div>
-</section>
-<section class="outcome section-pad section-soft reveal">
-<div class="outcome-heading">
-<p class="eyebrow">Developed concept direction</p>
-<h2>A clearer, adaptive and more trustworthy Energy Flow</h2>
-<p class="outcome-lede">The developed direction translated technical system behaviour into an approachable residential experience while preserving access to deeper information.</p>
-</div>
-<div class="outcome-showcase">
-<div class="outcome-visual-column">
-<div class="source-phone-frame outcome-source-phone"><img alt="Developed Energy Flow concept direction" loading="lazy" src="assets/projects/energy/concept-b.webp"/></div>
-<div class="outcome-caption"><small>Developed concept</small><p>A structured default view that gives users status, energy direction and the most important values before deeper technical detail.</p></div>
-</div>
-<div class="outcome-content-column">
-<div class="outcome-summary-head"><small>Key improvements</small><h3>Four design decisions shaped the final direction</h3><p>Each decision responds directly to the research findings and makes the Energy Flow easier to understand, trust and extend.</p></div>
-<div class="outcome-card-grid">
-<article><span>01</span><strong>Status before data</strong><p>The user first understands what is happening, then sees the numbers.</p></article>
-<article><span>02</span><strong>Accurate active connections</strong><p>Movement is shown only when energy is actually flowing.</p></article>
-<article><span>03</span><strong>Progressive technical depth</strong><p>Detailed information remains available without dominating the default view.</p></article>
-<article><span>04</span><strong>A scalable household hierarchy</strong><p>Battery, EV and future smart devices have a clear place in the system.</p></article>
-</div>
-</div>
-</div>
-<div class="outcome-principle-band">
-<div><small>Beyond the default view</small><h3>Technical depth stays available without overwhelming the main Energy Flow screen.</h3></div>
-<ul><li>Prioritise system status and the most important live values first</li><li>Reveal deeper component information only when the user needs it</li><li>Keep Energy Flow focused on understanding, not data overload</li></ul>
-</div>
-</section>
-<section class="reflection section-pad reveal" id="reflection">
-<div class="reflection-grid">
-<div>
-<p class="eyebrow">Outcome &amp; reflection</p>
-<h2>Creating direction before implementation</h2>
-<p>The project did not produce a launched feature with measurable customer outcomes. It created a research-informed direction for simplifying Energy Flow and approaching future residential experiences.</p>
-</div>
-<div class="reflection-list">
-<article><strong>What the project created</strong><p>Behavioural profiles, a prioritised moment of truth, four defined UX problems, experience principles and two concept directions.</p></article>
-<article><strong>What I learned</strong><p>Simplification does not mean removing complexity blindly. It means deciding which complexity users need, when they need it and how it should be communicated.</p></article>
-<article><strong>Next validation step</strong><p>Test the concepts directly with homeowners and installers, measure comprehension, assess accessibility and refine the chosen direction for development.</p></article>
-</div>
-</div>
-<blockquote>My role was to bring different user needs into the same product conversation and translate them into a direction that was easier to understand without losing technical credibility.</blockquote>
-</section>
-</main>
-<section class="next-case section-pad section-soft reveal">
-<p class="eyebrow">Next case study</p><h2>Understanding home EV-charging behaviours</h2><p>See how six interviews uncovered opportunities around automation, cost transparency and flexible control.</p><a class="primary-button" href="case-study-ev-research.html">Read the EV research case study <span>→</span></a>
-</section>
-<footer><strong>Adair Campos</strong><span>Senior Product Designer · Munich, Germany</span><div class="footer-links"><a href="cv.html">CV</a><a href="mailto:adaircampos88@gmail.com">Email</a><a aria-label="Open Adair Campos on LinkedIn" href="https://www.linkedin.com/in/adair-campos-b1b5415a" rel="noreferrer" target="_blank">LinkedIn ↗</a><a href="privacy.html">Privacy / Datenschutz</a><a href="impressum.html">Impressum</a><button class="cookie-settings-button" type="button">Cookie settings</button><a href="#top">Back to top ↑</a></div></footer>
-<nav aria-label="Mobile primary navigation" class="mobile-bottom-nav"><a class="mobile-nav-item" data-mobile-nav="home" href="index.html#top"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M3.5 10.7 12 3.5l8.5 7.2v8.1a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7v-8.1Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M9.3 20.5v-6.1h5.4v6.1" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span>Home</span></a><a aria-current="page" class="mobile-nav-item is-active" data-mobile-nav="work" href="index.html#work"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="4"></rect><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="4"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="14"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="14"></rect></svg><span>Work</span></a><a class="mobile-nav-item" data-mobile-nav="about" href="index.html#about"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="12" cy="8" r="3.3" stroke="currentColor" stroke-width="1.8"></circle><path d="M5.4 20c.6-4 3-6.2 6.6-6.2s6 2.2 6.6 6.2" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span>About</span></a><a class="mobile-nav-item" data-mobile-nav="cv" href="cv.html"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M6 3.5h8l4 4V20.5H6z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M14 3.5v4h4M9 12h6M9 15.5h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span>CV</span></a><a class="mobile-nav-item" data-mobile-nav="contact" href="mailto:adaircampos88@gmail.com"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><rect height="13" rx="3" stroke="currentColor" stroke-width="1.8" width="17" x="3.5" y="5.5"></rect><path d="m5 7 7 5.3L19 7" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span>Contact</span></a></nav><script defer="" src="script.js"></script>
+<body class="airbnb-shell energy-flow-page">
+  <a class="skip-link" href="#top">Skip to main content</a>
+  <div aria-hidden="true" class="progress"><span id="progressBar"></span></div>
+
+  <header class="site-header airbnb-header">
+    <a class="brand airbnb-brand" href="index.html#top">
+      <span aria-hidden="true" class="brand-symbol">A</span>
+      <span class="brand-name">Adair Campos</span>
+    </a>
+    <nav aria-label="Primary navigation" class="airbnb-desktop-nav">
+      <a class="air-nav-tab" data-nav-key="home" href="index.html#top"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="M3.5 10.7 12 3.5l8.5 7.2v8.1a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7v-8.1Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M9.3 20.5v-6.1h5.4v6.1" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span class="nav-label">Home</span></a>
+      <a aria-current="page" class="air-nav-tab is-active" data-nav-key="work" href="index.html#work"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="4"></rect><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="4"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="14"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="14"></rect></svg><span class="nav-label">Work</span></a>
+      <a class="air-nav-tab" data-nav-key="about" href="index.html#about"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.3" stroke="currentColor" stroke-width="1.8"></circle><path d="M5.4 20c.6-4 3-6.2 6.6-6.2s6 2.2 6.6 6.2" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span class="nav-label">About</span></a>
+      <a class="air-nav-tab" data-nav-key="cv" href="cv.html"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="M6 3.5h8l4 4V20.5H6z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M14 3.5v4h4M9 12h6M9 15.5h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span class="nav-label">CV</span></a>
+    </nav>
+    <div class="airbnb-header-actions">
+      <a aria-label="Open Adair Campos on LinkedIn" class="header-icon-link linkedin-link" href="https://www.linkedin.com/in/adair-campos-b1b5415a" rel="noreferrer" target="_blank"><svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M6.7 8.4H3.5V20h3.2V8.4ZM5.1 3A1.9 1.9 0 1 0 5 6.8 1.9 1.9 0 0 0 5.1 3ZM20.5 13.3c0-3.5-1.9-5.2-4.4-5.2-2 0-3 1.1-3.5 1.9V8.4H9.4V20h3.2v-5.8c0-1.5.3-3 2.2-3 1.8 0 1.9 1.7 1.9 3.1V20h3.2v-6.7h.6Z"></path></svg></a>
+      <a class="nav-cta air-contact" href="mailto:adaircampos88@gmail.com">Contact</a>
+      <button aria-label="Switch to dark mode" aria-pressed="false" class="theme-toggle" type="button">
+        <span aria-hidden="true" class="theme-toggle-icon">☾</span>
+        <span class="theme-toggle-text">Theme</span>
+      </button>
+    </div>
+  </header>
+  <nav aria-label="Case study sections" class="case-context-nav">
+    <a class="back-to-work" href="index.html#work">← All work</a>
+    <div><a href="#top">Overview</a><a href="#research-chapter">Research</a><a href="#design-chapter">Design evolution</a><a href="#reflection">Reflection</a></div>
+  </nav>
+
+  <main id="top">
+    <section class="lab-hero section-pad">
+      <div class="lab-hero-copy">
+        <p class="eyebrow">Forward-Looking Design · Research · Concept design</p>
+        <h1>Designing the future of residential energy management</h1>
+        <p class="lab-lede">How European market research and synthesis with energy experts narrowed the product opportunity—and how that direction evolved from system logic and low-fidelity structure into a developed Energy Flow concept.</p>
+        <div class="lab-meta" aria-label="Project characteristics">
+          <span>Three-month initiative</span>
+          <span>Real project artifacts</span>
+          <span>Two connected chapters</span>
+        </div>
+      </div>
+      <aside class="lab-question-card">
+        <small>One project · two lenses</small>
+        <ol class="lab-lens-list">
+          <li><span>01</span><div><small>Research &amp; direction</small><strong>Discover the right opportunity</strong></div></li>
+          <li><span>02</span><div><small>Design evolution</small><strong>Shape an understandable experience</strong></div></li>
+        </ol>
+      </aside>
+    </section>
+
+    <section aria-labelledby="project-team-title" class="lab-project-team section-pad section-soft" id="project-team">
+      <header class="lab-project-team-heading">
+        <div>
+          <p class="eyebrow">Project team &amp; responsibilities</p>
+          <h2 id="project-team-title">A collaborative European design project—with clear ownership.</h2>
+        </div>
+        <p>I led this three-month initiative within Sungrow’s European design team, working closely with Maria, our project manager and stakeholders at headquarters in China.</p>
+      </header>
+
+      <div class="lab-team-overview">
+        <article class="is-lead">
+          <div class="lab-team-card-meta"><span>01</span><small>Project leadership</small></div>
+          <h3>Adair Campos</h3>
+          <strong>Planning, research leadership and presentation</strong>
+          <p>I led the project plan, completed the competitor research, recruited the European energy experts, moderated all five interviews, led the synthesis and presented the work.</p>
+        </article>
+        <article>
+          <div class="lab-team-card-meta"><span>02</span><small>Design partnership</small></div>
+          <h3>Maria</h3>
+          <strong>Research support, analysis and concept development</strong>
+          <p>Maria co-created the interview guide, observed and documented the sessions, contributed to the analysis and shared the conceptual design work.</p>
+        </article>
+        <article>
+          <div class="lab-team-card-meta"><span>03</span><small>Direction &amp; decisions</small></div>
+          <h3>European design team, PM &amp; China HQ</h3>
+          <strong>Collaboration and final product decisions</strong>
+          <p>The European design team and project manager collaborated on the opportunity and concept work. HQ China and the product managers reviewed the evidence and made the final product decisions.</p>
+        </article>
+      </div>
+
+      <div class="lab-ownership-summary" aria-label="Responsibility summary">
+        <div><small>I led</small><p>Project planning · Competitive research · Participant recruitment · All five interviews · Synthesis · Presentation</p></div>
+        <div><small>We shared</small><p>Interview guide · Research artifacts · Analysis · Opportunity framing · Concept exploration</p></div>
+        <div><small>Outcome boundary</small><p>The work informed later Energy Flow improvements, but I do not claim this exact concept shipped or produced measured outcomes. Final product decisions remained with HQ China and the product managers.</p></div>
+      </div>
+    </section>
+
+    <nav class="lab-chapter-nav" aria-label="Case study chapters">
+      <div class="lab-chapter-tabs">
+        <a aria-controls="research-chapter" aria-current="location" class="lab-chapter-tab is-active" data-chapter-tab="research" href="#research-chapter" id="researchTab">
+          <span>01</span>
+          <span><small>Research &amp; direction</small><strong data-mobile-label="Discover">Discover the opportunity</strong></span>
+        </a>
+        <a aria-controls="design-chapter" class="lab-chapter-tab" data-chapter-tab="design" href="#design-chapter" id="designTab">
+          <span>02</span>
+          <span><small>Design evolution</small><strong data-mobile-label="Design">Shape the experience</strong></span>
+        </a>
+      </div>
+    </nav>
+
+    <section aria-labelledby="researchTab" class="lab-research-chapter lab-chapter-panel section-pad section-soft" data-chapter-panel="research" id="research-chapter" role="region">
+      <header class="lab-chapter-heading">
+        <div>
+          <p class="eyebrow">Chapter 01 · Research &amp; product direction</p>
+          <h2>Discover the right opportunity before designing the interface</h2>
+        </div>
+        <p>We moved from competitor patterns to energy-expert interviews, user roles, motivational positioning and the post-installation journey—building a clear reason to focus on Energy Flow before exploring the interface.</p>
+      </header>
+
+      <div class="lab-research-storyline" aria-label="Research sequence">
+        <span><b>01</b> Landscape</span><i aria-hidden="true">→</i>
+        <span><b>02</b> Interviews</span><i aria-hidden="true">→</i>
+        <span><b>03</b> User roles</span><i aria-hidden="true">→</i>
+        <span><b>04</b> Positioning</span><i aria-hidden="true">→</i>
+        <span><b>05</b> Journey</span><i aria-hidden="true">→</i>
+        <span><b>06</b> Energy Flow</span>
+      </div>
+
+      <div class="lab-research-artifacts">
+        <section class="lab-research-stage lab-competitor-stage" aria-labelledby="competitor-stage-title">
+          <header class="lab-stage-heading">
+            <div><p class="eyebrow">01 · Competitive landscape</p><h3 id="competitor-stage-title">Competitor research defined what we needed to investigate</h3></div>
+            <p>We studied Fronius, SMA, Sonnen and SolarEdge through four lenses. The aim was not to copy features, but to understand how established platforms made complex energy systems useful to different audiences.</p>
+          </header>
+          <div class="lab-competitor-lenses">
+            <article><span>01</span><small>Role-based design</small><strong>Different tools for different jobs</strong><p>Installer products prioritised commissioning and technical control; homeowner products prioritised clarity and actionable insights.</p></article>
+            <article><span>02</span><small>Omnichannel</small><strong>Consistency without identical screens</strong><p>Competitors adapted information and interactions to device constraints while retaining a familiar system model.</p></article>
+            <article><span>03</span><small>Automation</small><strong>Visible value with less effort</strong><p>Forecasting and automation increasingly supported savings and hands-off energy management.</p></article>
+            <article><span>04</span><small>Energy Flow</small><strong>A communication tool, not decoration</strong><p>Colour, motion and information density were used to explain how energy was generated, stored and consumed.</p></article>
+          </div>
+          <div class="lab-stage-conclusion"><small>The question left open</small><strong>Which iSolarCloud users were underserved—and which moment in their experience mattered most?</strong></div>
+        </section>
+
+        <section class="lab-research-stage lab-interview-stage" aria-labelledby="interview-stage-title">
+          <header class="lab-stage-heading">
+            <div><p class="eyebrow">02 · Expert interviews</p><h3 id="interview-stage-title">Turn market patterns into questions about iSolarCloud</h3></div>
+            <p>Five European energy experts spanning Technical Sales, Partner Success and Product Management helped us examine user roles, handoffs, moments of truth and recurring product pain points.</p>
+          </header>
+          <div class="lab-interview-layout">
+            <dl class="lab-evidence-metrics" aria-label="Interview methodology">
+              <div><dt>5</dt><dd>European energy experts</dd></div>
+              <div><dt>3</dt><dd>European markets</dd></div>
+              <div><dt>40–60</dt><dd>Minutes per session</dd></div>
+            </dl>
+            <div class="lab-interview-topics">
+              <article><span>01</span><strong>Who uses iSolarCloud?</strong><p>Roles, company structures, goals and different levels of technical proficiency.</p></article>
+              <article><span>02</span><strong>Where does trust change?</strong><p>Touchpoints, handoffs and moments of truth across the residential journey.</p></article>
+              <article><span>03</span><strong>Where does the product fall short?</strong><p>Pain points and feature gaps around Energy Flow, alerts and monitoring.</p></article>
+            </div>
+          </div>
+          <p class="lab-method-note"><strong>Research context:</strong> The interviews brought together practical expertise from Technical Sales, Partner Success and Product Management across three European markets. We combined these perspectives with existing HQ research and previous European user studies.</p>
+        </section>
+
+        <section class="lab-user-types" aria-labelledby="user-types-title">
+          <header>
+            <div><p class="eyebrow">03 · From interviews to roles</p><h3 id="user-types-title">Two roles—and very different definitions of a useful product</h3></div>
+            <p>The synthesis first separated professional installers from plant owners. Within each role, company structure or personal motivation changed what “simple” and “valuable” meant.</p>
+          </header>
+          <div class="lab-role-map">
+            <article>
+              <small>Professional role</small><strong>Installers</strong><p>Small companies often handled the complete installation and service journey; mid-size companies split work across specialists. Large utility teams were outside the residential focus.</p>
+              <ul><li>Commissioning</li><li>Technical efficiency</li><li>System control</li></ul>
+            </article>
+            <article class="is-focus">
+              <small>Design focus</small><strong>Plant owners</strong><p>Homeowners needed confidence, understandable value and a view of the system that could adapt from casual monitoring to deeper control.</p>
+              <ul><li>Clarity</li><li>Trust</li><li>Meaningful insight</li></ul>
+            </article>
+          </div>
+          <section class="lab-profile-set" aria-labelledby="plant-owner-profiles-title">
+          <div class="lab-profile-intro">
+            <div><small>Working plant-owner profiles</small><h4 id="plant-owner-profiles-title">One audience, three different definitions of value</h4></div>
+            <p>These behavioural profiles translate the combined evidence into design lenses—not claims that every homeowner fits one fixed persona.</p>
+          </div>
+          <div class="lab-user-type-grid">
+            <article><span>01</span><small>Practical Energy Player</small><strong>Make value easy to understand</strong><p>Focused on cost savings and simplicity; wants reliable insight without deep technical involvement.</p><ul aria-label="Primary needs"><li>Value</li><li>Clarity</li><li>Confidence</li></ul></article>
+            <article><span>02</span><small>Independent Retiree</small><strong>Support confidence and autonomy</strong><p>Motivated by energy independence and long-term self-reliance; values clear visualisation and automation.</p><ul aria-label="Primary needs"><li>Autonomy</li><li>Predictability</li><li>Guidance</li></ul></article>
+            <article><span>03</span><small>Energy Technical Player</small><strong>Make deeper control available</strong><p>Enthusiastic about data, control and optimisation; prefers advanced settings and detailed system insight.</p><ul aria-label="Primary needs"><li>Depth</li><li>Precision</li><li>Advanced controls</li></ul></article>
+          </div>
+          </section>
+          <div class="lab-user-type-bridge" aria-label="Research sequence"><span>Interview patterns</span><b aria-hidden="true">→</b><span>Roles and profiles</span><b aria-hidden="true">→</b><span>Motivation mapping</span></div>
+        </section>
+
+        <figure class="lab-research-artifact is-matrix" id="motivation-mapping">
+          <div><img alt="Motivation matrix mapping installer and plant-owner priorities" loading="lazy" src="assets/projects/energy/motivation-matrix.webp"/></div>
+          <figcaption><small>04 · Original project artifact</small><strong>Motivation mapping</strong><p>Placed installer structures and plant-owner motivations on the same environmental-to-economic and functional-to-innovative axes.</p></figcaption>
+        </figure>
+
+        <section class="lab-focus-gap" aria-labelledby="focus-gap-title">
+          <header class="lab-stage-heading">
+            <div><p class="eyebrow">Positioning the opportunity</p><h3 id="focus-gap-title">The shared matrix exposed a weaker offer for non-technical plant owners</h3></div>
+            <p>We mapped the competitor products onto the same motivational axes. The comparison suggested that the market was strongest around installer workflows, functional efficiency and technology-oriented users.</p>
+          </header>
+          <div class="lab-gap-comparison">
+            <article><small>Competitor concentration</small><strong>Tools for professionals and technical users</strong><ul><li>Installer workflows</li><li>Functional efficiency</li><li>Innovation and smart features</li></ul></article>
+            <span aria-hidden="true">→</span>
+            <article class="is-opportunity"><small>Opportunity space</small><strong>Plant owners seeking understandable everyday value</strong><ul><li>Savings and return on investment</li><li>Independence and sustainability</li><li>Confidence without technical overload</li></ul></article>
+          </div>
+          <div class="lab-stage-conclusion"><small>Design focus</small><strong>Prioritise plant owners without removing the depth that technical users need.</strong></div>
+        </section>
+
+        <figure class="lab-research-artifact is-journey" id="journey-focus">
+          <div><img alt="Residential installation and monitoring journey map" loading="lazy" src="assets/projects/energy/journey-map.webp"/></div>
+          <figcaption><small>05 · Original project artifact</small><strong>Journey focus</strong><p>Mapped the handoff from installation to plant ownership and identified post-installation monitoring as a decisive moment of truth.</p></figcaption>
+        </figure>
+
+        <section class="lab-energy-flow-rationale" aria-labelledby="energy-flow-rationale-title">
+          <header class="lab-stage-heading">
+            <div><p class="eyebrow">06 · Why Energy Flow?</p><h3 id="energy-flow-rationale-title">Three evidence streams converged on one product moment</h3></div>
+            <p>The design focus was not chosen because Energy Flow was visually interesting. It sat at the intersection of an underserved audience, a high-trust journey stage and recurring monitoring problems.</p>
+          </header>
+          <div class="lab-rationale-chain">
+            <article><span>01</span><small>Motivation matrix</small><strong>Plant owners needed clearer everyday value.</strong></article><b aria-hidden="true">→</b>
+            <article><span>02</span><small>Journey mapping</small><strong>Monitoring was a critical post-installation moment.</strong></article><b aria-hidden="true">→</b>
+            <article><span>03</span><small>Interview synthesis</small><strong>Energy experts consistently described Energy Flow as central to daily system checks.</strong></article>
+          </div>
+          <div class="lab-energy-flow-decision"><small>Opportunity selected</small><strong>Redesign Energy Flow to improve status clarity, trust and comprehension for plant owners while remaining useful to technical users.</strong></div>
+        </section>
+      </div>
+
+      <div class="lab-research-outcome" id="research-outcome">
+        <div class="lab-research-outcome-copy">
+          <p class="eyebrow">Research outcome</p>
+          <h3>The research did not prescribe a screen. It defined what the design needed to achieve.</h3>
+          <p class="deep-detail">This makes the transition honest: research narrowed the opportunity and established criteria, while concept design explored how those criteria could coexist in one adaptable interface.</p>
+        </div>
+        <div class="lab-requirement-explorer">
+          <p class="lab-requirement-hint">Hover or focus a requirement to see the design implication. On touch devices, tap a card.</p>
+          <div class="lab-design-requirements" aria-label="Explore design requirements derived from research" role="group">
+            <button aria-pressed="true" class="lab-requirement-card is-active" data-requirement="clarity" type="button"><span>01</span><strong>Understandable at a glance</strong><p>Explain system status before asking users to interpret data.</p></button>
+            <button aria-pressed="false" class="lab-requirement-card" data-requirement="expertise" type="button"><span>02</span><strong>Adaptable to expertise</strong><p>Support casual and technical users without forcing one level of detail.</p></button>
+            <button aria-pressed="false" class="lab-requirement-card" data-requirement="trust" type="button"><span>03</span><strong>Accurate and trustworthy</strong><p>Represent active devices and energy movement without misleading connections.</p></button>
+            <button aria-pressed="false" class="lab-requirement-card" data-requirement="scale" type="button"><span>04</span><strong>Scalable across systems</strong><p>Accommodate different combinations of solar, grid, battery, EV and household demand.</p></button>
+          </div>
+          <div aria-live="polite" class="lab-requirement-response">
+            <small>Design implication</small>
+            <strong id="requirementResponseTitle">Lead with a plain-language system state.</strong>
+            <p id="requirementResponseText">The interface should answer “Is everything working?” before presenting detailed measurements.</p>
+          </div>
+        </div>
+      </div>
+      <div class="lab-chapter-next">
+        <div><small>Chapter 02 is directly below</small><strong>Keep scrolling to see how the requirements became an interface.</strong></div>
+        <button data-chapter-open="design" type="button">Jump to design evolution <span aria-hidden="true">↓</span></button>
+      </div>
+    </section>
+
+    <div aria-labelledby="designTab" class="lab-chapter-panel" data-chapter-panel="design" id="design-chapter" role="region">
+    <section class="lab-handoff section-pad section-dark">
+      <p class="eyebrow">The handoff from research to design</p>
+      <h2>Research established the criteria. Design explored how those criteria could live together.</h2>
+      <p class="lab-handoff-lede">Chapter 2 begins with the same four requirements in mind, then follows the work through system modelling, structural exploration, concept divergence and a developed direction.</p>
+      <div class="lab-handoff-flow" aria-label="Research to design transition">
+        <span>Evidence</span><b aria-hidden="true">→</b><span>Design requirements</span><b aria-hidden="true">→</b><span>System model</span><b aria-hidden="true">→</b><span>Experience concepts</span>
+      </div>
+    </section>
+
+    <section class="lab-evolution section-pad" id="design-evolution">
+      <header class="lab-evolution-heading">
+        <p class="eyebrow">Chapter 02 · Design evolution</p>
+        <h2>How the design evolved</h2>
+        <p>The second chapter follows the decisions from technical system modelling to structural exploration, concept divergence and the developed direction.</p>
+      </header>
+
+      <article class="lab-step" id="model-system">
+        <div class="lab-step-copy">
+          <span class="lab-step-number">01</span>
+          <p class="eyebrow">Model the system</p>
+          <h3>Understand what the interface must represent</h3>
+          <p>Before designing layouts, the work mapped different combinations of solar, grid, battery, EV charging and household demand.</p>
+          <p class="deep-detail">The scenarios exposed a central constraint: a single static diagram could not accurately represent every installation. The structure needed to adapt while preserving a predictable hierarchy.</p>
+          <ul class="lab-decision-list">
+            <li>Show only connections that are active.</li>
+            <li>Treat EV charging and smart devices as part of household demand.</li>
+            <li>Keep the core model expandable across system configurations.</li>
+          </ul>
+        </div>
+        <div class="lab-system-art" aria-label="Interactive household energy-system model connecting solar, home demand, battery, grid and EV charging" data-active-system="home" role="group">
+          <p class="lab-system-hint">Hover or tap a system element</p>
+          <button aria-pressed="false" class="lab-system-node node-solar" data-system-node="solar" type="button"><span>Solar</span><b>Generation</b></button>
+          <button aria-pressed="true" class="lab-system-node node-home" data-system-node="home" type="button"><span>Home</span><b>Demand</b></button>
+          <button aria-pressed="false" class="lab-system-node node-battery" data-system-node="battery" type="button"><span>Battery</span><b>Storage</b></button>
+          <button aria-pressed="false" class="lab-system-node node-grid" data-system-node="grid" type="button"><span>Grid</span><b>Exchange</b></button>
+          <button aria-pressed="false" class="lab-system-node node-ev" data-system-node="ev" type="button"><span>EV</span><b>Flexible load</b></button>
+          <span class="lab-system-line line-solar-home" data-system-line="solar" aria-hidden="true"></span>
+          <span class="lab-system-line line-home-battery" data-system-line="battery" aria-hidden="true"></span>
+          <span class="lab-system-line line-home-grid" data-system-line="grid" aria-hidden="true"></span>
+          <span class="lab-system-line line-home-ev" data-system-line="ev" aria-hidden="true"></span>
+          <div aria-live="polite" class="lab-system-narrative" id="systemNarrative">
+            <small id="systemNarrativeLabel">Home as the anchor</small>
+            <strong id="systemNarrativeTitle">Organise the model around household demand.</strong>
+            <p id="systemNarrativeText">Devices and energy sources become easier to understand when their relationship to the home remains stable.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="lab-step lab-step-wireframes" id="low-fidelity">
+        <div class="lab-step-copy">
+          <span class="lab-step-number">02</span>
+          <p class="eyebrow">Establish the hierarchy</p>
+          <h3>Use low fidelity to decide what belongs where</h3>
+          <p>The early layouts tested whether the same hierarchy could survive increasingly complex household configurations.</p>
+          <p class="deep-detail">Instead of refining colours or iconography, the focus stayed on system status, energy direction, household demand and the order in which secondary devices should appear.</p>
+          <div class="lab-decision-callout"><span aria-hidden="true">02</span><div><small>Design decision</small><strong>System status first. Energy direction second. Technical depth only when needed.</strong></div></div>
+        </div>
+        <div>
+          <div class="lab-wireframe-grid" aria-label="Reconstructed low-fidelity progression">
+            <figure>
+              <div class="lab-wireframe-phone">
+                <span class="wf-status"></span><span class="wf-title"></span>
+                <div class="wf-node wf-top">Solar</div><div class="wf-connector wf-vertical"></div><div class="wf-node wf-centre">Home</div>
+                <div class="wf-node wf-bottom-left">Grid</div><div class="wf-metric wf-metric-a"></div><div class="wf-metric wf-metric-b"></div>
+              </div>
+              <figcaption><b>Basic state</b><span>Define the essential reading order.</span></figcaption>
+            </figure>
+            <figure>
+              <div class="lab-wireframe-phone">
+                <span class="wf-status"></span><span class="wf-title"></span>
+                <div class="wf-node wf-top">Solar</div><div class="wf-connector wf-vertical"></div><div class="wf-node wf-centre">Home</div>
+                <div class="wf-node wf-bottom-left">Grid</div><div class="wf-node wf-bottom-right">Battery</div><div class="wf-metric wf-metric-a"></div><div class="wf-metric wf-metric-b"></div>
+              </div>
+              <figcaption><b>Storage state</b><span>Represent simultaneous movement.</span></figcaption>
+            </figure>
+            <figure>
+              <div class="lab-wireframe-phone">
+                <span class="wf-status"></span><span class="wf-title"></span>
+                <div class="wf-node wf-top">Solar</div><div class="wf-connector wf-vertical"></div><div class="wf-node wf-centre">Home</div>
+                <div class="wf-node wf-bottom-left">Grid</div><div class="wf-node wf-bottom-right">Battery</div><div class="wf-device">EV · Smart devices</div><div class="wf-metric wf-metric-a"></div><div class="wf-metric wf-metric-b"></div>
+              </div>
+              <figcaption><b>Connected home</b><span>Add detail without losing hierarchy.</span></figcaption>
+            </figure>
+          </div>
+          <p class="lab-reconstruction-note">These low-fidelity reconstructions make the structural decision sequence visible; the original project artifacts shown elsewhere remain the source material.</p>
+        </div>
+      </article>
+
+      <article class="lab-step lab-step-concepts" id="diverge">
+        <div class="lab-step-copy">
+          <span class="lab-step-number">03</span>
+          <p class="eyebrow">Diverge</p>
+          <h3>Explore two different experience models</h3>
+          <p>The concepts tested more than visual style: they proposed two different ways of explaining a changing technical system.</p>
+          <p class="deep-detail">Concept A made movement and energy activity more expressive. Concept B relied on clearer modules and progressive disclosure. The comparison exposed a useful tension between immediacy and scalability.</p>
+        </div>
+        <div class="lab-artifact-compare">
+          <figure class="lab-artifact-card">
+            <div class="lab-artifact-image"><img alt="Concept A Energy Flow exploration using expressive connected forms" loading="lazy" src="assets/projects/energy/concept-a.webp"/></div>
+            <figcaption>
+              <small>Original project artifact · Concept A</small>
+              <h4>Visual energy storytelling</h4>
+              <p>Expressive colour and movement make live activity immediately visible.</p>
+              <dl><dt>Strength</dt><dd>Fast and emotionally engaging.</dd><dt>Trade-off</dt><dd>Greater motion and accessibility complexity.</dd></dl>
+            </figcaption>
+          </figure>
+          <figure class="lab-artifact-card is-selected">
+            <div class="lab-artifact-image"><img alt="Concept B Energy Flow exploration using structured modules" loading="lazy" src="assets/projects/energy/concept-b.webp"/></div>
+            <figcaption>
+              <small>Original project artifact · Concept B</small>
+              <h4>Structured progressive disclosure</h4>
+              <p>Clear grouping keeps the default understandable while allowing additional depth.</p>
+              <dl><dt>Strength</dt><dd>Scalable across different system configurations.</dd><dt>Trade-off</dt><dd>Less immediate visual storytelling.</dd></dl>
+            </figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="lab-step lab-step-developed" id="develop">
+        <div class="lab-step-copy">
+          <span class="lab-step-number">04</span>
+          <p class="eyebrow">Develop the direction</p>
+          <h3>Carry the strongest decisions into a more resolved concept</h3>
+          <p>The developed direction prioritised status, household demand and understandable system relationships while keeping deeper information available.</p>
+          <p class="deep-detail">The concept remained a future product direction. The next step would have been direct comprehension and accessibility testing with homeowners and installers before implementation.</p>
+        </div>
+        <div class="lab-developed-grid">
+          <figure class="lab-developed-visual">
+            <div class="lab-developed-image-frame" data-active-decision="status">
+              <img alt="Developed Energy Flow concept direction" loading="lazy" src="assets/projects/energy/hero.webp"/>
+              <span class="lab-developed-hotspot hotspot-status is-active" data-developed-hotspot="status">01</span>
+              <span class="lab-developed-hotspot hotspot-home" data-developed-hotspot="home">02</span>
+              <span class="lab-developed-hotspot hotspot-connections" data-developed-hotspot="connections">03</span>
+              <span class="lab-developed-hotspot hotspot-depth" data-developed-hotspot="depth">04</span>
+            </div>
+            <figcaption id="developedCaption"><small>Original project artifact · developed concept direction</small><strong id="developedCaptionTitle">Status before metrics</strong><p id="developedCaptionText">Explain what is happening before presenting values.</p></figcaption>
+          </figure>
+          <div class="lab-surviving-decisions" aria-label="Explore decisions in the developed concept" role="group">
+            <button aria-pressed="true" class="is-active" data-developed-decision="status" type="button"><span>01</span><div><strong>Status before metrics</strong><p>Explain what is happening before presenting values.</p></div></button>
+            <button aria-pressed="false" data-developed-decision="home" type="button"><span>02</span><div><strong>Home demand as the anchor</strong><p>Organise devices around what the household consumes.</p></div></button>
+            <button aria-pressed="false" data-developed-decision="connections" type="button"><span>03</span><div><strong>Active connections only</strong><p>Avoid visual relationships that contradict real energy movement.</p></div></button>
+            <button aria-pressed="false" data-developed-decision="depth" type="button"><span>04</span><div><strong>Progressive technical depth</strong><p>Keep detail accessible without dominating the default view.</p></div></button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="lab-transition section-pad section-dark" id="reflection">
+      <div>
+        <p class="eyebrow">Outcome &amp; reflection</p>
+        <h2>The interface became clearer because the system model became clearer first.</h2>
+      </div>
+      <p>The three-month initiative gave the European design team a research-informed direction and helped shape later Energy Flow improvements. It did not establish that this exact concept shipped, and no measured customer outcomes are attributed to the work.</p>
+      <div class="lab-chapter-next is-back">
+        <div><small>Trace the evidence</small><strong>Return to the research chapter and follow the decision trail again.</strong></div>
+        <button data-chapter-open="research" type="button"><span aria-hidden="true">←</span> Back to research</button>
+      </div>
+    </section>
+    </div>
+  </main>
+
+  <section class="next-case section-pad section-soft reveal">
+    <p class="eyebrow">Next case study</p>
+    <h2>Understanding home EV-charging behaviours</h2>
+    <p>See how six interviews uncovered opportunities around automation, cost transparency and flexible control.</p>
+    <a class="primary-button" href="case-study-ev-research.html">Read the EV research case study <span>→</span></a>
+  </section>
+  <footer>
+    <strong>Adair Campos</strong>
+    <span>Senior Product Designer · Munich, Germany</span>
+    <div class="footer-links"><a href="cv.html">CV</a><a href="mailto:adaircampos88@gmail.com">Email</a><a aria-label="Open Adair Campos on LinkedIn" href="https://www.linkedin.com/in/adair-campos-b1b5415a" rel="noreferrer" target="_blank">LinkedIn ↗</a><a href="privacy.html">Privacy / Datenschutz</a><a href="impressum.html">Impressum</a><button class="cookie-settings-button" type="button">Cookie settings</button><a href="#top">Back to top ↑</a></div>
+  </footer>
+  <nav aria-label="Mobile primary navigation" class="mobile-bottom-nav">
+    <a class="mobile-nav-item" data-mobile-nav="home" href="index.html#top"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="M3.5 10.7 12 3.5l8.5 7.2v8.1a1.7 1.7 0 0 1-1.7 1.7H5.2a1.7 1.7 0 0 1-1.7-1.7v-8.1Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M9.3 20.5v-6.1h5.4v6.1" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span>Home</span></a>
+    <a aria-current="page" class="mobile-nav-item is-active" data-mobile-nav="work" href="index.html#work"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="4"></rect><rect height="7" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="4"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="3.5" y="14"></rect><rect height="6" rx="2" stroke="currentColor" stroke-width="1.8" width="7" x="13.5" y="14"></rect></svg><span>Work</span></a>
+    <a class="mobile-nav-item" data-mobile-nav="about" href="index.html#about"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.3" stroke="currentColor" stroke-width="1.8"></circle><path d="M5.4 20c.6-4 3-6.2 6.6-6.2s6 2.2 6.6 6.2" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span>About</span></a>
+    <a class="mobile-nav-item" data-mobile-nav="cv" href="cv.html"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><path d="M6 3.5h8l4 4V20.5H6z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path><path d="M14 3.5v4h4M9 12h6M9 15.5h6" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"></path></svg><span>CV</span></a>
+    <a class="mobile-nav-item" data-mobile-nav="contact" href="mailto:adaircampos88@gmail.com"><svg aria-hidden="true" fill="none" viewBox="0 0 24 24"><rect height="13" rx="3" stroke="currentColor" stroke-width="1.8" width="17" x="3.5" y="5.5"></rect><path d="m5 7 7 5.3L19 7" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"></path></svg><span>Contact</span></a>
+  </nav>
+  <script defer src="script.js"></script>
+  <script defer src="case-study-energy-flow.js"></script>
 </body>
 </html>

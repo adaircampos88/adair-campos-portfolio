@@ -22,7 +22,9 @@ PUBLIC_FILES = (
     "404.html",
     "accessibility-audit.html",
     "styles.css",
+    "case-study-energy-flow.css",
     "script.js",
+    "case-study-energy-flow.js",
     "site-config.js",
     "robots.txt",
     "sitemap.xml",
@@ -82,6 +84,14 @@ def copy_public_site(address_markup: str) -> None:
     ]
     if remaining:
         raise SystemExit(f"Publication placeholder remains in generated files: {remaining}")
+
+    forbidden_public_paths = [
+        OUTPUT / ".portfolio-private",
+        *OUTPUT.glob("case-study-energy-flow-lab.*"),
+    ]
+    leaked_paths = [path.relative_to(OUTPUT) for path in forbidden_public_paths if path.exists()]
+    if leaked_paths:
+        raise SystemExit(f"Private Energy Flow material leaked into the generated site: {leaked_paths}")
 
 
 if __name__ == "__main__":

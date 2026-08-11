@@ -6,6 +6,7 @@ export default defineConfig({
   build: {
     outDir: "../energy-prototype",
     emptyOutDir: true,
+    modulePreload: { polyfill: false },
     sourcemap: false,
   },
 });
