@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "company": "",
+  "role": "",
+  "roleFamily": "Product",
+  "seniorityPosture": "",
+  "primaryEmphasis": "Product",
+  "officialVacancyUrl": "",
+  "strategyPath": "application_strategy.md",
+  "pdfPath": "Adair_Campos_<Company>_<RoleFamily>_CV.pdf",
+  "sha256": "",
+  "pageCount": 2,
+  "claimsAudit": {
+    "status": "Pending",
+    "evidenceNotes": [],
+    "removedOrReframedClaims": []
+  },
+  "qa": {
+    "a4": false,
+    "selectableText": false,
+    "workingLinks": false,
+    "completePageTwoHeadings": false,
+    "noClippingOrOverlap": false
+  },
+  "approval": {
+    "content": "Pending",
+    "waypointUpload": "Not requested",
+    "application": "Not requested",
+    "outreach": "Not requested"
+  },
+  "waypointNotes": "cv_family=Product tailoring=Bespoke emphasis=Product assignment=Unverified manifest= checksum="
+}
