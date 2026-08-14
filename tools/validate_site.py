@@ -13,6 +13,7 @@ PUBLIC_PAGES = [
     "case-study-energy-flow.html",
     "case-study-ev-research.html",
     "case-study-isolarcloud-evaluation.html",
+    "case-study-isolarcloud-desktop.html",
     "cv.html",
     "privacy.html",
     "impressum.html",
@@ -88,7 +89,7 @@ for page_name in PUBLIC_PAGES:
             errors.append(f"{page_name}: missing local {tag} target {reference}")
 
 index = (ROOT / "index.html").read_text(encoding="utf-8")
-for case_study in PUBLIC_PAGES[1:4]:
+for case_study in PUBLIC_PAGES[1:5]:
     if case_study not in index:
         errors.append(f"Homepage does not link to {case_study}")
 
@@ -97,10 +98,11 @@ if len(list((ROOT / "assets" / "projects").rglob("*.webp"))) < 20:
 
 for required_file in (
     "CNAME", "robots.txt", "sitemap.xml", "site-config.js", "Adair_Campos_Senior_Product_Designer_CV.pdf",
+    "Adair_Campos_Product_Designer_CV.pdf", "Adair_Campos_UX_UI_Designer_CV.pdf",
     "assets/meta/favicon.svg", "assets/meta/apple-touch-icon.png", "assets/meta/og-portfolio.png",
     "tools/build_site.py", ".github/workflows/deploy-pages.yml",
     "energy-prototype/index.html",
-    "case-study-energy-flow.css", "case-study-energy-flow.js",
+    "case-study-energy-flow.css", "case-study-energy-flow.js", "case-study-isolarcloud-desktop.css",
 ):
     if not (ROOT / required_file).exists():
         errors.append(f"Missing launch file: {required_file}")
@@ -170,7 +172,7 @@ if errors:
 
 print(f"Validated {len(PUBLIC_PAGES)} public pages.")
 print("All local links and assets resolve.")
-print("Three case studies and project assets are present.")
+print("Four case studies and project assets are present.")
 print("Launch metadata files are present.")
 blockers = []
 if "TODO_LEGAL_ADDRESS" in (ROOT / "privacy.html").read_text(encoding="utf-8") or "TODO_LEGAL_ADDRESS" in (ROOT / "impressum.html").read_text(encoding="utf-8"):

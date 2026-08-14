@@ -16,6 +16,7 @@ PUBLIC_FILES = (
     "case-study-energy-flow.html",
     "case-study-ev-research.html",
     "case-study-isolarcloud-evaluation.html",
+    "case-study-isolarcloud-desktop.html",
     "cv.html",
     "privacy.html",
     "impressum.html",
@@ -23,6 +24,7 @@ PUBLIC_FILES = (
     "accessibility-audit.html",
     "styles.css",
     "case-study-energy-flow.css",
+    "case-study-isolarcloud-desktop.css",
     "script.js",
     "case-study-energy-flow.js",
     "site-config.js",
@@ -30,6 +32,8 @@ PUBLIC_FILES = (
     "sitemap.xml",
     "CNAME",
     "Adair_Campos_Senior_Product_Designer_CV.pdf",
+    "Adair_Campos_Product_Designer_CV.pdf",
+    "Adair_Campos_UX_UI_Designer_CV.pdf",
 )
 
 

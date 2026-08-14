@@ -1,0 +1,33 @@
+@page { size: A4; margin: 12mm 14mm; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; color: #172127; font-family: Arial, Helvetica, sans-serif; }
+body { font-size: 9.3pt; line-height: 1.34; }
+a { color: inherit; text-decoration: none; }
+.page { width: 100%; height: 269mm; min-height: 269mm; overflow: hidden; position: relative; }
+.page + .page { break-before: page; }
+header { padding: 0 0 5mm; border-bottom: 1.5pt solid #172127; }
+h1 { margin: 0 0 1.8mm; font-size: 24pt; line-height: 1; letter-spacing: .2pt; }
+.headline { margin: 0 0 2.4mm; font-size: 13pt; font-weight: 700; }
+.contact { color: #4e5d64; font-size: 8.4pt; }
+section { margin-top: 4.5mm; }
+h2 { margin: 0 0 2.4mm; padding-bottom: 1.4mm; border-bottom: .6pt solid #cbd2d5; font-size: 8.4pt; letter-spacing: 1.2pt; text-transform: uppercase; }
+h3 { margin: 0; font-size: 11pt; }
+p { margin: 0; }
+.summary { font-size: 9.6pt; color: #33434a; }
+.strengths { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm; }
+.strengths div { min-height: 18mm; padding: 3mm; border-radius: 2.5mm; background: #f1f4f4; }
+.strengths strong { display: block; margin-bottom: 1mm; font-size: 8.8pt; }
+.strengths span { color: #57666d; font-size: 7.5pt; }
+.role { margin-bottom: 4mm; }
+.role-head { display: flex; justify-content: space-between; gap: 4mm; }
+.role-title { margin-top: .7mm; font-weight: 700; }
+.date { color: #66747a; font-size: 7.8pt; white-space: nowrap; }
+ul { margin: 1.8mm 0 0; padding-left: 5mm; }
+li { margin-bottom: 1mm; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; }
+.tags { display: flex; flex-wrap: wrap; gap: 1.6mm; }
+.tags span { padding: 1.6mm 2.8mm; border-radius: 99px; background: #f1f4f4; font-size: 7.4pt; }
+.detail-list p + p { margin-top: 1.6mm; }
+.label { font-weight: 700; }
+.footer { position: absolute; right: 0; bottom: 0; color: #7b878c; font-size: 7pt; }
+.truth-note { margin-top: 2mm; color: #6d797e; font-size: 7.3pt; }
