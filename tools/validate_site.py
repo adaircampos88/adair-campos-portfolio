@@ -88,16 +88,16 @@ for page_name in PUBLIC_PAGES:
             errors.append(f"{page_name}: missing local {tag} target {reference}")
 
 index = (ROOT / "index.html").read_text(encoding="utf-8")
-VERIFIED_CASE_STUDIES = set(PUBLIC_PAGES[1:4])
+VERIFIED_CASE_STUDIES = PUBLIC_PAGES[1:4]
 for case_study in VERIFIED_CASE_STUDIES:
     if case_study not in index:
         errors.append(f"Homepage does not link to {case_study}")
 
-homepage_case_studies = set(re.findall(r'href=["\'](case-study-[^"\']+\.html)["\']', index))
+homepage_case_studies = re.findall(r'href=["\'](case-study-[^"\']+\.html)["\']', index)
 if homepage_case_studies != VERIFIED_CASE_STUDIES:
     errors.append(
-        "Homepage case studies must be exactly the three verified projects; "
-        f"found {sorted(homepage_case_studies)}"
+        "Homepage case studies must use the verified order; "
+        f"found {homepage_case_studies}"
     )
 
 if len(list((ROOT / "assets" / "projects").rglob("*.webp"))) < 20:
