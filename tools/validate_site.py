@@ -13,7 +13,6 @@ PUBLIC_PAGES = [
     "case-study-energy-flow.html",
     "case-study-ev-research.html",
     "case-study-isolarcloud-evaluation.html",
-    "case-study-isolarcloud-desktop.html",
     "cv.html",
     "privacy.html",
     "impressum.html",
@@ -89,9 +88,17 @@ for page_name in PUBLIC_PAGES:
             errors.append(f"{page_name}: missing local {tag} target {reference}")
 
 index = (ROOT / "index.html").read_text(encoding="utf-8")
-for case_study in PUBLIC_PAGES[1:5]:
+VERIFIED_CASE_STUDIES = set(PUBLIC_PAGES[1:4])
+for case_study in VERIFIED_CASE_STUDIES:
     if case_study not in index:
         errors.append(f"Homepage does not link to {case_study}")
+
+homepage_case_studies = set(re.findall(r'href=["\'](case-study-[^"\']+\.html)["\']', index))
+if homepage_case_studies != VERIFIED_CASE_STUDIES:
+    errors.append(
+        "Homepage case studies must be exactly the three verified projects; "
+        f"found {sorted(homepage_case_studies)}"
+    )
 
 if len(list((ROOT / "assets" / "projects").rglob("*.webp"))) < 20:
     errors.append("Expected at least 20 project image assets")
@@ -102,7 +109,7 @@ for required_file in (
     "assets/meta/favicon.svg", "assets/meta/apple-touch-icon.png", "assets/meta/og-portfolio.png",
     "tools/build_site.py", ".github/workflows/deploy-pages.yml",
     "energy-prototype/index.html",
-    "case-study-energy-flow.css", "case-study-energy-flow.js", "case-study-isolarcloud-desktop.css",
+    "case-study-energy-flow.css", "case-study-energy-flow.js",
 ):
     if not (ROOT / required_file).exists():
         errors.append(f"Missing launch file: {required_file}")
@@ -172,7 +179,7 @@ if errors:
 
 print(f"Validated {len(PUBLIC_PAGES)} public pages.")
 print("All local links and assets resolve.")
-print("Four case studies and project assets are present.")
+print("Three verified case studies and project assets are present.")
 print("Launch metadata files are present.")
 blockers = []
 if "TODO_LEGAL_ADDRESS" in (ROOT / "privacy.html").read_text(encoding="utf-8") or "TODO_LEGAL_ADDRESS" in (ROOT / "impressum.html").read_text(encoding="utf-8"):
